@@ -18,8 +18,8 @@ export default function Projects() {
               Built a model-time ML inference system using AWS Lambda and API Gateway to predict demand for a supply chain dataset.
             </p>
             <div className="flex flex-wrap gap-4 mt-4">
-              <img src="/icons/snowflake.png" alt="Snowflake" className="w-10 h-10 object-contain" />
-              <img src="/icons/databricks.png" alt="Databricks" className="w-10 h-10 object-contain" />
+              <img src="/icons/snowflake.png" alt="Snowflake" className="w-12 h-12 object-contain" />
+              <img src="/icons/databricks.png" alt="Databricks" className="w-12 h-12 object-contain" />
               <img src="/icons/docker.svg" alt="Docker" className="w-10 h-10 object-contain" />
               <img src="/icons/lambda.svg" alt="AWS Lambda" className="w-10 h-10 object-contain" />
               <img src="/icons/API.svg" alt="API Gateway" className="w-10 h-10 object-contain" />
@@ -88,7 +88,7 @@ export default function Projects() {
               Designed and implemented an end-to-end Spark ETL pipeline on Databricks to process and analyze retail data for business insights.
             </p>
             <div className="flex flex-wrap gap-4 mt-4">
-              <img src="/icons/databricks.png" alt="Databricks" className="w-10 h-10 object-contain" />
+              <img src="/icons/databricks.png" alt="Databricks" className="w-12 h-12 object-contain" />
               <img src="/icons/deltalake.png" alt="Delta Lake" className="w-10 h-10 object-contain" />
             </div>
             <a
