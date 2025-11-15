@@ -56,10 +56,8 @@ export default function Hero() {
               <Mail size={20} />
               <span className="hidden sm:inline">aniketsakharkar4@gmail.com</span>
            </a>
-
               <span className="text-slate-400">•</span>
-
-           <a
+          </div>
              href="tel:+18572305126"
              className="flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors"
            >
