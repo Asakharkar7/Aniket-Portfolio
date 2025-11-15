@@ -14,7 +14,7 @@ export default function Projects() {
               <img src="/icons/snowflake.png" alt="Snowflake" className="w-6 h-6" />
               <img src="/icons/databricks.png" alt="Databricks" className="w-6 h-6" />
               <img src="/icons/docker.svg" alt="Docker" className="w-6 h-6" />
-              <img src="/icons/lambda.svg" alt="AWS Lambda" className="w-6 h-6" />
+              <img src="/icons/lamda.svg" alt="AWS Lambda" className="w-6 h-6" />
               <img src="/icons/API.svg" alt="API Gateway" className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-semibold text-slate-800">
@@ -36,7 +36,7 @@ export default function Projects() {
           {/* Project 2 */}
           <div className="bg-white p-6 rounded-lg shadow-md">
             <div className="flex items-center gap-3 mb-2">
-              <img src="/icons/lambda.svg" alt="AWS Lambda" className="w-6 h-6" />
+              <img src="/icons/lamda.svg" alt="AWS Lambda" className="w-6 h-6" />
               <img src="/icons/dynamo.svg" alt="DynamoDB" className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-semibold text-slate-800">
@@ -58,7 +58,7 @@ export default function Projects() {
           {/* Project 3 */}
           <div className="bg-white p-6 rounded-lg shadow-md">
             <div className="flex items-center gap-3 mb-2">
-              <img src="/icons/lambda.svg" alt="AWS Lambda" className="w-6 h-6" />
+              <img src="/icons/lamda.svg" alt="AWS Lambda" className="w-6 h-6" />
               <img src="/icons/API.svg" alt="API Gateway" className="w-6 h-6" />
               <img src="/icons/scikit.png" alt="Scikit-learn" className="w-6 h-6" />
             </div>
