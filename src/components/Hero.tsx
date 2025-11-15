@@ -50,25 +50,25 @@ export default function Hero() {
 
          <div className="flex justify-center items-center gap-6 mb-8">
   {/* Email */}
-  <a
-    href="mailto:aniketsakharkar4@gmail.com"
-    className="flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors"
-  >
-    <Mail size={20} />
-    <span className="hidden sm:inline">aniketsakharkar4@gmail.com</span>
-  </a>
+            <a
+              href="mailto:aniketsakharkar4@gmail.com"
+              className="flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors"
+            >
+              <Mail size={20} />
+              <span className="hidden sm:inline">aniketsakharkar4@gmail.com</span>
+            </a>
 
-  <span className="text-slate-400">•</span>
+              <span className="text-slate-400">•</span>
 
   {/* Phone */}
-  <a
-    href="tel:+18572305126"
-    className="flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors"
-  >
-    <Phone size={20} />
-    <span className="hidden sm:inline">+1 857-230-5126</span>
-  </a>
-</div>
+            <a
+              href="tel:+18572305126"
+              className="flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors"
+            >
+              <Phone size={20} />
+              <span className="hidden sm:inline">+1 857-230-5126</span>
+            </a>
+          </div>
 
               <Linkedin size={20} />
               LinkedIn
