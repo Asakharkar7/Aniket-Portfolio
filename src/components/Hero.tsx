@@ -3,9 +3,9 @@ import { useState, useEffect } from 'react';
 import { useTypewriter } from '../hooks/useTypewriter'; 
 
 export default function Hero() { 
-  const [roleIndex, setRoleIndex] = useState(0); 
-  const roles = ['Data Analyst', 'Data Engineer', 'Data Scientist']; 
-  const { displayedText } = useTypewriter(roles[roleIndex], 100); 
+  const roles = ['Data Analyst', 'Data Engineer', 'Data Scientist'];
+  const displayedText = useTypewriter(roles, 100, 1500);
+
   
   useEffect(() => {
     if (!isDeleting && displayedText === roles[roleIndex]) {
@@ -37,10 +37,9 @@ export default function Hero() {
           <div className="h-16 mb-6">
             <p className="text-2xl sm:text-4xl font-semibold text-gradient min-h-16 flex items-center justify-center">
               {displayedText}
-              {displayedText !== roles[roleIndex] && (
-                <span className="ml-2 inline-block w-1 h-10 bg-blue-600 animate-pulse"></span>
-              )}
+              <span className="ml-2 w-1 h-8 bg-blue-600 animate-pulse"></span>
             </p>
+
           </div>
 
           <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-8 animate-slide-up leading-relaxed">
