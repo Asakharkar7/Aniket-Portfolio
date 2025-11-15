@@ -57,8 +57,9 @@ export default function Hero() {
                <span className="hidden sm:inline">aniketsakharkar4@gmail.com</span> 
               </a> 
               <span className="text-slate-400">•</span> 
+              </a>
               <span className="text-slate-600">+1 857-230-5126</span> 
-              </a> 
+              </div> 
           
              <div className="flex justify-center gap-4 mb-10 flex-wrap animate-slide-up"> 
               <a 
