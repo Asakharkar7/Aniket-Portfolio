@@ -1,5 +1,5 @@
 import { CheckCircle2, Award, Users, Lightbulb } from 'lucide-react';
-import { motion } from 'framer-motion'; // ✅ Add this import
+import { motion } from 'framer-motion';
 
 export default function Highlights() {
   const highlights = [
@@ -28,9 +28,15 @@ export default function Highlights() {
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl font-bold text-slate-900 mb-12 text-center">
+        <motion.h2
+          className="text-4xl font-bold text-slate-900 mb-12 text-center"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
           Why Work With Me?
-        </h2>
+        </motion.h2>
 
         <div className="grid md:grid-cols-2 gap-8">
           {highlights.map((item, index) => {
@@ -39,9 +45,9 @@ export default function Highlights() {
               <motion.div
                 key={index}
                 className="group p-8 rounded-xl border border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 hover:bg-gradient-to-br hover:from-blue-50 hover:to-slate-50"
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
+                initial={{ scale: 0.8, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                transition={{ type: 'spring', stiffness: 100, damping: 10, delay: index * 0.2 }}
                 viewport={{ once: true }}
               >
                 <div className="flex items-start gap-4">
