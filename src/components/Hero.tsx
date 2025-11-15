@@ -15,7 +15,6 @@ export default function Hero() {
       return () => clearTimeout(timer);
     }
   }, [displayedText, isDeleting, roleIndex]);
-
   
   useEffect(() => { 
     document.documentElement.style.scrollBehavior = 'smooth'; 
