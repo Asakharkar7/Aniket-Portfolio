@@ -48,9 +48,12 @@ export default function Hero() {
             crafting interactive dashboards, and deploying ML solutions that drive real business impact.
           </p>
 
-         <div className="flex justify-center items-center gap-6 mb-8"> 
-         <a href="mailto:aniketsakharkar4@gmail.com" 
-           className="flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors"             > 
+         <div 
+             className="flex justify-center items-center gap-6 mb-8"> 
+         <a 
+           href="mailto:aniketsakharkar4@gmail.com" 
+             className="flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors"             
+           > 
            <Mail size={20} /> 
            <span 
               className="hidden sm:inline">aniketsakharkar4@gmail.com</span> 
