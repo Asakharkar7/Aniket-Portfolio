@@ -6,7 +6,6 @@ export default function Hero() {
   const roles = ['Data Analyst', 'Data Engineer', 'Data Scientist'];
   const displayedText = useTypewriter(roles, 100, 1500);
 
-  
   useEffect(() => {
     if (!isDeleting && displayedText === roles[roleIndex]) {
       const timer = setTimeout(() => {
