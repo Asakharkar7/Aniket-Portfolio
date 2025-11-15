@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Phone, ExternalLink, Award, ArrowDown } from 'lucide-react';
+import { Github, Linkedin, Mail, ExternalLink, Award, ArrowDown } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useTypewriter } from '../hooks/useTypewriter';
 
