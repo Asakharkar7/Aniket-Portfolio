@@ -8,21 +8,39 @@ export default function ExperienceTimeline() {
       company: 'KGS Technology, USA',
       period: 'Feb 2025 - Aug 2025',
       logo: '/logos/kgs.png',
-      achievements: [/* ... */],
+      achievements: [
+        'Built Power BI dashboards...',
+        'Analyzed 500K+ operational transactions...',
+        'Identified performance gaps...',
+        'Documented KPI definitions...',
+        'Partnered with cross-functional teams...',
+      ],
     },
     {
       title: 'Data Analyst',
       company: 'Rebecca Everlene Trust Company, USA',
       period: 'Feb 2024 - Jan 2025',
       logo: '/logos/retc.png',
-      achievements: [/* ... */],
+      achievements: [
+        'Built operational dashboards...',
+        'Consolidated CRM + attendance data...',
+        'Conducted trend analysis...',
+        'Automated reporting pipelines...',
+        'Created comprehensive documentation...',
+      ],
     },
     {
       title: 'Data Analyst Intern',
       company: 'State Farm Insurance, USA',
       period: 'May 2023 - Aug 2023',
       logo: '/logos/sf.png',
-      achievements: [/* ... */],
+      achievements: [
+        'Enhanced health policy analysis efficiency...',
+        'Automated SQL query execution...',
+        'Integrated DBeaver with QuickSight...',
+        'Led a Health Analytics Proof of Concept...',
+        'Developed statistical algorithms...',
+      ],
     },
   ];
 
@@ -52,30 +70,3 @@ export default function ExperienceTimeline() {
                 </div>
               </div>
 
-              <motion.ul
-                className="space-y-3 mt-4"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15 } } }}
-              >
-                {exp.achievements.map((achievement, i) => (
-                  <motion.li
-                    key={i}
-                    className="flex items-start gap-3"
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.4 }}
-                  >
-                    <ChevronRight className="text-blue-500 mt-1" size={20} />
-                    <span className="text-slate-700">{achievement}</span>
-                  </motion.li>
-                ))}
-              </motion.ul>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
