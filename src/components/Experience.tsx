@@ -1,4 +1,5 @@
 import { Briefcase, ChevronRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function Experience() {
   const experiences = [
@@ -46,15 +47,25 @@ export default function Experience() {
   return (
     <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl font-bold text-slate-900 mb-12 text-center">
+        <motion.h2
+          className="text-4xl font-bold text-slate-900 mb-12 text-center"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
           Professional Experience
-        </h2>
+        </motion.h2>
 
         <div className="space-y-8">
           {experiences.map((exp, index) => (
-            <div
+            <motion.div
               key={index}
               className="group bg-white rounded-xl p-8 shadow-sm hover:shadow-xl hover:border-l-4 hover:border-blue-500 hover:scale-102 transition-all duration-300 border-l-4 border-transparent"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.3 }}
+              viewport={{ once: true }}
             >
               <div className="flex items-start gap-4 mb-6">
                 <div className="w-16 h-16 p-2 bg-blue-100 rounded-lg group-hover:bg-blue-200 group-hover:scale-110 transition-all flex items-center justify-center">
@@ -71,18 +82,37 @@ export default function Experience() {
                 </div>
               </div>
 
-              <ul className="space-y-3">
+              <motion.ul
+                className="space-y-3"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={{
+                  hidden: {},
+                  visible: {
+                    transition: { staggerChildren: 0.15 },
+                  },
+                }}
+              >
                 {exp.achievements.map((achievement, i) => (
-                  <li key={i} className="flex items-start gap-3 group/item">
+                  <motion.li
+                    key={i}
+                    className="flex items-start gap-3 group/item"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.4 }}
+                  >
                     <ChevronRight
                       className="text-blue-600 flex-shrink-0 mt-1 group-hover:translate-x-1 transition-transform"
                       size={20}
                     />
-                    <span className="text-slate-700 leading-relaxed group-hover:text-slate-900 transition-colors">{achievement}</span>
-                  </li>
+                    <span className="text-slate-700 leading-relaxed group-hover:text-slate-900 transition-colors">
+                      {achievement}
+                    </span>
+                  </motion.li>
                 ))}
-              </ul>
-            </div>
+              </motion.ul>
+            </motion.div>
           ))}
         </div>
       </div>
