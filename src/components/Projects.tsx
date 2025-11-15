@@ -2,10 +2,7 @@ export default function Projects() {
   return (
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
       <div className="max-w-7xl mx-auto">
-        <h2
-          className="text-3xl font-bold text-slate-900 mb-12 text-center"
-          data-aos="fade-down"
-        >
+        <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center" data-aos="fade-down">
           Projects
         </h2>
 
@@ -37,7 +34,7 @@ export default function Projects() {
           </div>
 
           {/* Project 2 */}
-          <div className="bg-white p-6 rounded-lg shadow-md" data-aos="zoom-in">
+          <div className="bg-white p-6 rounded-lg shadow-md" data-aos="fade-up">
             <h3 className="text-xl font-semibold text-slate-800">
               AWS Serverless ETL Pipeline
             </h3>
@@ -59,7 +56,7 @@ export default function Projects() {
           </div>
 
           {/* Project 3 */}
-          <div className="bg-white p-6 rounded-lg shadow-md" data-aos="flip-left">
+          <div className="bg-white p-6 rounded-lg shadow-md" data-aos="fade-up">
             <h3 className="text-xl font-semibold text-slate-800">
               Serverless ML Prediction API
             </h3>
@@ -82,7 +79,7 @@ export default function Projects() {
           </div>
 
           {/* Project 4 */}
-          <div className="bg-white p-6 rounded-lg shadow-md" data-aos="slide-right">
+          <div className="bg-white p-6 rounded-lg shadow-md" data-aos="fade-up">
             <h3 className="text-xl font-semibold text-slate-800">
               Databricks Retail ELT Pipeline
             </h3>
