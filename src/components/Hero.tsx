@@ -19,7 +19,7 @@ export default function Hero() {
           {/* Profile Photo + Name */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-6">
             <img
-              src="/profile.png"   // <-- place your photo in /public/profile.jpg
+              src="/logos/profile.jpg"   // <-- place your photo in /public/profile.jpg
               alt="Aniket Sakharkar"
               className="w-32 h-32 sm:w-40 sm:h-40 rounded-full shadow-lg object-cover"
             />
