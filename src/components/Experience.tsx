@@ -10,8 +10,8 @@ export default function Experience() {
           <div className="bg-slate-50 p-6 rounded-lg shadow-md" data-aos="fade-up">
             <h3 className="text-xl font-semibold text-slate-800">Data Analyst Intern – XYZ Company</h3>
             <p className="text-slate-600 mt-2">
-              • Built dashboards in Power BI and Tableau<br />
-              • Automated ETL pipelines with Python and SQL<br />
+              • Built dashboards in Power BI and Tableau  
+              • Automated ETL pipelines with Python and SQL  
               • Collaborated with business teams to deliver insights
             </p>
           </div>
@@ -19,8 +19,8 @@ export default function Experience() {
           <div className="bg-slate-50 p-6 rounded-lg shadow-md" data-aos="fade-up">
             <h3 className="text-xl font-semibold text-slate-800">Data Engineer – ABC Corp</h3>
             <p className="text-slate-600 mt-2">
-              • Designed scalable data pipelines using AWS Lambda and DynamoDB<br />
-              • Implemented ML models for customer churn prediction<br />
+              • Designed scalable data pipelines using AWS Lambda and DynamoDB  
+              • Implemented ML models for customer churn prediction  
               • Improved query performance by 40% with optimized SQL
             </p>
           </div>
