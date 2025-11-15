@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, ExternalLink, Award, ArrowDown } from 'lucide-react';
+import { Github, Linkedin, Mail, ExternalLink, Award, ArrowDown, Phone } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useTypewriter } from '../hooks/useTypewriter';
 
@@ -56,8 +56,14 @@ export default function Hero() {
               <span className="hidden sm:inline">aniketsakharkar4@gmail.com</span> 
             </a> 
             <span className="text-slate-400">•</span>
-            <span className="text-slate-600">+1 857-230-5126</span> 
-          </div> 
+             <a
+               href="tel:+18572305126"
+               className="flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors"
+             >
+             <Phone size={20} />
+             <span className="hidden sm:inline">+1 857-230-5126</span>
+           </a>
+         </div>
           
           <div className="flex justify-center gap-4 mb-10 flex-wrap animate-slide-up"> 
             <a 
