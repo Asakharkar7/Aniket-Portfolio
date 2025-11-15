@@ -5,27 +5,44 @@ export function useTypewriter(roles, speed = 100, pause = 1500) {
   const [isDeleting, setIsDeleting] = useState(false);
   const [roleIndex, setRoleIndex] = useState(0);
 
+  const currentRole = roles[roleIndex] ?? '';
+
   useEffect(() => {
-    const currentRole = roles[roleIndex];
+    if (!roles || roles.length === 0) return;
+
     let timer;
 
+    // Typing forward
     if (!isDeleting && displayedText.length < currentRole.length) {
       timer = setTimeout(() => {
         setDisplayedText(currentRole.slice(0, displayedText.length + 1));
       }, speed);
-    } else if (isDeleting && displayedText.length > 0) {
+    }
+    // Pause at full word
+    else if (!isDeleting && displayedText === currentRole) {
+      timer = setTimeout(() => setIsDeleting(true), pause);
+    }
+    // Deleting backward
+    else if (isDeleting && displayedText.length > 0) {
       timer = setTimeout(() => {
         setDisplayedText(currentRole.slice(0, displayedText.length - 1));
-      }, speed / 2);
-    } else if (!isDeleting && displayedText === currentRole) {
-      timer = setTimeout(() => setIsDeleting(true), pause);
-    } else if (isDeleting && displayedText === '') {
+      }, Math.max(50, speed / 2));
+    }
+    // Move to next role
+    else if (isDeleting && displayedText.length === 0) {
       setIsDeleting(false);
       setRoleIndex((prev) => (prev + 1) % roles.length);
     }
 
     return () => clearTimeout(timer);
-  }, [displayedText, isDeleting, roleIndex, roles, speed, pause]);
+  }, [displayedText, isDeleting, currentRole, roles.length, speed, pause]);
+
+  // Reset safely if the roles list changes length
+  useEffect(() => {
+    setDisplayedText('');
+    setIsDeleting(false);
+    setRoleIndex(0);
+  }, [roles.length]);
 
   return displayedText;
 }
