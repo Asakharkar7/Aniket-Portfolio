@@ -1,32 +1,26 @@
-import { useState, useEffect } from 'react';
-import Landing from './components/Landing';
 import Hero from './components/Hero';
-import Projects from './components/Projects';
+import StatsSection from './components/StatsSection';
+import About from './components/About';
+import Highlights from './components/Highlights';
 import Experience from './components/Experience';
-import Education from './components/Education';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import Projects from './components/Projects';
+import Skills from './components/Skills';
+import Contact from './components/Contact';
+import Navigation from './components/Navigation';
 
 function App() {
-  const [entered, setEntered] = useState(false);
-
-  useEffect(() => {
-    AOS.init({ duration: 1000 });
-  }, []);
-
   return (
-    <>
-      {!entered ? (
-        <Landing onEnter={() => setEntered(true)} />
-      ) : (
-        <>
-          <Hero />
-          <Projects />
-          <Experience />
-          <Education />
-        </>
-      )}
-    </>
+    <div className="min-h-screen bg-slate-50 scroll-smooth">
+      <Navigation />
+      <Hero />
+      <StatsSection />
+      <Highlights />
+      <About />
+      <Experience />
+      <Projects />
+      <Skills />
+      <Contact />
+    </div>
   );
 }
 
