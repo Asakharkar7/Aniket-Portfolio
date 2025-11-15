@@ -15,16 +15,20 @@ export default function Hero() {
     <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 min-h-screen flex items-center">
       <div className="max-w-7xl mx-auto w-full">
         <div className="text-center">
-          <div className="mb-6 animate-fade-in">
-            <div className="inline-block px-4 py-2 bg-blue-100 rounded-full mb-6">
-              <p className="text-blue-700 text-sm font-semibold">Welcome to my portfolio</p>
-            </div>
+
+          {/* Profile Photo + Name */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-6">
+            <img
+              src="/profile.jpg"   // <-- place your photo in /public/profile.jpg
+              alt="Aniket Sakharkar"
+              className="w-32 h-32 sm:w-40 sm:h-40 rounded-full shadow-lg object-cover"
+            />
+            <h1 className="text-5xl sm:text-7xl font-bold text-slate-900 animate-slide-up">
+              Aniket Sakharkar
+            </h1>
           </div>
 
-          <h1 className="text-5xl sm:text-7xl font-bold text-slate-900 mb-6 animate-slide-up">
-            Aniket Sakharkar
-          </h1>
-
+          {/* Tagline with typewriter effect */}
           <div className="h-16 mb-6">
             <p className="text-2xl sm:text-4xl font-semibold text-gradient min-h-16 flex items-center justify-center">
               {displayedText}
@@ -32,11 +36,13 @@ export default function Hero() {
             </p>
           </div>
 
+          {/* Summary */}
           <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-8 animate-slide-up leading-relaxed">
             Turning complex data into strategic insights. Specializing in building scalable pipelines,
             crafting interactive dashboards, and deploying ML solutions that drive real business impact.
           </p>
 
+          {/* Contact Info */}
           <div className="flex justify-center items-center gap-6 mb-8">
             <a
               href="mailto:aniketsakharkar4@gmail.com"
@@ -55,6 +61,7 @@ export default function Hero() {
             </a>
           </div>
 
+          {/* Social Links */}
           <div className="flex justify-center gap-4 mb-10 flex-wrap animate-slide-up">
             <a
               href="https://www.linkedin.com/in/aniketsakharkar/"
@@ -85,6 +92,7 @@ export default function Hero() {
             </a>
           </div>
 
+          {/* CTA Button */}
           <a
             href="#contact"
             className="inline-flex items-center gap-2 px-8 py-4 bg-slate-900 text-white rounded-lg hover:bg-slate-800 hover:shadow-xl hover:animate-glow transition-all duration-300 text-lg font-medium animate-slide-up"
@@ -93,6 +101,7 @@ export default function Hero() {
             <ExternalLink size={20} />
           </a>
 
+          {/* Scroll Down Arrow */}
           <div className="mt-16 animate-float">
             <a href="#about" className="inline-block text-slate-400 hover:text-blue-600 transition-colors">
               <ArrowDown size={32} />
