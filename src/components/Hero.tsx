@@ -1,22 +1,14 @@
 import { Github, Linkedin, Mail, ExternalLink, Award, ArrowDown, Phone } from 'lucide-react';
-import { useState, useEffect } from 'react'; 
-import { useTypewriter } from '../hooks/useTypewriter'; 
+import { useMemo, useEffect } from 'react';
+import { useTypewriter } from '../hooks/useTypewriter';
 
-export default function Hero() { 
-  const roles = ['Data Analyst', 'Data Engineer', 'Data Scientist'];
+export default function Hero() {
+  // Memoize roles so the array doesn't change on each render
+  const roles = useMemo(() => ['Data Analyst', 'Data Engineer', 'Data Scientist'], []);
   const displayedText = useTypewriter(roles, 100, 1500);
 
   useEffect(() => {
-    if (!isDeleting && displayedText === roles[roleIndex]) {
-      const timer = setTimeout(() => {
-        setRoleIndex((prev) => (prev + 1) % roles.length);
-      }, 2500); // wait before switching to next role
-      return () => clearTimeout(timer);
-    }
-  }, [displayedText, isDeleting, roleIndex]);
-  
-  useEffect(() => { 
-    document.documentElement.style.scrollBehavior = 'smooth'; 
+    document.documentElement.style.scrollBehavior = 'smooth';
   }, []);
 
   return (
@@ -36,9 +28,8 @@ export default function Hero() {
           <div className="h-16 mb-6">
             <p className="text-2xl sm:text-4xl font-semibold text-gradient min-h-16 flex items-center justify-center">
               {displayedText}
-              <span className="ml-2 w-1 h-8 bg-blue-600 animate-pulse"></span>
+              <span className="ml-2 w-1 h-10 bg-blue-600 animate-pulse"></span>
             </p>
-
           </div>
 
           <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-8 animate-slide-up leading-relaxed">
@@ -46,30 +37,31 @@ export default function Hero() {
             crafting interactive dashboards, and deploying ML solutions that drive real business impact.
           </p>
 
-          <div className="flex justify-center items-center gap-6 mb-8"> 
-            <a href="mailto:aniketsakharkar4@gmail.com" 
-              className="flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors" 
-              > 
-              <Mail size={20} /> 
-              <span className="hidden sm:inline">aniketsakharkar4@gmail.com</span> 
-            </a> 
+          <div className="flex justify-center items-center gap-6 mb-8">
+            <a
+              href="mailto:aniketsakharkar4@gmail.com"
+              className="flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors"
+            >
+              <Mail size={20} />
+              <span className="hidden sm:inline">aniketsakharkar4@gmail.com</span>
+            </a>
             <span className="text-slate-400">•</span>
-             <a
-               href="tel:+18572305126"
-               className="flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors"
-             >
-             <Phone size={20} />
-             <span className="hidden sm:inline">+1 857-230-5126</span>
-           </a>
-         </div>
-          
-          <div className="flex justify-center gap-4 mb-10 flex-wrap animate-slide-up"> 
-            <a 
-              href="https://www.linkedin.com/in/aniketsakharkar/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 hover:shadow-lg hover:-translate-y-1 transition-all duration-300" 
-              >
+            <a
+              href="tel:+18572305126"
+              className="flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors"
+            >
+              <Phone size={20} />
+              <span className="hidden sm:inline">+1 857-230-5126</span>
+            </a>
+          </div>
+
+          <div className="flex justify-center gap-4 mb-10 flex-wrap animate-slide-up">
+            <a
+              href="https://www.linkedin.com/in/aniketsakharkar/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            >
               <Linkedin size={20} />
               LinkedIn
             </a>
