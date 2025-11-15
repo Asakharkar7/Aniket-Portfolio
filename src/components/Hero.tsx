@@ -57,12 +57,13 @@ export default function Hero() {
               <span className="hidden sm:inline">aniketsakharkar4@gmail.com</span>
             </a>
             <span className="text-slate-400">•</span>
+            
             <a
-              href="tel:+1 857-230-5126"
+              href="tel:+18572305126"
               className="flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors"
               >
               <Phone size={20} />
-              <span className="hidden sm:inline">+1857-230-5126/span>
+              <span className="hidden sm:inline">+18572305126/span>
             </a>
 
 
