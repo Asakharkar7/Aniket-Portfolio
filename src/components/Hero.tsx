@@ -1,34 +1,24 @@
 import { Github, Linkedin, Mail, ExternalLink, Award, ArrowDown, Phone } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'; 
+import { useTypewriter } from '../hooks/useTypewriter'; 
 
-export function useTypewriter(text, speed = 100) {
-  const [displayedText, setDisplayedText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    let timer;
-
-    if (!isDeleting && displayedText.length < text.length) {
-      timer = setTimeout(() => {
-        setDisplayedText(text.slice(0, displayedText.length + 1));
-      }, speed);
-    } else if (isDeleting && displayedText.length > 0) {
-      timer = setTimeout(() => {
-        setDisplayedText(text.slice(0, displayedText.length - 1));
-      }, speed / 2);
-    } else if (!isDeleting && displayedText === text) {
-      timer = setTimeout(() => {
-        setIsDeleting(true);
-      }, 2000); // pause before deleting
-    } else if (isDeleting && displayedText === '') {
-      setIsDeleting(false);
-    }
-
-    return () => clearTimeout(timer);
-  }, [text, displayedText, isDeleting, speed]);
-
-  return { displayedText, isDeleting };
-}
+export default function Hero() { 
+  const [roleIndex, setRoleIndex] = useState(0); 
+  const roles = ['Data Analyst', 'Data Engineer', 'Data Scientist']; 
+  const { displayedText } = useTypewriter(roles[roleIndex], 100); 
+  
+  useEffect(() => { 
+    if (displayedText === roles[roleIndex]) { 
+      const timer = setTimeout(() => { 
+        setRoleIndex((prev) => (prev + 1) % roles.length); 
+      }, 2000); 
+      return () => clearTimeout(timer); 
+    } 
+  }, [displayedText, roleIndex]); 
+  
+  useEffect(() => { 
+    document.documentElement.style.scrollBehavior = 'smooth'; 
+  }, []);
 
   return (
     <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 min-h-screen flex items-center">
