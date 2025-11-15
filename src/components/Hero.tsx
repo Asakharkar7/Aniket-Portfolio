@@ -7,14 +7,15 @@ export default function Hero() {
   const roles = ['Data Analyst', 'Data Engineer', 'Data Scientist']; 
   const { displayedText } = useTypewriter(roles[roleIndex], 100); 
   
-  useEffect(() => { 
-    if (displayedText === roles[roleIndex]) { 
-      const timer = setTimeout(() => { 
-        setRoleIndex((prev) => (prev + 1) % roles.length); 
-      }, 2000); 
-      return () => clearTimeout(timer); 
-    } 
-  }, [displayedText, roleIndex]); 
+  useEffect(() => {
+    if (!isDeleting && displayedText === roles[roleIndex]) {
+      const timer = setTimeout(() => {
+        setRoleIndex((prev) => (prev + 1) % roles.length);
+      }, 2500); // wait before switching to next role
+      return () => clearTimeout(timer);
+    }
+  }, [displayedText, isDeleting, roleIndex]);
+
   
   useEffect(() => { 
     document.documentElement.style.scrollBehavior = 'smooth'; 
