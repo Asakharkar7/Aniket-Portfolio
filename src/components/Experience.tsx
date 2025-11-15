@@ -7,37 +7,22 @@ export default function ExperienceTimeline() {
       title: 'Data Analyst',
       company: 'KGS Technology, USA',
       period: 'Feb 2025 - Aug 2025',
-      achievements: [
-        'Built Power BI dashboards...',
-        'Analyzed 500K+ operational transactions...',
-        'Identified performance gaps...',
-        'Documented KPI definitions...',
-        'Partnered with cross-functional teams...',
-      ],
+      logo: '/logos/kgs.png',
+      achievements: [/* ... */],
     },
     {
       title: 'Data Analyst',
       company: 'Rebecca Everlene Trust Company, USA',
       period: 'Feb 2024 - Jan 2025',
-      achievements: [
-        'Built operational dashboards...',
-        'Consolidated CRM + attendance data...',
-        'Conducted trend analysis...',
-        'Automated reporting pipelines...',
-        'Created comprehensive documentation...',
-      ],
+      logo: '/logos/retc.png',
+      achievements: [/* ... */],
     },
     {
       title: 'Data Analyst Intern',
       company: 'State Farm Insurance, USA',
       period: 'May 2023 - Aug 2023',
-      achievements: [
-        'Enhanced health policy analysis efficiency...',
-        'Automated SQL query execution...',
-        'Integrated DBeaver with QuickSight...',
-        'Led a Health Analytics Proof of Concept...',
-        'Developed statistical algorithms...',
-      ],
+      logo: '/logos/sf.png',
+      achievements: [/* ... */],
     },
   ];
 
@@ -56,9 +41,16 @@ export default function ExperienceTimeline() {
               viewport={{ once: true }}
               style={{ transformOrigin: index % 2 === 0 ? 'left center' : 'right center' }}
             >
-              <h3 className="text-2xl font-bold text-slate-900">{exp.title}</h3>
-              <p className="text-lg text-slate-600">{exp.company}</p>
-              <p className="text-sm text-slate-500">{exp.period}</p>
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-16 h-16 p-2 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <img src={exp.logo} alt="company-logo" className="w-full h-full object-contain" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-slate-900">{exp.title}</h3>
+                  <p className="text-lg text-slate-600">{exp.company}</p>
+                  <p className="text-sm text-slate-500">{exp.period}</p>
+                </div>
+              </div>
 
               <motion.ul
                 className="space-y-3 mt-4"
