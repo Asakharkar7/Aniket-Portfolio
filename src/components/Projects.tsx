@@ -10,24 +10,24 @@ export default function Projects() {
 
           {/* Project 1 */}
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <div className="flex items-center gap-3 mb-2">
-              <img src="/icons/snowflake.png" alt="Snowflake" className="w-6 h-6" />
-              <img src="/icons/databricks.png" alt="Databricks" className="w-6 h-6" />
-              <img src="/icons/docker.svg" alt="Docker" className="w-6 h-6" />
-              <img src="/icons/lamda.svg" alt="AWS Lambda" className="w-6 h-6" />
-              <img src="/icons/API.svg" alt="API Gateway" className="w-6 h-6" />
-            </div>
             <h3 className="text-xl font-semibold text-slate-800">
               Supply Chain ML Inference Application
             </h3>
             <p className="text-slate-600 mt-2">
               Built a model-time ML inference system using AWS Lambda and API Gateway to predict demand for a supply chain dataset.
             </p>
+            <div className="grid grid-cols-3 sm:grid-cols-5 gap-4 mt-4">
+              <img src="/icons/snowflake.png" alt="Snowflake" className="w-10 h-10 object-contain" />
+              <img src="/icons/databricks.png" alt="Databricks" className="w-10 h-10 object-contain" />
+              <img src="/icons/docker.svg" alt="Docker" className="w-10 h-10 object-contain" />
+              <img src="/icons/lambda.svg" alt="AWS Lambda" className="w-10 h-10 object-contain" />
+              <img src="/icons/API.svg" alt="API Gateway" className="w-10 h-10 object-contain" />
+            </div>
             <a
               href="https://github.com/Asakharkar7/supply-chain-disruption-radar"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:underline mt-2 inline-block"
+              className="text-blue-600 hover:underline mt-4 inline-block"
             >
               View on GitHub
             </a>
@@ -35,21 +35,21 @@ export default function Projects() {
 
           {/* Project 2 */}
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <div className="flex items-center gap-3 mb-2">
-              <img src="/icons/lamda.svg" alt="AWS Lambda" className="w-6 h-6" />
-              <img src="/icons/dynamo.svg" alt="DynamoDB" className="w-6 h-6" />
-            </div>
             <h3 className="text-xl font-semibold text-slate-800">
               AWS Serverless ETL Pipeline
             </h3>
             <p className="text-slate-600 mt-2">
               Developed an end-to-end serverless ETL pipeline using AWS Lambda, Python, and DynamoDB.
             </p>
+            <div className="grid grid-cols-2 gap-4 mt-4">
+              <img src="/icons/lambda.svg" alt="AWS Lambda" className="w-10 h-10 object-contain" />
+              <img src="/icons/dynamo.svg" alt="DynamoDB" className="w-10 h-10 object-contain" />
+            </div>
             <a
               href="https://github.com/Asakharkar7/aws-serverless-etl-s3-lambda-dynamodb"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:underline mt-2 inline-block"
+              className="text-blue-600 hover:underline mt-4 inline-block"
             >
               View on GitHub
             </a>
@@ -57,22 +57,22 @@ export default function Projects() {
 
           {/* Project 3 */}
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <div className="flex items-center gap-3 mb-2">
-              <img src="/icons/lamda.svg" alt="AWS Lambda" className="w-6 h-6" />
-              <img src="/icons/API.svg" alt="API Gateway" className="w-6 h-6" />
-              <img src="/icons/scikit.png" alt="Scikit-learn" className="w-6 h-6" />
-            </div>
             <h3 className="text-xl font-semibold text-slate-800">
               Serverless ML Prediction API
             </h3>
             <p className="text-slate-600 mt-2">
               Developed a model-time inference API using AWS Lambda and API Gateway to predict customer churn for low-latency prediction serving.
             </p>
+            <div className="grid grid-cols-3 gap-4 mt-4">
+              <img src="/icons/lambda.svg" alt="AWS Lambda" className="w-10 h-10 object-contain" />
+              <img src="/icons/API.svg" alt="API Gateway" className="w-10 h-10 object-contain" />
+              <img src="/icons/scikit.png" alt="Scikit-learn" className="w-10 h-10 object-contain" />
+            </div>
             <a
               href="https://github.com/Asakharkar7/aws-serverless-ml-api-lambda-api"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:underline mt-2 inline-block"
+              className="text-blue-600 hover:underline mt-4 inline-block"
             >
               View on GitHub
             </a>
@@ -80,21 +80,21 @@ export default function Projects() {
 
           {/* Project 4 */}
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <div className="flex items-center gap-3 mb-2">
-              <img src="/icons/databricks.png" alt="Databricks" className="w-6 h-6" />
-              <img src="/icons/deltalake.png" alt="Delta Lake" className="w-6 h-6" />
-            </div>
             <h3 className="text-xl font-semibold text-slate-800">
               Databricks Retail ELT Pipeline
             </h3>
             <p className="text-slate-600 mt-2">
               Designed and implemented an end-to-end Spark ETL pipeline on Databricks to process and analyze retail data for business insights.
             </p>
+            <div className="grid grid-cols-2 gap-4 mt-4">
+              <img src="/icons/databricks.png" alt="Databricks" className="w-10 h-10 object-contain" />
+              <img src="/icons/deltalake.png" alt="Delta Lake" className="w-10 h-10 object-contain" />
+            </div>
             <a
               href="https://github.com/Asakharkar7/databricks-retail-elt-pipeline"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:underline mt-2 inline-block"
+              className="text-blue-600 hover:underline mt-4 inline-block"
             >
               View on GitHub
             </a>
