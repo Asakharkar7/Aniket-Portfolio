@@ -63,7 +63,7 @@ export default function Hero() {
               className="flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors"
               >
               <Phone size={20} />
-              <span className="hidden sm:inline">+18572305126/span>
+              <span className="hidden sm:inline">+18572305126</span>
             </a>
 
 
