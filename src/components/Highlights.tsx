@@ -1,4 +1,5 @@
 import { CheckCircle2, Award, Users, Lightbulb } from 'lucide-react';
+import { motion } from 'framer-motion'; // ✅ Add this import
 
 export default function Highlights() {
   const highlights = [
@@ -35,9 +36,13 @@ export default function Highlights() {
           {highlights.map((item, index) => {
             const Icon = item.icon;
             return (
-              <div
+              <motion.div
                 key={index}
                 className="group p-8 rounded-xl border border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 hover:bg-gradient-to-br hover:from-blue-50 hover:to-slate-50"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                viewport={{ once: true }}
               >
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-blue-100 rounded-lg group-hover:bg-blue-200 transition-colors">
@@ -52,7 +57,7 @@ export default function Highlights() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
