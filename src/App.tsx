@@ -14,7 +14,6 @@ function App() {
   const [entered, setEntered] = useState(false);
 
   return (
-      {!entered ? (
         <Landing onEnter={() => setEntered(true)} />
       ) : (
         <>
