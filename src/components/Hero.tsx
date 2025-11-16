@@ -1,7 +1,7 @@
 import { Github, Linkedin, Mail, ExternalLink, Award, ArrowDown, Phone } from "lucide-react";
 import { useMemo, useEffect } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
-import DataVizGame from "./DataVizGame"; // ✅ Correct relative path
+import DataGuessGame from "./DataGuessGame"; // ✅ correct relative path
 
 export default function Hero() {
   const roles = useMemo(() => ["Data Analyst", "Data Engineer", "Data Scientist"], []);
