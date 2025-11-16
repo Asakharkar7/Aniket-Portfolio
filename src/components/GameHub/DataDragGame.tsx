@@ -1,15 +1,22 @@
-// src/components/DataDragGame.tsx
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useState } from "react";
 
-const initialItems = [
-  { id: "1", content: "Data Analyst" },
-  { id: "2", content: "Data Engineer" },
-  { id: "3", content: "Data Scientist" },
+const categories = {
+  storage: "Storage",
+  analysis: "Analysis",
+  visualization: "Visualization",
+};
+
+const tools = [
+  { id: "1", name: "SQL", category: "storage" },
+  { id: "2", name: "Python", category: "analysis" },
+  { id: "3", name: "Tableau", category: "visualization" },
+  { id: "4", name: "Spark", category: "analysis" },
+  { id: "5", name: "Snowflake", category: "storage" },
 ];
 
-export default function DataDragGame() {
-  const [items, setItems] = useState(initialItems);
+export default function DataToolsGame() {
+  const [items, setItems] = useState(tools);
 
   const handleDragEnd = (result: any) => {
     if (!result.destination) return;
@@ -19,19 +26,28 @@ export default function DataDragGame() {
     setItems(newItems);
   };
 
+  const checkAnswers = () => {
+    const correct = items.every((item) => item.category === item.category);
+    alert("✅ Tools are placed! (This can be extended to validate categories)");
+  };
+
   return (
-    <div className="p-6 bg-white rounded-lg shadow-lg">
-      <h2 className="text-xl font-bold mb-4 text-center">Drag & Sort Roles</h2>
+    <div className="max-w-lg mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
+      <h2 className="text-xl font-bold mb-4 text-center">Sort the Data Tools</h2>
       <DragDropContext onDragEnd={handleDragEnd}>
-        <Droppable droppableId="roles">
+        <Droppable droppableId="tools">
           {(provided) => (
             <ul {...provided.droppableProps} ref={provided.innerRef} className="space-y-2">
-              {items.map((item, index) => (
-                <Draggable key={item.id} draggableId={item.id} index={index}>
+              {items.map((tool, index) => (
+                <Draggable key={tool.id} draggableId={tool.id} index={index}>
                   {(provided) => (
-                    <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}
-                      className="p-4 bg-blue-100 rounded-lg shadow cursor-pointer hover:bg-blue-200">
-                      {item.content}
+                    <li
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                      className="p-4 bg-blue-100 rounded-lg shadow cursor-pointer hover:bg-blue-200 transition"
+                    >
+                      {tool.name}
                     </li>
                   )}
                 </Draggable>
@@ -41,6 +57,12 @@ export default function DataDragGame() {
           )}
         </Droppable>
       </DragDropContext>
+      <button
+        onClick={checkAnswers}
+        className="mt-4 w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+      >
+        Check Placement
+      </button>
     </div>
   );
 }
