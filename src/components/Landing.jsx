@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 
-export default function Landing({ onEnter }) { 
-  const [showText, setShowText] = useState(''); 
-  const introText = 'Hi, I’m Aniket — a Data Analyst who turns data into decisions.';
 
 export default function Landing({ onEnter }) {
+  const [showText, setShowText] = useState(''); 
+  const introText = 'Hi, I’m Aniket — a Data Analyst who turns data into decisions.';
   const [showText, setShowText] = useState('');
   const phrases = [
     'I engineer data…',
