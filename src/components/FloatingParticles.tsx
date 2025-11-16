@@ -16,7 +16,6 @@ export default function FloatingParticles() {
 
     const particles: { x: number; y: number; r: number; dx: number; dy: number }[] = [];
 
-    // Create particles
     for (let i = 0; i < 60; i++) {
       particles.push({
         x: Math.random() * width,
@@ -39,7 +38,6 @@ export default function FloatingParticles() {
         p.x += p.dx;
         p.y += p.dy;
 
-        // Wrap around edges
         if (p.x < 0) p.x = width;
         if (p.x > width) p.x = 0;
         if (p.y < 0) p.y = height;
