@@ -90,9 +90,7 @@ export default function About() {
             <Sparkles className="text-yellow-600" size={24} />
           </div>
           <p className="text-slate-700 leading-relaxed">
-            When I’m not working with data, I’m building experimental UI concepts that feel like they belong in the future — sleek, animated, and designed to spark curiosity.
-            <br /><br />
-            Outside the screen, I recharge by playing 🏏 cricket, exploring new activities, and chasing experiences that keep me sharp and creative. Whether it’s the strategy of a match or the thrill of trying something new, these hobbies fuel the same curiosity I bring to my work.
+            When I’m not working with data, I’m building experimental UI concepts that feel like they belong in the future — sleek, animated, and designed to spark curiosity. Outside the screen, I recharge by playing 🏏 cricket, exploring new activities, and chasing experiences that keep me sharp and creative. Whether it’s the strategy of a match or the thrill of trying something new, these hobbies fuel the same curiosity I bring to my work.
           </p>
         </div>
       </div>
