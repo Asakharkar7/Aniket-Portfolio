@@ -1,6 +1,8 @@
 import { Github, Linkedin, Mail, ExternalLink, Award, ArrowDown, Phone } from "lucide-react";
 import { useMemo, useEffect } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
+import MatrixRain from "./MatrixRain";   // ✅ background effect
+import MouseTrail from "./MouseTrail";   // ✅ background effect
 
 export default function Hero() {
   const roles = useMemo(() => ["Data Analyst", "Data Engineer", "Data Scientist"], []);
@@ -11,8 +13,13 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 min-h-screen flex items-center">
-      <div className="max-w-7xl mx-auto w-full">
+    <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center overflow-hidden">
+      {/* Background Effects */}
+      <MatrixRain />
+      <MouseTrail />
+
+      {/* Foreground Content */}
+      <div className="max-w-7xl mx-auto w-full relative z-10">
         <div className="text-center">
 
           {/* Profile Photo + Name */}
