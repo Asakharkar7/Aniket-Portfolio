@@ -1,7 +1,7 @@
 import { Github, Linkedin, Mail, ExternalLink, Award, ArrowDown, Phone } from "lucide-react";
 import { useMemo, useEffect } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
-import GameHubMenu from "./GameHub/GameHubMenu"; // 👈 import GameHubMenu
+import GameHubMenu from "./GameHub/GameHubMenu.tsx"; // 👈 import GameHubMenu
 
 export default function Hero() {
   const roles = useMemo(() => ["Data Analyst", "Data Engineer", "Data Scientist"], []);
