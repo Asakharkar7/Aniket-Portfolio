@@ -24,7 +24,7 @@ export default function Contact() {
       icon: FileText,
       label: 'Resume',
       value: 'Download Resume',
-      href: '/resume/Aniket_Sakharkar_resume.pdf', // ✅ place your resume PDF in /public/resume/
+      href: '/Aniket_Sakharkar_resume.pdf',
       download: true,
     },
   ];
@@ -68,18 +68,19 @@ export default function Contact() {
             </h3>
             {contactInfo.map((item, index) => {
               const Icon = item.icon;
+              const isResume = item.download;
               return (
-                <div key={index} className="flex items-center gap-4">
-                  <div className="p-3 bg-blue-100 rounded-lg">
-                    <Icon className="text-blue-600" size={24} />
+                <div key={index} className={`group flex items-center gap-4 p-4 rounded-lg transition-all ${isResume ? 'hover:bg-blue-50 hover:shadow-md' : ''}`}>
+                  <div className={`p-3 rounded-lg ${isResume ? 'bg-blue-200 group-hover:bg-blue-300 group-hover:scale-110' : 'bg-blue-100'} transition-all`}>
+                    <Icon className={`${isResume ? 'text-blue-700' : 'text-blue-600'}`} size={24} />
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <p className="text-sm text-slate-500">{item.label}</p>
                     {item.href ? (
                       <a
                         href={item.href}
-                        {...(item.download ? { download: true } : {})}
-                        className="text-slate-900 font-medium hover:text-blue-600 transition-colors"
+                        {...(item.download ? { download: 'Aniket_Sakharkar_resume.pdf' } : { target: '_blank', rel: 'noopener noreferrer' })}
+                        className={`font-medium transition-all ${isResume ? 'text-blue-600 hover:text-blue-700 group-hover:underline' : 'text-slate-900 hover:text-blue-600'}`}
                       >
                         {item.value}
                       </a>
@@ -87,6 +88,13 @@ export default function Contact() {
                       <p className="text-slate-900 font-medium">{item.value}</p>
                     )}
                   </div>
+                  {isResume && (
+                    <div className="text-blue-600 group-hover:translate-x-1 transition-transform">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                      </svg>
+                    </div>
+                  )}
                 </div>
               );
             })}
