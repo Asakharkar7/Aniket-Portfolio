@@ -24,7 +24,7 @@ export default function Contact() {
       icon: FileText,
       label: 'Resume',
       value: 'Download Resume',
-      href: '/resume/Aniket_Sakharkar_Resume.pdf', // ✅ place your resume PDF in /public/resume/
+      href: '/resume/Aniket_Sakharkar_resume.pdf', // ✅ place your resume PDF in /public/resume/
       download: true,
     },
   ];
