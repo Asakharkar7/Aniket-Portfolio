@@ -44,7 +44,8 @@ export default function Hero() {
           </p>
 
           {/* Interactive Data Game */}
-          <DataVizGame />
+          <DataGuessGame />
+
 
           {/* Contact Info */}
           <div className="flex justify-center items-center gap-6 mb-8">
