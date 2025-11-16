@@ -34,18 +34,18 @@ export default function DataSortGame() {
       if (item.id === correct[i].id) points++;
     });
     setScore(points);
-
-    // If perfect score, load next set automatically
-    if (points === items.length) {
-      const nextIndex = (setIndex + 1) % sortSets.length;
-      setSetIndex(nextIndex);
-      setItems(sortSets[nextIndex]);
-      setScore(null); // reset for new round
-    }
   };
 
   const resetGame = () => {
-    setItems(sortSets[setIndex]);
+    // If last round was perfect, move to next set
+    if (score === items.length && setIndex + 1 < sortSets.length) {
+      const nextIndex = setIndex + 1;
+      setSetIndex(nextIndex);
+      setItems(sortSets[nextIndex]);
+    } else {
+      // Otherwise replay same set
+      setItems(sortSets[setIndex]);
+    }
     setScore(null);
   };
 
