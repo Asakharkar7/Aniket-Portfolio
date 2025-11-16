@@ -4,7 +4,7 @@ interface Question {
   id: number;
   question: string;
   options: string[];
-  answer: number;
+  answer: number; // index of correct option in original array
 }
 
 const quizSets: Question[][] = [
@@ -30,9 +30,21 @@ function shuffle<T>(array: T[]): T[] {
   return copy;
 }
 
+// Shuffle options while keeping track of correct answer index
+function shuffleQuestionOptions(question: Question): Question {
+  const options = [...question.options];
+  const correctAnswer = options[question.answer];
+  const shuffled = shuffle(options);
+  return {
+    ...question,
+    options: shuffled,
+    answer: shuffled.indexOf(correctAnswer),
+  };
+}
+
 export default function DataQuizGame() {
   const [setIndex, setSetIndex] = useState(0);
-  const [quizData, setQuizData] = useState<Question[]>(shuffle(quizSets[0]));
+  const [quizData, setQuizData] = useState<Question[]>(quizSets[0].map(shuffleQuestionOptions));
   const [current, setCurrent] = useState(0);
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
@@ -52,10 +64,10 @@ export default function DataQuizGame() {
       // If perfect, move to next set (or loop back to first)
       const nextIndex = (setIndex + 1) % quizSets.length;
       setSetIndex(nextIndex);
-      setQuizData(shuffle(quizSets[nextIndex]));
+      setQuizData(quizSets[nextIndex].map(shuffleQuestionOptions));
     } else {
       // If not perfect, reload same set shuffled
-      setQuizData(shuffle(quizSets[setIndex]));
+      setQuizData(quizSets[setIndex].map(shuffleQuestionOptions));
     }
     setCurrent(0);
     setScore(0);
