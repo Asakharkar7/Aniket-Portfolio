@@ -1,8 +1,7 @@
 import { Github, Linkedin, Mail, ExternalLink, Award, ArrowDown, Phone } from "lucide-react";
 import { useMemo, useEffect } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
-import MatrixRain from "./MatrixRain";   // background effect
-import MouseTrail from "./MouseTrail";   // background effect
+import BackgroundEffects from "./BackgroundEffects/BackgroundEffects"; // ✅ combined background
 
 export default function Hero() {
   const roles = useMemo(() => ["Data Analyst", "Data Engineer", "Data Scientist"], []);
@@ -15,8 +14,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background Effects */}
-      <MatrixRain />
-      <MouseTrail />
+      <BackgroundEffects />
 
       {/* Gradient Overlay to soften background */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 opacity-80 -z-0" />
