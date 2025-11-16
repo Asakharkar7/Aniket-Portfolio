@@ -14,9 +14,19 @@ const sortSets = [
   ],
 ];
 
+// Utility to shuffle array
+function shuffle<T>(array: T[]): T[] {
+  const copy = [...array];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
 export default function DataSortGame() {
   const [setIndex, setSetIndex] = useState(0);
-  const [items, setItems] = useState(sortSets[0]);
+  const [items, setItems] = useState(shuffle(sortSets[0]));
   const [score, setScore] = useState<number | null>(null);
 
   const handleDragEnd = (result: DropResult) => {
@@ -28,7 +38,7 @@ export default function DataSortGame() {
   };
 
   const checkOrder = () => {
-    const correct = [...items].sort((a, b) => b.population - a.population);
+    const correct = [...sortSets[setIndex]].sort((a, b) => b.population - a.population);
     let points = 0;
     items.forEach((item, i) => {
       if (item.id === correct[i].id) points++;
@@ -37,14 +47,14 @@ export default function DataSortGame() {
   };
 
   const resetGame = () => {
-    // If last round was perfect, move to next set
-    if (score === items.length && setIndex + 1 < sortSets.length) {
-      const nextIndex = setIndex + 1;
+    if (score === items.length) {
+      // If perfect, move to next set (or loop back to first)
+      const nextIndex = (setIndex + 1) % sortSets.length;
       setSetIndex(nextIndex);
-      setItems(sortSets[nextIndex]);
+      setItems(shuffle(sortSets[nextIndex]));
     } else {
-      // Otherwise replay same set
-      setItems(sortSets[setIndex]);
+      // If not perfect, reload same set shuffled
+      setItems(shuffle(sortSets[setIndex]));
     }
     setScore(null);
   };
