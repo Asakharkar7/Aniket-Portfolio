@@ -1,8 +1,8 @@
 import { Github, Linkedin, Mail, ExternalLink, Award, ArrowDown, Phone } from "lucide-react";
 import { useMemo, useEffect } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
-import MatrixRain from "./MatrixRain";   // ✅ background effect
-import MouseTrail from "./MouseTrail";   // ✅ background effect
+import MatrixRain from "./MatrixRain";   // background effect
+import MouseTrail from "./MouseTrail";   // background effect
 
 export default function Hero() {
   const roles = useMemo(() => ["Data Analyst", "Data Engineer", "Data Scientist"], []);
@@ -13,13 +13,16 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background Effects */}
       <MatrixRain />
       <MouseTrail />
 
+      {/* Gradient Overlay to soften background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 opacity-80 -z-0" />
+
       {/* Foreground Content */}
-      <div className="max-w-7xl mx-auto w-full relative z-10">
+      <div className="max-w-7xl mx-auto w-full relative z-10 pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="text-center">
 
           {/* Profile Photo + Name */}
@@ -43,7 +46,7 @@ export default function Hero() {
           </div>
 
           {/* Summary */}
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-8 animate-slide-up leading-relaxed">
+          <p className="text-lg text-slate-700 max-w-2xl mx-auto mb-8 animate-slide-up leading-relaxed">
             Passionate about transforming raw data into meaningful stories. Experienced in designing scalable data pipelines,
             building interactive dashboards, and applying machine learning to solve complex business challenges.
             Dedicated to bridging the gap between data and decision-making with clarity and impact.
