@@ -1,7 +1,6 @@
 import { Github, Linkedin, Mail, ExternalLink, Award, ArrowDown, Phone } from "lucide-react";
 import { useMemo, useEffect } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
-import DataGuessGame from "./DataGuessGame"; // ✅ correct relative path
 
 export default function Hero() {
   const roles = useMemo(() => ["Data Analyst", "Data Engineer", "Data Scientist"], []);
@@ -42,10 +41,6 @@ export default function Hero() {
             building interactive dashboards, and applying machine learning to solve complex business challenges.
             Dedicated to bridging the gap between data and decision-making with clarity and impact.
           </p>
-
-          {/* Interactive Data Game */}
-          <DataGuessGame />
-
 
           {/* Contact Info */}
           <div className="flex justify-center items-center gap-6 mb-8">
