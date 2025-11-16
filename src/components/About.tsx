@@ -1,4 +1,4 @@
-import { GraduationCap, TrendingUp, Code, BarChart3 } from 'lucide-react';
+import { GraduationCap, TrendingUp } from 'lucide-react';
 
 export default function About() {
   return (
@@ -32,6 +32,7 @@ export default function About() {
                 </p>
               </div>
             </div>
+          </div>
 
           {/* Education */}
           <div className="space-y-6">
@@ -55,11 +56,6 @@ export default function About() {
                     </p>
                   </div>
                 </div>
-              </div>
-            </div>
-
-           
-                </p>
               </div>
             </div>
           </div>
