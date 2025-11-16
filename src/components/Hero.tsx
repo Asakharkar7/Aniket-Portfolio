@@ -36,11 +36,20 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* Summary */}
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-8 animate-slide-up leading-relaxed">
-            Turning complex data into strategic insights. Specializing in building scalable pipelines,
-            crafting interactive dashboards, and deploying ML solutions that drive real business impact.
-          </p>
+          {/* Professional Summary */}
+          <div className="max-w-3xl mx-auto mb-8 animate-slide-up text-left bg-white shadow-md rounded-lg p-6">
+            <h3 className="text-2xl font-semibold text-slate-900 mb-4">Professional Summary</h3>
+            <p className="text-slate-700 leading-relaxed">
+              Data professional with expertise across analytics, engineering, and applied machine learning.
+              Skilled in transforming raw data into actionable insights, building automated pipelines,
+              and developing predictive models using Python, SQL, and cloud technologies.
+            </p>
+            <p className="text-slate-700 leading-relaxed mt-4">
+              Strong background in dashboard development, ETL workflows, and statistical analysis to support
+              strategic, operational, and financial decision-making. Adept at collaborating with cross-functional
+              teams, improving data quality, and delivering scalable end-to-end data solutions.
+            </p>
+          </div>
 
           {/* Contact Info */}
           <div className="flex justify-center items-center gap-6 mb-8">
