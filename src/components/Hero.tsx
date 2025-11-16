@@ -2,7 +2,7 @@ import { Github, Linkedin, Mail, ExternalLink, Award, ArrowDown, Phone } from "l
 import { useMemo, useEffect } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
 import DataQuizGame from "./GameHub/DataQuizGame";       // 👈 correct relative path
-import DataDragGame from "./GameHub/DataDragGame";       // 👈 correct relative path
+import DataToolsGame from "./GameHub/DataToolsGame";       // 👈 correct relative path
 import DataSortingGame from "./GameHub/DataSortingGame"; // 👈 correct relative path
 
 export default function Hero() {
@@ -87,7 +87,7 @@ export default function Hero() {
           {/* 🎮 Embedded Games */}
           <div className="mt-12 space-y-8">
             <DataQuizGame />
-            <DataDragGame />
+            <DataToolsGame />
             <DataSortingGame />
           </div>
         </div>
