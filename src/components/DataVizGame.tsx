@@ -7,6 +7,7 @@ import {
   LineElement,
 } from "chart.js";
 
+// Register only the essentials first
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement);
 
 export default function DataVizGame() {
@@ -16,13 +17,17 @@ export default function DataVizGame() {
       {
         label: "Test Dataset",
         data: [10, 20, 30, 40],
-        borderColor: "blue",
+        borderColor: "rgb(75, 192, 192)",
+        backgroundColor: "rgba(75, 192, 192, 0.2)",
       },
     ],
   };
 
   return (
-    <div style={{ width: "400px", margin: "0 auto" }}>
+    <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md mt-12">
+      <h2 className="text-xl font-bold mb-4 text-slate-900 text-center">
+        Interactive Data Viz Sandbox
+      </h2>
       <Line data={data} />
     </div>
   );
