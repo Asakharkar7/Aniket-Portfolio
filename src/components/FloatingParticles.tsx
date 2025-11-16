@@ -66,7 +66,7 @@ export default function FloatingParticles() {
 
         // Pulsing effect
         p.pulsePhase += 0.02;
-        const pulse = Math.sin(p.pulsePhase) * 0.3 + 0.7;
+        const pulse = Math.sin(p.pulsePhase) * 0.3 + 0.5;
 
         // Mouse interaction - particles move away from cursor
         const dx = p.x - mousePosRef.current.x;
