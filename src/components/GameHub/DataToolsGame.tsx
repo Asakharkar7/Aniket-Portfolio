@@ -1,6 +1,5 @@
-// src/components/gamehub/DataToolsDropGame.tsx
-import { DragDropContext, Droppable, Draggable, DropResult } from "@hello-pangea/dnd";
 import { useState } from "react";
+import { DragDropContext, Droppable, Draggable, DropResult } from "@hello-pangea/dnd";
 
 type Tool = { id: string; name: string };
 
@@ -21,15 +20,16 @@ const correctCategories: Record<string, string> = {
 };
 
 const categories = ["Storage", "Analysis", "Visualization"] as const;
-type Category = (typeof categories)[number];
 
-export default function DataToolsDropGame() {
-  const [lists, setLists] = useState<Record<"toolbank" | Category, Tool[]>>({
+export default function DataToolsGame() {
+  const [lists, setLists] = useState<Record<"toolbank" | typeof categories[number], Tool[]>>({
     toolbank: initialTools,
     Storage: [],
     Analysis: [],
     Visualization: [],
   });
+  const [showResult, setShowResult] = useState(false);
+  const [score, setScore] = useState(0);
 
   const moveItem = (
     sourceList: Tool[],
@@ -72,99 +72,105 @@ export default function DataToolsDropGame() {
         if (correctCategories[tool.name] === cat) correct++;
       }
     }
-    alert(`✅ You placed ${correct} out of ${initialTools.length} tools correctly.`);
+    setScore(correct);
+    setShowResult(true);
   };
 
-  const resetAll = () => {
+  const resetGame = () => {
     setLists({
       toolbank: initialTools,
       Storage: [],
       Analysis: [],
       Visualization: [],
     });
+    setScore(0);
+    setShowResult(false);
   };
 
   return (
-    <div className="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold mb-6 text-center">🧠 Classify Data Tools</h2>
-
-      <DragDropContext onDragEnd={onDragEnd}>
-        {/* Tool Bank */}
-        <Droppable droppableId="toolbank" direction="horizontal">
-          {(provided) => (
-            <div
-              ref={provided.innerRef}
-              {...provided.droppableProps}
-              className="flex gap-3 mb-6 flex-wrap justify-center min-h-[84px] bg-slate-50 p-4 rounded-lg"
-            >
-              {lists.toolbank.map((tool, index) => (
-                <Draggable key={tool.id} draggableId={tool.id} index={index}>
-                  {(provided) => (
-                    <div
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      className="px-4 py-2 bg-blue-100 rounded-lg shadow hover:bg-blue-200 cursor-grab active:cursor-grabbing"
-                    >
-                      {tool.name}
-                    </div>
-                  )}
-                </Draggable>
-              ))}
-              {provided.placeholder}
-            </div>
-          )}
-        </Droppable>
-
-        {/* Categories */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          {categories.map((cat) => (
-            <Droppable droppableId={cat} key={cat}>
+    <div className="p-6 bg-white rounded-lg shadow-lg">
+      <h2 className="text-xl font-bold mb-4 text-center">🧠 Classify Data Tools</h2>
+      {!showResult ? (
+        <>
+          <DragDropContext onDragEnd={onDragEnd}>
+            {/* Tool Bank */}
+            <Droppable droppableId="toolbank" direction="horizontal">
               {(provided) => (
                 <div
                   ref={provided.innerRef}
                   {...provided.droppableProps}
-                  className="min-h-[160px] p-4 bg-slate-100 rounded-lg shadow"
+                  className="flex gap-3 mb-6 flex-wrap justify-center min-h-[84px] bg-slate-50 p-4 rounded-lg"
                 >
-                  <h3 className="text-lg font-semibold mb-3 text-center">{cat}</h3>
-
-                  {lists[cat].map((tool, index) => (
+                  {lists.toolbank.map((tool, index) => (
                     <Draggable key={tool.id} draggableId={tool.id} index={index}>
                       {(provided) => (
                         <div
                           ref={provided.innerRef}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
-                          className="mb-2 px-4 py-2 bg-blue-200 rounded-lg shadow cursor-grab active:cursor-grabbing"
+                          className="px-4 py-2 bg-blue-100 rounded-lg shadow hover:bg-blue-200 cursor-grab active:cursor-grabbing"
                         >
                           {tool.name}
                         </div>
                       )}
                     </Draggable>
                   ))}
-
                   {provided.placeholder}
                 </div>
               )}
             </Droppable>
-          ))}
-        </div>
-      </DragDropContext>
 
-      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <button
-          onClick={checkAnswers}
-          className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-        >
-          Check Placement
-        </button>
-        <button
-          onClick={resetAll}
-          className="w-full px-6 py-3 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition"
-        >
-          Reset
-        </button>
-      </div>
+            {/* Categories */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {categories.map((cat) => (
+                <Droppable droppableId={cat} key={cat}>
+                  {(provided) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.droppableProps}
+                      className="min-h-[160px] p-4 bg-slate-100 rounded-lg shadow"
+                    >
+                      <h3 className="text-lg font-semibold mb-3 text-center">{cat}</h3>
+                      {lists[cat].map((tool, index) => (
+                        <Draggable key={tool.id} draggableId={tool.id} index={index}>
+                          {(provided) => (
+                            <div
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              className="mb-2 px-4 py-2 bg-blue-200 rounded-lg shadow cursor-grab active:cursor-grabbing"
+                            >
+                              {tool.name}
+                            </div>
+                          )}
+                        </Draggable>
+                      ))}
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Droppable>
+              ))}
+            </div>
+          </DragDropContext>
+
+          <button
+            onClick={checkAnswers}
+            className="mt-6 w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+          >
+            Check Placement
+          </button>
+        </>
+      ) : (
+        <div className="text-center">
+          <p className="mb-4">🎉 You scored {score}/{initialTools.length}</p>
+          <button
+            onClick={resetGame}
+            className="px-6 py-3 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition"
+          >
+            Play Again
+          </button>
+        </div>
+      )}
     </div>
   );
 }
