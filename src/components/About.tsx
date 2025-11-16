@@ -11,12 +11,16 @@ export default function About() {
           About Me
         </h2>
 
+        {/* Education Grid */}
         <div className="grid md:grid-cols-2 gap-12">
           {/* Master's Degree */}
           <div className="space-y-6">
             <div className="group flex items-start gap-4 p-6 rounded-lg hover:bg-green-50 transition-colors">
               <div className="p-3 bg-green-100 rounded-lg group-hover:bg-green-200 group-hover:scale-110 transition-all">
-                <GraduationCap className="text-green-600 group-hover:rotate-12 transition-transform" size={28} />
+                <GraduationCap
+                  className="text-green-600 group-hover:rotate-12 transition-transform"
+                  size={28}
+                />
               </div>
               <div className="w-full">
                 <h3 className="text-xl font-semibold text-slate-900 mb-2 group-hover:text-green-700 transition-colors">
@@ -27,7 +31,9 @@ export default function About() {
                     <h4 className="font-semibold text-slate-900">
                       Master of Science in Data Analytics Engineering
                     </h4>
-                    <p className="text-slate-700">Northeastern University, Boston, USA</p>
+                    <p className="text-slate-700">
+                      Northeastern University, Boston, USA
+                    </p>
                     <p className="text-slate-500 text-sm">Aug 2022 – May 2024</p>
                     <p className="text-green-600 font-semibold mt-1 group-hover:text-green-700 transition-colors">
                       GPA: 3.9
@@ -42,7 +48,10 @@ export default function About() {
           <div className="space-y-6">
             <div className="group flex items-start gap-4 p-6 rounded-lg hover:bg-blue-50 transition-colors">
               <div className="p-3 bg-blue-100 rounded-lg group-hover:bg-blue-200 group-hover:scale-110 transition-all">
-                <GraduationCap className="text-blue-600 group-hover:rotate-12 transition-transform" size={28} />
+                <GraduationCap
+                  className="text-blue-600 group-hover:rotate-12 transition-transform"
+                  size={28}
+                />
               </div>
               <div className="w-full">
                 <h3 className="text-xl font-semibold text-slate-900 mb-2 group-hover:text-blue-700 transition-colors">
@@ -53,7 +62,9 @@ export default function About() {
                     <h4 className="font-semibold text-slate-900">
                       Bachelor of Engineering in Mechanical Engineering
                     </h4>
-                    <p className="text-slate-700">Thakur College of Engineering and Technology, Mumbai, India</p>
+                    <p className="text-slate-700">
+                      Thakur College of Engineering and Technology, Mumbai, India
+                    </p>
                     <p className="text-slate-500 text-sm">Aug 2017 – May 2021</p>
                   </div>
                 </div>
@@ -72,19 +83,19 @@ export default function About() {
             and I make sure it’s heard clearly, beautifully, and intelligently.
           </p>
         </div>
-        
+
         {/* Fun Fact */}
         <div className="mt-8 flex items-start gap-4">
-
-          <div className="p-3 bg-yellow-100 rounded-lg"> 
+          <div className="p-3 bg-yellow-100 rounded-lg">
             <Sparkles className="text-yellow-600" size={24} />
           </div>
           <p className="text-slate-700 leading-relaxed">
             When I’m not working with data, I’m building experimental UI concepts that feel like they belong in the future — sleek, animated, and designed to spark curiosity.
             <br /><br />
-            Outside the screen, I recharge by playing 🏏 cricket, exploring new activities, and chasing experiences that keep me sharp and creative. Whether it’s the strategy of a match or the thrill of trying something new, these hobbies fuel the same curiosity I bring to my work. 
+            Outside the screen, I recharge by playing 🏏 cricket, exploring new activities, and chasing experiences that keep me sharp and creative. Whether it’s the strategy of a match or the thrill of trying something new, these hobbies fuel the same curiosity I bring to my work.
           </p>
         </div>
       </div>
     </section>
-    }
+  );
+}
