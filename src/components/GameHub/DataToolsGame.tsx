@@ -1,65 +1,137 @@
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useState } from "react";
 
-const categories = {
-  storage: "Storage",
-  analysis: "Analysis",
-  visualization: "Visualization",
-};
-
-const tools = [
-  { id: "1", name: "SQL", category: "storage" },
-  { id: "2", name: "Python", category: "analysis" },
-  { id: "3", name: "Tableau", category: "visualization" },
-  { id: "4", name: "Spark", category: "analysis" },
-  { id: "5", name: "Snowflake", category: "storage" },
+const initialTools = [
+  { id: "1", name: "SQL" },
+  { id: "2", name: "Python" },
+  { id: "3", name: "Tableau" },
+  { id: "4", name: "Spark" },
+  { id: "5", name: "Snowflake" },
 ];
 
-export default function DataToolsGame() {
-  const [items, setItems] = useState(tools);
+const correctCategories: Record<string, string> = {
+  SQL: "Storage",
+  Python: "Analysis",
+  Tableau: "Visualization",
+  Spark: "Analysis",
+  Snowflake: "Storage",
+};
+
+const categories = ["Storage", "Analysis", "Visualization"];
+
+export default function DataToolsDropGame() {
+  const [tools, setTools] = useState(initialTools);
+  const [zones, setZones] = useState<Record<string, typeof initialTools>>({
+    Storage: [],
+    Analysis: [],
+    Visualization: [],
+  });
 
   const handleDragEnd = (result: any) => {
-    if (!result.destination) return;
-    const newItems = Array.from(items);
-    const [moved] = newItems.splice(result.source.index, 1);
-    newItems.splice(result.destination.index, 0, moved);
-    setItems(newItems);
+    const { source, destination } = result;
+    if (!destination) return;
+
+    // Dragging from tool list
+    if (source.droppableId === "toolbank") {
+      const dragged = tools[source.index];
+      const newTools = Array.from(tools);
+      newTools.splice(source.index, 1);
+      const newZone = Array.from(zones[destination.droppableId]);
+      newZone.splice(destination.index, 0, dragged);
+      setTools(newTools);
+      setZones({ ...zones, [destination.droppableId]: newZone });
+    }
+    // Dragging between zones
+    else {
+      const sourceZone = Array.from(zones[source.droppableId]);
+      const [moved] = sourceZone.splice(source.index, 1);
+      const destZone = Array.from(zones[destination.droppableId]);
+      destZone.splice(destination.index, 0, moved);
+      setZones({
+        ...zones,
+        [source.droppableId]: sourceZone,
+        [destination.droppableId]: destZone,
+      });
+    }
   };
 
   const checkAnswers = () => {
-    const correct = items.every((item) => item.category === item.category);
-    alert("✅ Tools are placed! (This can be extended to validate categories)");
+    let correct = 0;
+    for (const category of categories) {
+      for (const tool of zones[category]) {
+        if (correctCategories[tool.name] === category) correct++;
+      }
+    }
+    alert(`✅ You placed ${correct} out of ${initialTools.length} tools correctly.`);
   };
 
   return (
-    <div className="max-w-lg mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
-      <h2 className="text-xl font-bold mb-4 text-center">Sort the Data Tools</h2>
+    <div className="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
+      <h2 className="text-2xl font-bold mb-6 text-center">🧠 Classify Data Tools</h2>
       <DragDropContext onDragEnd={handleDragEnd}>
-        <Droppable droppableId="tools">
+        {/* Tool Bank */}
+        <Droppable droppableId="toolbank" direction="horizontal">
           {(provided) => (
-            <ul {...provided.droppableProps} ref={provided.innerRef} className="space-y-2">
-              {items.map((tool, index) => (
+            <div
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+              className="flex gap-4 mb-6 flex-wrap justify-center"
+            >
+              {tools.map((tool, index) => (
                 <Draggable key={tool.id} draggableId={tool.id} index={index}>
                   {(provided) => (
-                    <li
+                    <div
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
-                      className="p-4 bg-blue-100 rounded-lg shadow cursor-pointer hover:bg-blue-200 transition"
+                      className="px-4 py-2 bg-blue-100 rounded-lg shadow hover:bg-blue-200 cursor-pointer"
                     >
                       {tool.name}
-                    </li>
+                    </div>
                   )}
                 </Draggable>
               ))}
               {provided.placeholder}
-            </ul>
+            </div>
           )}
         </Droppable>
+
+        {/* Drop Zones */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          {categories.map((cat) => (
+            <Droppable droppableId={cat} key={cat}>
+              {(provided) => (
+                <div
+                  ref={provided.innerRef}
+                  {...provided.droppableProps}
+                  className="min-h-[120px] p-4 bg-slate-100 rounded-lg shadow"
+                >
+                  <h3 className="text-lg font-semibold mb-2 text-center">{cat}</h3>
+                  {zones[cat].map((tool, index) => (
+                    <Draggable key={tool.id} draggableId={tool.id} index={index}>
+                      {(provided) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          className="mb-2 px-4 py-2 bg-blue-200 rounded-lg shadow cursor-pointer"
+                        >
+                          {tool.name}
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          ))}
+        </div>
       </DragDropContext>
+
       <button
         onClick={checkAnswers}
-        className="mt-4 w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+        className="mt-6 w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
       >
         Check Placement
       </button>
