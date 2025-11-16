@@ -2,7 +2,11 @@ import { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 
 export default function Landing({ onEnter }) {
-  const [showText, setShowText] = useState('');
+  const [text, setText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopNum, setLoopNum] = useState(0);
+  const [typingSpeed, setTypingSpeed] = useState(100);
+
   const phrases = [
     'I engineer data…',
     'I design insights…',
@@ -11,32 +15,31 @@ export default function Landing({ onEnter }) {
   ];
 
   useEffect(() => {
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let currentPhrase = phrases[phraseIndex];
-    let typingForward = true;
+    const handleTyping = () => {
+      const i = loopNum % phrases.length;
+      const fullText = phrases[i];
 
-    const interval = setInterval(() => {
-      if (typingForward) {
-        setShowText(currentPhrase.slice(0, charIndex));
-        charIndex++;
-        if (charIndex > currentPhrase.length) {
-          typingForward = false;
-          setTimeout(() => {}, 1000); // pause before deleting
-        }
-      } else {
-        setShowText(currentPhrase.slice(0, charIndex));
-        charIndex--;
-        if (charIndex < 0) {
-          typingForward = true;
-          phraseIndex = (phraseIndex + 1) % phrases.length;
-          currentPhrase = phrases[phraseIndex];
-        }
+      setText(
+        isDeleting
+          ? fullText.substring(0, text.length - 1)
+          : fullText.substring(0, text.length + 1)
+      );
+
+      // Adjust speed for typing vs deleting
+      setTypingSpeed(isDeleting ? 50 : 100);
+
+      if (!isDeleting && text === fullText) {
+        // Pause at full text
+        setTimeout(() => setIsDeleting(true), 1000);
+      } else if (isDeleting && text === '') {
+        setIsDeleting(false);
+        setLoopNum(loopNum + 1);
       }
-    }, 100);
+    };
 
-    return () => clearInterval(interval);
-  }, []);
+    const timer = setTimeout(handleTyping, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [text, isDeleting, loopNum]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white flex flex-col items-center justify-center px-6">
@@ -47,7 +50,7 @@ export default function Landing({ onEnter }) {
 
       {/* Cycling tagline */}
       <h2 className="text-2xl sm:text-4xl font-semibold text-blue-400 mb-6 text-center animate-fade-in">
-        {showText}
+        {text}
         <span className="ml-2 w-1 h-8 bg-blue-400 animate-pulse inline-block"></span>
       </h2>
 
