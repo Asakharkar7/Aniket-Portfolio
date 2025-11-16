@@ -33,26 +33,6 @@ export default function About() {
               </div>
             </div>
 
-            {/* Skills Snapshot */}
-            <div className="group flex items-start gap-4 p-6 rounded-lg hover:bg-indigo-50 transition-colors shadow-md">
-              <div className="p-3 bg-indigo-100 rounded-lg group-hover:bg-indigo-200 group-hover:scale-110 transition-all">
-                <Code className="text-indigo-600 group-hover:rotate-12 transition-transform" size={28} />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-2 group-hover:text-indigo-700 transition-colors">
-                  Core Skills
-                </h3>
-                <p className="text-slate-700 leading-relaxed">
-                  React, Tailwind CSS, TypeScript, Snowflake, Databricks, AWS Lambda, DynamoDB, Python, SQL, Scikit-learn.
-                </p>
-                <p className="text-slate-700 leading-relaxed mt-2">
-                  Combining <span className="font-semibold">data engineering</span> with <span className="font-semibold">UI/UX design</span> to deliver
-                  interactive, visually polished solutions.
-                </p>
-              </div>
-            </div>
-          </div>
-
           {/* Education */}
           <div className="space-y-6">
             <div className="group flex items-start gap-4 p-6 rounded-lg hover:bg-green-50 transition-colors shadow-md">
@@ -78,19 +58,7 @@ export default function About() {
               </div>
             </div>
 
-            {/* Career Goals */}
-            <div className="group flex items-start gap-4 p-6 rounded-lg hover:bg-purple-50 transition-colors shadow-md">
-              <div className="p-3 bg-purple-100 rounded-lg group-hover:bg-purple-200 group-hover:scale-110 transition-all">
-                <BarChart3 className="text-purple-600 group-hover:rotate-12 transition-transform" size={28} />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-2 group-hover:text-purple-700 transition-colors">
-                  Career Goals
-                </h3>
-                <p className="text-slate-700 leading-relaxed">
-                  Building a strong online presence as a high-level data analyst and engineer,
-                  showcasing projects that merge <span className="font-semibold">technical depth</span> with
-                  <span className="font-semibold">visual storytelling</span>, and driving innovation in data-driven solutions.
+           
                 </p>
               </div>
             </div>
