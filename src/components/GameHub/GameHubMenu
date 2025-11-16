@@ -4,9 +4,21 @@ import DataSortGame from "./DataSortGame";
 import DataToolsGame from "./DataToolsGame";
 
 const games = [
-  { id: "quiz", title: "🧠 Data Quiz", description: "Test your knowledge of data concepts." },
-  { id: "sort", title: "📊 Sort by Population", description: "Drag countries into correct order by population." },
-  { id: "tools", title: "🧮 Classify Data Tools", description: "Place tools into the right categories." },
+  {
+    id: "quiz",
+    title: "🧠 Data Quiz",
+    description: "Test your knowledge of data concepts.",
+  },
+  {
+    id: "sort",
+    title: "📊 Sort by Population",
+    description: "Drag countries into correct order by population.",
+  },
+  {
+    id: "tools",
+    title: "🧮 Classify Data Tools",
+    description: "Place tools into the right categories.",
+  },
 ];
 
 export default function GameHubMenu() {
@@ -23,7 +35,9 @@ export default function GameHubMenu() {
             key={game.id}
             onClick={() => setActiveGame(game.id)}
             className={`p-4 rounded-lg shadow hover:shadow-xl transition-all border-2 ${
-              activeGame === game.id ? "border-blue-600 bg-blue-50" : "border-slate-200 bg-slate-50"
+              activeGame === game.id
+                ? "border-blue-600 bg-blue-50"
+                : "border-slate-200 bg-slate-50"
             }`}
           >
             <h3 className="text-lg font-semibold mb-2">{game.title}</h3>
