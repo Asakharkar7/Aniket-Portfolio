@@ -11,9 +11,9 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Animated Gradient Background */}
-      <div className="absolute inset-0 bg-animated-gradient -z-10" />
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
+      {/* Animated Gradient Overlay */}
+      <div className="absolute inset-0 bg-animated-gradient opacity-80 -z-10" />
 
       {/* Foreground Content */}
       <div className="max-w-7xl mx-auto w-full relative z-10 pt-32 pb-20 px-4 sm:px-6 lg:px-8">
