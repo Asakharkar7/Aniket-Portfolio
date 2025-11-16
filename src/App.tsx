@@ -14,6 +14,8 @@ function App() {
   const [entered, setEntered] = useState(false);
 
   return (
+    <div className="min-h-screen bg-slate-50 scroll-smooth">
+      {!entered ? (
         <Landing onEnter={() => setEntered(true)} />
       ) : (
         <>
