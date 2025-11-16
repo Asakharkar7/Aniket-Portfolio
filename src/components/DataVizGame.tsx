@@ -7,7 +7,7 @@ import {
   LineElement,
 } from "chart.js";
 
-// Register only the essentials first
+// Register Chart.js modules
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement);
 
 export default function DataVizGame() {
