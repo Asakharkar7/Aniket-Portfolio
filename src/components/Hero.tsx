@@ -3,16 +3,8 @@ import { useMemo, useEffect } from 'react';
 import { useTypewriter } from '../hooks/useTypewriter';
 
 export default function Hero() {
-  // Cycling phrases for typewriter effect
-  const roles = useMemo(
-    () => [
-      'I engineer data…',
-      'I design insights…',
-      'I automate pipelines…',
-      'I visualize intelligence…',
-    ],
-    []
-  );
+  // Memoize roles so the array doesn't change on each render
+  const roles = useMemo(() => ['Data Analyst', 'Data Engineer', 'Data Scientist'], []);
   const displayedText = useTypewriter(roles, 100, 1500);
 
   useEffect(() => {
@@ -46,8 +38,8 @@ export default function Hero() {
 
           {/* Summary */}
           <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-8 animate-slide-up leading-relaxed">
-            Engineering data into decisions. I specialize in scalable pipelines, interactive dashboards,
-            and predictive analytics that transform raw information into intelligence.
+            Turning complex data into strategic insights. Specializing in building scalable pipelines,
+            crafting interactive dashboards, and deploying ML solutions that drive real business impact.
           </p>
 
           {/* Contact Info */}
