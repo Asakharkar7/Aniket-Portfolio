@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, ExternalLink, Award, ArrowDown, Phone, TrendingUp } from 'lucide-react';
+import { Github, Linkedin, Mail, ExternalLink, Award, ArrowDown, Phone } from 'lucide-react';
 import { useMemo, useEffect } from 'react';
 import { useTypewriter } from '../hooks/useTypewriter';
 
@@ -36,30 +36,12 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* Professional Summary */}
-          <div className="space-y-6 max-w-3xl mx-auto mb-8 animate-slide-up text-left">
-            <div className="group flex items-start gap-4 p-6 rounded-lg hover:bg-blue-50 transition-colors">
-              <div className="p-3 bg-blue-100 rounded-lg group-hover:bg-blue-200 group-hover:scale-110 transition-all">
-                <TrendingUp className="text-blue-600 group-hover:rotate-12 transition-transform" size={28} />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-2 group-hover:text-blue-700 transition-colors">
-                  Professional Summary
-                </h3>
-                <p className="text-slate-700 leading-relaxed">
-                  I’m <span className="font-semibold text-blue-600">Aniket Sakharkar</span>, a data professional with expertise across
-                  <span className="font-semibold"> analytics, engineering, and applied machine learning</span>.
-                  Skilled in transforming raw data into actionable insights, building automated pipelines,
-                  and developing predictive models using Python, SQL, and cloud technologies.
-                </p>
-                <p className="text-slate-700 leading-relaxed mt-4">
-                  Strong background in dashboard development, ETL workflows, and statistical analysis to support
-                  strategic, operational, and financial decision-making. Adept at collaborating with cross-functional
-                  teams, improving data quality, and delivering scalable end-to-end data solutions.
-                </p>
-              </div>
-            </div>
-          </div>
+          {/* Summary */}
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-8 animate-slide-up leading-relaxed">
+            Passionate about transforming raw data into meaningful stories. Experienced in designing scalable data pipelines,
+            building interactive dashboards, and applying machine learning to solve complex business challenges.
+            Dedicated to bridging the gap between data and decision-making with clarity and impact.
+          </p>
 
           {/* Contact Info */}
           <div className="flex justify-center items-center gap-6 mb-8">
