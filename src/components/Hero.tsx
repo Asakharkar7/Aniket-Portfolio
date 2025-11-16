@@ -1,7 +1,7 @@
 import { Github, Linkedin, Mail, ExternalLink, Award, ArrowDown, Phone } from "lucide-react";
 import { useMemo, useEffect } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
-import DataQuizGame from "/DataQuizGame"; // 👈 import quiz
+import DataQuizGame from "/DataDragGame"; // 👈 import quiz
 
 export default function Hero() {
   const roles = useMemo(() => ["Data Analyst", "Data Engineer", "Data Scientist"], []);
@@ -114,7 +114,7 @@ export default function Hero() {
 
           {/* Embedded Quiz */}
           <div className="mt-12">
-            <DataQuizGame />
+            <DataDragGame />
           </div>
         </div>
       </div>
