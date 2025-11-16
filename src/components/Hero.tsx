@@ -1,6 +1,8 @@
 import { Github, Linkedin, Mail, ExternalLink, Award, ArrowDown, Phone } from 'lucide-react';
 import { useMemo, useEffect } from 'react';
 import { useTypewriter } from '../hooks/useTypewriter';
+import DataVizGame from "../components/DataVizGame"; // adjust path if needed
+
 
 export default function Hero() {
   // Memoize roles so the array doesn't change on each render
