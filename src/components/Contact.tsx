@@ -99,9 +99,13 @@ export default function Contact() {
               {/* Download Resume */}
               <a
                 href="/Aniket_Sakharkar_resume.pdf"
-                download
+                download="Aniket_Sakharkar_resume.pdf"
                 className="flex items-center gap-2 px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-all"
-              >
+                >
+                <FileText size={20} />
+                <span>Download Resume</span>
+              </a>
+
                 <FileText size={20} />
                 <span>Download Resume</span>
               </a>
