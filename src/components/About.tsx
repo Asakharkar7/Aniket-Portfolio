@@ -1,4 +1,4 @@
-import { GraduationCap } from 'lucide-react';
+import { GraduationCap, Code, Sparkles } from 'lucide-react';
 
 export default function About() {
   return (
@@ -14,12 +14,9 @@ export default function About() {
         <div className="grid md:grid-cols-2 gap-12">
           {/* Education */}
           <div className="space-y-6">
-            <div className="group flex items-start gap-4 p-6 rounded-lg hover:bg-green-50 transition-colors shadow-md">
+            <div className="group flex items-start gap-4 p-6 rounded-lg hover:bg-green-50 transition-colors">
               <div className="p-3 bg-green-100 rounded-lg group-hover:bg-green-200 group-hover:scale-110 transition-all">
-                <GraduationCap
-                  className="text-green-600 group-hover:rotate-12 transition-transform"
-                  size={28}
-                />
+                <GraduationCap className="text-green-600 group-hover:rotate-12 transition-transform" size={28} />
               </div>
               <div className="w-full">
                 <h3 className="text-xl font-semibold text-slate-900 mb-2 group-hover:text-green-700 transition-colors">
@@ -31,7 +28,7 @@ export default function About() {
                       Master of Science in Data Analytics Engineering
                     </h4>
                     <p className="text-slate-700">Northeastern University, Boston, USA</p>
-                    <p className="text-slate-500 text-sm">January 2022 - December 2023</p>
+                    <p className="text-slate-500 text-sm">Aug 2022 – May 2024</p>
                     <p className="text-green-600 font-semibold mt-1 group-hover:text-green-700 transition-colors">
                       GPA: 3.9
                     </p>
@@ -40,6 +37,60 @@ export default function About() {
               </div>
             </div>
           </div>
+
+          {/* Tech Stack */}
+          <div className="space-y-6">
+            <div className="group flex items-start gap-4 p-6 rounded-lg hover:bg-indigo-50 transition-colors">
+              <div className="p-3 bg-indigo-100 rounded-lg group-hover:bg-indigo-200 group-hover:scale-110 transition-all">
+                <Code className="text-indigo-600 group-hover:rotate-12 transition-transform" size={28} />
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-slate-900 mb-2 group-hover:text-indigo-700 transition-colors">
+                  Core Technologies
+                </h3>
+                <div className="flex flex-wrap gap-3 text-slate-700">
+                  {[
+                    'React',
+                    'Tailwind CSS',
+                    'TypeScript',
+                    'Snowflake',
+                    'Databricks',
+                    'AWS Lambda',
+                    'DynamoDB',
+                    'Python',
+                    'SQL',
+                    'Scikit-learn',
+                  ].map((tech) => (
+                    <span key={tech} className="bg-slate-200 px-3 py-1 rounded-full">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Personal Philosophy */}
+        <div className="mt-12 flex items-start gap-4">
+          <div className="p-3 bg-indigo-100 rounded-lg">
+            <Code className="text-indigo-600" size={24} />
+          </div>
+          <p className="text-slate-700 leading-relaxed italic">
+            I believe great data work is equal parts engineering, analysis, and design. Every dataset tells a story —
+            and I make sure it’s heard clearly, beautifully, and intelligently.
+          </p>
+        </div>
+
+        {/* Fun Fact */}
+        <div className="mt-8 flex items-start gap-4">
+          <div className="p-3 bg-yellow-100 rounded-lg">
+            <Sparkles className="text-yellow-600" size={24} />
+          </div>
+          <p className="text-slate-700 leading-relaxed">
+            Outside of data, I love experimenting with futuristic UI animations and building interfaces that feel alive.
+            I’m always chasing that perfect blend of function and flair.
+          </p>
         </div>
       </div>
     </section>
