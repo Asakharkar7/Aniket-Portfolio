@@ -16,6 +16,7 @@ export default function FloatingParticles() {
 
     const particles: { x: number; y: number; r: number; dx: number; dy: number }[] = [];
 
+    // Create particles
     for (let i = 0; i < 60; i++) {
       particles.push({
         x: Math.random() * width,
@@ -28,8 +29,9 @@ export default function FloatingParticles() {
 
     function draw() {
       ctx.clearRect(0, 0, width, height);
-      ctx.fillStyle = "rgba(59, 130, 246, 0.6)"; // Tailwind blue-500 with opacity
 
+      // Draw particles
+      ctx.fillStyle = "rgba(59, 130, 246, 0.6)"; // Tailwind blue-500
       particles.forEach((p) => {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
@@ -38,11 +40,30 @@ export default function FloatingParticles() {
         p.x += p.dx;
         p.y += p.dy;
 
+        // Wrap around edges
         if (p.x < 0) p.x = width;
         if (p.x > width) p.x = 0;
         if (p.y < 0) p.y = height;
         if (p.y > height) p.y = 0;
       });
+
+      // Draw connecting lines
+      ctx.strokeStyle = "rgba(59, 130, 246, 0.2)";
+      ctx.lineWidth = 1;
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
 
       requestAnimationFrame(draw);
     }
