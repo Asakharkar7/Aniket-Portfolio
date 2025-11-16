@@ -3,7 +3,7 @@ import { useMemo, useEffect } from 'react';
 import { useTypewriter } from '../hooks/useTypewriter';
 
 export default function Hero() {
-  // Memoize roles so the array doesn't change on each render
+  // Cycling phrases for typewriter effect
   const roles = useMemo(
     () => [
       'I engineer data…',
