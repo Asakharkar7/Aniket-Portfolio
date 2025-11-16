@@ -114,7 +114,7 @@ export default function FloatingParticles() {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          const connectionDistance = 100;
+          const connectionDistance = 50;
 
           if (dist < connectionDistance) {
             // Fade lines based on distance
