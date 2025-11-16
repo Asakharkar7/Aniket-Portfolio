@@ -1,8 +1,7 @@
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { ChevronRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
-export default function ExperienceCarousel() {
+export default function ExperienceTimeline() {
   const experiences = [
     {
       title: 'Data Analyst',
@@ -45,64 +44,54 @@ export default function ExperienceCarousel() {
     },
   ];
 
-  const [index, setIndex] = useState(0);
-
-  const next = () => setIndex((i) => (i + 1) % experiences.length);
-  const prev = () => setIndex((i) => (i - 1 + experiences.length) % experiences.length);
-
   return (
-    <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
-      <div className="max-w-3xl mx-auto text-center">
-        <motion.h2
-          className="text-4xl font-bold text-slate-900 mb-12"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          Professional Experience
-        </motion.h2>
-
-        <div className="relative">
-          <AnimatePresence mode="wait">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 relative">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-4xl font-bold text-slate-900 mb-12 text-center">Professional Experience</h2>
+        <div className="relative border-l-4 border-blue-500 ml-6 space-y-12">
+          {experiences.map((exp, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -100 }}
-              transition={{ type: 'spring', stiffness: 120, damping: 15 }}
-              className="bg-white p-8 rounded-xl shadow-lg text-left"
+              className="relative bg-white p-6 rounded-xl shadow-lg w-[85%]"
+              initial={{ opacity: 0, rotateY: 90 }}
+              whileInView={{ opacity: 1, rotateY: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.3 }}
+              viewport={{ once: true }}
+              style={{ transformOrigin: index % 2 === 0 ? 'left center' : 'right center' }}
             >
               <div className="flex items-start gap-4 mb-4">
                 <div className="w-16 h-16 p-2 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <img src={experiences[index].logo} alt="company-logo" className="w-full h-full object-contain" />
+                  <img src={exp.logo} alt="company-logo" className="w-full h-full object-contain" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-slate-900">{experiences[index].title}</h3>
-                  <p className="text-lg text-slate-600">{experiences[index].company}</p>
-                  <p className="text-sm text-slate-500">{experiences[index].period}</p>
+                  <h3 className="text-2xl font-bold text-slate-900">{exp.title}</h3>
+                  <p className="text-lg text-slate-600">{exp.company}</p>
+                  <p className="text-sm text-slate-500">{exp.period}</p>
                 </div>
               </div>
 
-              <ul className="space-y-3 mt-4">
-                {experiences[index].achievements.map((achievement, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <ChevronRight className="text-blue-600 mt-1" size={20} />
+              <motion.ul
+                className="space-y-3 mt-4"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15 } } }}
+              >
+                {exp.achievements.map((achievement, i) => (
+                  <motion.li
+                    key={i}
+                    className="flex items-start gap-3"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <ChevronRight className="text-blue-500 mt-1" size={20} />
                     <span className="text-slate-700">{achievement}</span>
-                  </li>
+                  </motion.li>
                 ))}
-              </ul>
+              </motion.ul>
             </motion.div>
-          </AnimatePresence>
-
-          <div className="flex justify-between mt-6">
-            <button onClick={prev} className="p-2 bg-slate-200 rounded-full hover:bg-slate-300">
-              <ChevronLeft />
-            </button>
-            <button onClick={next} className="p-2 bg-slate-200 rounded-full hover:bg-slate-300">
-              <ChevronRight />
-            </button>
-          </div>
+          ))}
         </div>
       </div>
     </section>
