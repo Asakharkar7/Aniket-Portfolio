@@ -1,7 +1,8 @@
-import { ChevronRight } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
 
-export default function ExperienceHologram() {
+export default function ExperienceCarousel() {
   const experiences = [
     {
       title: 'Data Analyst',
@@ -44,64 +45,64 @@ export default function ExperienceHologram() {
     },
   ];
 
+  const [index, setIndex] = useState(0);
+
+  const next = () => setIndex((i) => (i + 1) % experiences.length);
+  const prev = () => setIndex((i) => (i - 1 + experiences.length) % experiences.length);
+
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900 text-slate-100">
-      <div className="max-w-7xl mx-auto">
+    <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
+      <div className="max-w-3xl mx-auto text-center">
         <motion.h2
-          className="text-4xl font-bold text-blue-400 mb-12 text-center"
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          className="text-4xl font-bold text-slate-900 mb-12"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
           Professional Experience
         </motion.h2>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {experiences.map((exp, index) => (
+        <div className="relative">
+          <AnimatePresence mode="wait">
             <motion.div
               key={index}
-              className="relative bg-slate-800 p-8 rounded-xl border border-blue-500 shadow-lg overflow-hidden group"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7, delay: index * 0.2 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ type: 'spring', stiffness: 120, damping: 15 }}
+              className="bg-white p-8 rounded-xl shadow-lg text-left"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/10 to-transparent animate-pulse" />
-
               <div className="flex items-start gap-4 mb-4">
-                <div className="w-16 h-16 p-2 bg-blue-900 rounded-lg flex items-center justify-center">
-                  <img src={exp.logo} alt="company-logo" className="w-full h-full object-contain" />
+                <div className="w-16 h-16 p-2 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <img src={experiences[index].logo} alt="company-logo" className="w-full h-full object-contain" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-blue-300">{exp.title}</h3>
-                  <p className="text-lg text-slate-200">{exp.company}</p>
-                  <p className="text-sm text-slate-400">{exp.period}</p>
+                  <h3 className="text-2xl font-bold text-slate-900">{experiences[index].title}</h3>
+                  <p className="text-lg text-slate-600">{experiences[index].company}</p>
+                  <p className="text-sm text-slate-500">{experiences[index].period}</p>
                 </div>
               </div>
 
-              <motion.ul
-                className="space-y-3 mt-4"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15 } } }}
-              >
-                {exp.achievements.map((achievement, i) => (
-                  <motion.li
-                    key={i}
-                    className="flex items-start gap-3"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4 }}
-                  >
-                    <ChevronRight className="text-blue-400 mt-1" size={20} />
-                    <span className="text-slate-200">{achievement}</span>
-                  </motion.li>
+              <ul className="space-y-3 mt-4">
+                {experiences[index].achievements.map((achievement, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <ChevronRight className="text-blue-600 mt-1" size={20} />
+                    <span className="text-slate-700">{achievement}</span>
+                  </li>
                 ))}
-              </motion.ul>
+              </ul>
             </motion.div>
-          ))}
+          </AnimatePresence>
+
+          <div className="flex justify-between mt-6">
+            <button onClick={prev} className="p-2 bg-slate-200 rounded-full hover:bg-slate-300">
+              <ChevronLeft />
+            </button>
+            <button onClick={next} className="p-2 bg-slate-200 rounded-full hover:bg-slate-300">
+              <ChevronRight />
+            </button>
+          </div>
         </div>
       </div>
     </section>
