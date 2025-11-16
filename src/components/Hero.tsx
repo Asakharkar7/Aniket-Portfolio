@@ -1,9 +1,7 @@
 import { Github, Linkedin, Mail, ExternalLink, Award, ArrowDown, Phone } from "lucide-react";
 import { useMemo, useEffect } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
-import DataQuizGame from "./GameHub/DataQuizGame";       // 👈 correct relative path
-import DataToolsGame from "./GameHub/DataToolsGame";       // 👈 correct relative path
-import DataSortGame from "./GameHub/DataSortGame"; // 👈 correct relative path
+import GameHubMenu from "./gamehub/GameHubMenu"; // 👈 import GameHubMenu
 
 export default function Hero() {
   const roles = useMemo(() => ["Data Analyst", "Data Engineer", "Data Scientist"], []);
@@ -15,8 +13,10 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex flex-col items-center overflow-hidden bg-animated-gradient">
+      {/* Background overlay */}
       <div className="absolute inset-0 bg-white/70 -z-0" />
 
+      {/* Foreground content */}
       <div className="max-w-7xl mx-auto w-full relative z-10 pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           {/* Profile Photo + Name */}
@@ -61,13 +61,16 @@ export default function Hero() {
 
           {/* Social Links */}
           <div className="flex justify-center gap-4 mb-10 flex-wrap animate-slide-up">
-            <a href="https://www.linkedin.com/in/aniketsakharkar/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+            <a href="https://www.linkedin.com/in/aniketsakharkar/" target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
               <Linkedin size={20} /> LinkedIn
             </a>
-            <a href="https://github.com/Asakharkar7" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-slate-800 text-white rounded-lg hover:bg-slate-900 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+            <a href="https://github.com/Asakharkar7" target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-slate-800 text-white rounded-lg hover:bg-slate-900 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
               <Github size={20} /> GitHub
             </a>
-            <a href="https://www.kaggle.com/aniketsakharkar" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+            <a href="https://www.kaggle.com/aniketsakharkar" target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
               <Award size={20} /> Kaggle
             </a>
           </div>
@@ -84,11 +87,9 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* 🎮 Embedded Games */}
-          <div className="mt-12 space-y-8">
-            <DataQuizGame />
-            <DataToolsGame />
-            <DataSortGame />
+          {/* 🎮 GameHub Menu */}
+          <div className="mt-20">
+            <GameHubMenu />
           </div>
         </div>
       </div>
