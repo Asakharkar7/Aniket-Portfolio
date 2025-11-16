@@ -15,6 +15,7 @@ const sortSets = [
 ];
 
 export default function DataSortGame() {
+  const [setIndex, setSetIndex] = useState(0);
   const [items, setItems] = useState(sortSets[0]);
   const [score, setScore] = useState<number | null>(null);
 
@@ -34,15 +35,17 @@ export default function DataSortGame() {
     });
     setScore(points);
 
+    // If perfect score, load next set automatically
     if (points === items.length) {
-      const nextSet = sortSets[Math.floor(Math.random() * sortSets.length)];
-      setItems(nextSet);
-      setScore(null);
+      const nextIndex = (setIndex + 1) % sortSets.length;
+      setSetIndex(nextIndex);
+      setItems(sortSets[nextIndex]);
+      setScore(null); // reset for new round
     }
   };
 
   const resetGame = () => {
-    setItems(sortSets[0]);
+    setItems(sortSets[setIndex]);
     setScore(null);
   };
 
