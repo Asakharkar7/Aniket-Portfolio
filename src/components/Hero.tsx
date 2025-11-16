@@ -45,9 +45,6 @@ export default function Hero() {
             Dedicated to bridging the gap between data and decision-making with clarity and impact.
           </p>
           
-          {/* Interactive Data Game */}
-          <DataVizGame />
-          
           {/* Contact Info */}
           <div className="flex justify-center items-center gap-6 mb-8">
             <a
