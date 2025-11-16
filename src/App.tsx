@@ -9,12 +9,14 @@ import Experience from './components/Experience';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
+import FloatingParticles from './components/FloatingParticles';
 
 function App() {
   const [entered, setEntered] = useState(false);
 
   return (
     <div className="min-h-screen bg-slate-50 scroll-smooth">
+      <FloatingParticles />
       {!entered ? (
         <Landing onEnter={() => setEntered(true)} />
       ) : (
