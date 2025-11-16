@@ -12,7 +12,7 @@ export default function About() {
         </h2>
 
         <div className="grid md:grid-cols-2 gap-12">
-          {/* Education */}
+          {/* Master's Degree */}
           <div className="space-y-6">
             <div className="group flex items-start gap-4 p-6 rounded-lg hover:bg-green-50 transition-colors">
               <div className="p-3 bg-green-100 rounded-lg group-hover:bg-green-200 group-hover:scale-110 transition-all">
@@ -38,33 +38,24 @@ export default function About() {
             </div>
           </div>
 
-          {/* Tech Stack */}
+          {/* Bachelor's Degree */}
           <div className="space-y-6">
-            <div className="group flex items-start gap-4 p-6 rounded-lg hover:bg-indigo-50 transition-colors">
-              <div className="p-3 bg-indigo-100 rounded-lg group-hover:bg-indigo-200 group-hover:scale-110 transition-all">
-                <Code className="text-indigo-600 group-hover:rotate-12 transition-transform" size={28} />
+            <div className="group flex items-start gap-4 p-6 rounded-lg hover:bg-blue-50 transition-colors">
+              <div className="p-3 bg-blue-100 rounded-lg group-hover:bg-blue-200 group-hover:scale-110 transition-all">
+                <GraduationCap className="text-blue-600 group-hover:rotate-12 transition-transform" size={28} />
               </div>
-              <div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-2 group-hover:text-indigo-700 transition-colors">
-                  Core Technologies
+              <div className="w-full">
+                <h3 className="text-xl font-semibold text-slate-900 mb-2 group-hover:text-blue-700 transition-colors">
+                  Previous Education
                 </h3>
-                <div className="flex flex-wrap gap-3 text-slate-700">
-                  {[
-                    'React',
-                    'Tailwind CSS',
-                    'TypeScript',
-                    'Snowflake',
-                    'Databricks',
-                    'AWS Lambda',
-                    'DynamoDB',
-                    'Python',
-                    'SQL',
-                    'Scikit-learn',
-                  ].map((tech) => (
-                    <span key={tech} className="bg-slate-200 px-3 py-1 rounded-full">
-                      {tech}
-                    </span>
-                  ))}
+                <div className="space-y-4">
+                  <div className="border-l-4 border-blue-600 pl-4 hover:border-blue-700 transition-colors hover:bg-white p-3 -ml-3 rounded">
+                    <h4 className="font-semibold text-slate-900">
+                      Bachelor of Engineering in Mechanical Engineering
+                    </h4>
+                    <p className="text-slate-700">Thakur College of Engineering and Technology, Mumbai, India</p>
+                    <p className="text-slate-500 text-sm">Aug 2017 – May 2021</p>
+                  </div>
                 </div>
               </div>
             </div>
