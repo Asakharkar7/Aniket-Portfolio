@@ -1,7 +1,7 @@
 import { Github, Linkedin, Mail, ExternalLink, Award, ArrowDown, Phone } from 'lucide-react';
 import { useMemo, useEffect } from 'react';
 import { useTypewriter } from '../hooks/useTypewriter';
-import DataVizGame from "../components/DataVizGame"; // adjust path if needed
+import DataVizGame from "/components/DataVizGame"; // adjust path if needed
 
 
 export default function Hero() {
