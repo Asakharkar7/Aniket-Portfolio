@@ -1,4 +1,4 @@
-import { Mail, Phone, Linkedin, Github, Award, MapPin } from 'lucide-react';
+import { Mail, Phone, Linkedin, Github, Award, MapPin, FileText } from 'lucide-react';
 
 export default function Contact() {
   const contactInfo = [
@@ -19,6 +19,13 @@ export default function Contact() {
       label: 'Location',
       value: 'Boston, MA, USA',
       href: null,
+    },
+    {
+      icon: FileText,
+      label: 'Resume',
+      value: 'Download Resume',
+      href: '/resume/Aniket_Sakharkar_Resume.pdf', // ✅ place your resume PDF in /public/resume/
+      download: true,
     },
   ];
 
@@ -71,6 +78,7 @@ export default function Contact() {
                     {item.href ? (
                       <a
                         href={item.href}
+                        {...(item.download ? { download: true } : {})}
                         className="text-slate-900 font-medium hover:text-blue-600 transition-colors"
                       >
                         {item.value}
