@@ -5,44 +5,25 @@ import {
   LinearScale,
   PointElement,
   LineElement,
-  Title,
-  Tooltip,
-  Legend,
 } from "chart.js";
 
-// Register Chart.js modules
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement);
 
 export default function DataVizGame() {
-  const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
   const data = {
-    labels,
+    labels: ["Jan", "Feb", "Mar", "Apr"],
     datasets: [
       {
-        label: "Sales Growth",
-        data: [120, 150, 180, 200, 250, 300],
-        borderColor: "#2563eb",
-        backgroundColor: "rgba(37, 99, 235, 0.2)",
-        tension: 0.3,
-        fill: true,
+        label: "Test Dataset",
+        data: [10, 20, 30, 40],
+        borderColor: "blue",
       },
     ],
   };
 
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: { position: "top" as const },
-      title: { display: true, text: "📊 Sales Growth" },
-    },
-  };
-
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-md mt-12">
-      <h2 className="text-2xl font-bold mb-4 text-slate-900 text-center">
-        Interactive Data Viz Sandbox
-      </h2>
-      <Line options={options} data={data} />
+    <div style={{ width: "400px", margin: "0 auto" }}>
+      <Line data={data} />
     </div>
   );
 }
