@@ -45,7 +45,7 @@ export default function ExperienceTimeline() {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 relative">
+    <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 relative">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl font-bold text-slate-900 mb-12 text-center">Professional Experience</h2>
         <div className="relative border-l-4 border-blue-500 ml-6 space-y-12">
