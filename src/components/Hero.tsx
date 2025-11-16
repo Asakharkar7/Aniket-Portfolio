@@ -1,7 +1,7 @@
 import { Github, Linkedin, Mail, ExternalLink, Award, ArrowDown, Phone } from "lucide-react";
 import { useMemo, useEffect } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
-import DataDragGame from "/home/project/src/components/DataDragGame.tsx"; // 👈 fixed import
+import DataQuizGame from "/home/project/src/components/DataQuizGame.tsx"; // 👈 fixed import
 
 export default function Hero() {
   const roles = useMemo(() => ["Data Analyst", "Data Engineer", "Data Scientist"], []);
@@ -114,7 +114,7 @@ export default function Hero() {
 
           {/* Embedded Drag-and-Drop Game */}
           <div className="mt-12">
-            <DataDragGame />
+            <DataQuizGame />
           </div>
         </div>
       </div>
