@@ -1,4 +1,4 @@
-import { Mail, Phone, Linkedin, Github, Award, MapPin, FileText } from 'lucide-react';
+import { Mail, Phone, Linkedin, Github, Award, MapPin, FileText, Eye } from 'lucide-react';
 
 export default function Contact() {
   const contactInfo = [
@@ -19,13 +19,6 @@ export default function Contact() {
       label: 'Location',
       value: 'Boston, MA, USA',
       href: null,
-    },
-    {
-      icon: FileText,
-      label: 'Resume',
-      value: 'Download Resume',
-      href: '/Aniket_Sakharkar_resume.pdf',
-      download: true,
     },
   ];
 
@@ -68,19 +61,17 @@ export default function Contact() {
             </h3>
             {contactInfo.map((item, index) => {
               const Icon = item.icon;
-              const isResume = item.download;
               return (
-                <div key={index} className={`group flex items-center gap-4 p-4 rounded-lg transition-all ${isResume ? 'hover:bg-blue-50 hover:shadow-md' : ''}`}>
-                  <div className={`p-3 rounded-lg ${isResume ? 'bg-blue-200 group-hover:bg-blue-300 group-hover:scale-110' : 'bg-blue-100'} transition-all`}>
-                    <Icon className={`${isResume ? 'text-blue-700' : 'text-blue-600'}`} size={24} />
+                <div key={index} className="flex items-center gap-4">
+                  <div className="p-3 bg-blue-100 rounded-lg">
+                    <Icon className="text-blue-600" size={24} />
                   </div>
-                  <div className="flex-1">
+                  <div>
                     <p className="text-sm text-slate-500">{item.label}</p>
                     {item.href ? (
                       <a
                         href={item.href}
-                        {...(item.download ? { download: 'Aniket_Sakharkar_resume.pdf' } : { target: '_blank', rel: 'noopener noreferrer' })}
-                        className={`font-medium transition-all ${isResume ? 'text-blue-600 hover:text-blue-700 group-hover:underline' : 'text-slate-900 hover:text-blue-600'}`}
+                        className="text-slate-900 font-medium hover:text-blue-600 transition-colors"
                       >
                         {item.value}
                       </a>
@@ -88,16 +79,33 @@ export default function Contact() {
                       <p className="text-slate-900 font-medium">{item.value}</p>
                     )}
                   </div>
-                  {isResume && (
-                    <div className="text-blue-600 group-hover:translate-x-1 transition-transform">
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                      </svg>
-                    </div>
-                  )}
                 </div>
               );
             })}
+
+            {/* Resume Actions */}
+            <div className="flex gap-4 mt-6">
+              {/* View Resume */}
+              <a
+                href="/resume/Aniket_Sakharkar_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all"
+              >
+                <Eye size={20} />
+                <span>View Resume</span>
+              </a>
+
+              {/* Download Resume */}
+              <a
+                href="/resume/Aniket_Sakharkar_Resume.pdf"
+                download
+                className="flex items-center gap-2 px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-all"
+              >
+                <FileText size={20} />
+                <span>Download Resume</span>
+              </a>
+            </div>
           </div>
 
           <div className="space-y-6">
