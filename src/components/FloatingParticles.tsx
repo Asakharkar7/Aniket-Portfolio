@@ -35,8 +35,8 @@ export default function FloatingParticles() {
         x: Math.random() * width,
         y: Math.random() * height,
         r: Math.random() * 4 + 0.5,
-        dx: (Math.random() - 0.5) * 0.7,
-        dy: (Math.random() - 0.5) * 0.7,
+        dx: (Math.random() - 0.5) * 1.2,
+        dy: (Math.random() - 0.5) * 1.2,
         opacity: Math.random() * 0.6 + 0.3,
         pulsePhase: Math.random() * Math.PI * 2,
       });
@@ -82,8 +82,8 @@ export default function FloatingParticles() {
         }
 
         // Damping
-        p.dx *= 0.995;
-        p.dy *= 0.995;
+        p.dx *= 0.99;
+        p.dy *= 0.99;
 
         // Wrap around edges
         if (p.x < 0) p.x = width;
@@ -114,7 +114,7 @@ export default function FloatingParticles() {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          const connectionDistance = 150;
+          const connectionDistance = 100;
 
           if (dist < connectionDistance) {
             // Fade lines based on distance
