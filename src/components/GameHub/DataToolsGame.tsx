@@ -30,7 +30,7 @@ const toolSets = [
     ],
     correct: {
       Excel: "Visualization",
-      PowerBI: "Visualization", // ✅ fixed
+      "Power BI": "Visualization",
       R: "Analysis",
       MongoDB: "Storage",
       Airflow: "Storage",
@@ -40,10 +40,20 @@ const toolSets = [
 
 const categories = ["Storage", "Analysis", "Visualization"] as const;
 
+// Utility to shuffle array
+function shuffle<T>(array: T[]): T[] {
+  const copy = [...array];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
 export default function DataToolsGame() {
   const [setIndex, setSetIndex] = useState(0);
   const [lists, setLists] = useState<Record<"toolbank" | typeof categories[number], Tool[]>>({
-    toolbank: toolSets[0].tools,
+    toolbank: shuffle(toolSets[0].tools),
     Storage: [],
     Analysis: [],
     Visualization: [],
@@ -93,27 +103,28 @@ export default function DataToolsGame() {
       }
     }
     setScore(correctCount);
+  };
 
-    if (correctCount === currentSet.tools.length) {
+  const resetGame = () => {
+    if (score === toolSets[setIndex].tools.length) {
+      // If perfect, move to next set (or loop back to first)
       const nextIndex = (setIndex + 1) % toolSets.length;
       setSetIndex(nextIndex);
       setLists({
-        toolbank: toolSets[nextIndex].tools,
+        toolbank: shuffle(toolSets[nextIndex].tools),
         Storage: [],
         Analysis: [],
         Visualization: [],
       });
-      setScore(null);
+    } else {
+      // If not perfect, reload same set shuffled
+      setLists({
+        toolbank: shuffle(toolSets[setIndex].tools),
+        Storage: [],
+        Analysis: [],
+        Visualization: [],
+      });
     }
-  };
-
-  const resetGame = () => {
-    setLists({
-      toolbank: toolSets[setIndex].tools,
-      Storage: [],
-      Analysis: [],
-      Visualization: [],
-    });
     setScore(null);
   };
 
@@ -124,6 +135,7 @@ export default function DataToolsGame() {
       {score === null ? (
         <>
           <DragDropContext onDragEnd={onDragEnd}>
+            {/* Tool Bank */}
             <Droppable droppableId="toolbank" direction="horizontal">
               {(provided) => (
                 <div
@@ -150,6 +162,7 @@ export default function DataToolsGame() {
               )}
             </Droppable>
 
+            {/* Categories */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {categories.map((cat) => (
                 <Droppable droppableId={cat} key={cat}>
