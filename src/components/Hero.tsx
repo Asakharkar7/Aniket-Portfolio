@@ -12,6 +12,9 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-animated-gradient">
+      {/* Semi-transparent overlay */}
+      <div className="absolute inset-0 bg-white/70 -z-0" />
+
       {/* Foreground Content */}
       <div className="max-w-7xl mx-auto w-full relative z-10 pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="text-center">
