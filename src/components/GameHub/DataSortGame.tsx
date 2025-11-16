@@ -37,51 +37,53 @@ export default function DataSortGame() {
     <div className="p-6 bg-white rounded-lg shadow-lg">
       <h2 className="text-xl font-bold mb-4 text-center">📊 Sort Countries by Population</h2>
 
-      <DragDropContext onDragEnd={handleDragEnd}>
-        <Droppable droppableId="countries">
-          {(provided) => (
-            <ul
-              {...provided.droppableProps}
-              ref={provided.innerRef}
-              className="space-y-2 min-h-[160px] bg-slate-50 p-4 rounded-lg"
-            >
-              {items.map((item, index) => (
-                <Draggable key={item.id} draggableId={item.id} index={index}>
-                  {(provided) => (
-                    <li
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      className="p-4 bg-blue-100 rounded-lg shadow cursor-grab hover:bg-blue-200 active:cursor-grabbing"
-                    >
-                      {item.name}
-                    </li>
-                  )}
-                </Draggable>
-              ))}
-              {provided.placeholder}
-            </ul>
-          )}
-        </Droppable>
-      </DragDropContext>
+      {score === null ? (
+        <>
+          <DragDropContext onDragEnd={handleDragEnd}>
+            <Droppable droppableId="countries">
+              {(provided) => (
+                <ul
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                  className="space-y-2 min-h-[160px] bg-slate-50 p-4 rounded-lg"
+                >
+                  {items.map((item, index) => (
+                    <Draggable key={item.id} draggableId={item.id} index={index}>
+                      {(provided) => (
+                        <li
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          className="p-4 bg-blue-100 rounded-lg shadow cursor-grab hover:bg-blue-200 active:cursor-grabbing"
+                        >
+                          {item.name}
+                        </li>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </ul>
+              )}
+            </Droppable>
+          </DragDropContext>
 
-      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <button
-          onClick={checkOrder}
-          className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-        >
-          Check Order
-        </button>
-        <button
-          onClick={resetGame}
-          className="w-full px-6 py-3 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition"
-        >
-          Play Again
-        </button>
-      </div>
-
-      {score !== null && (
-        <p className="mt-4 text-center">🎉 You scored {score}/{items.length}</p>
+          <button
+            onClick={checkOrder}
+            className="mt-6 w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+          >
+            Check Order
+          </button>
+        </>
+      ) : (
+        <div className="text-center">
+          <p className="mb-4">🎉 You scored {score}/{items.length}</p>
+          <button
+            onClick={resetGame}
+            className="px-6 py-3 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition"
+          >
+            Play Again
+          </button>
+        </div>
       )}
     </div>
   );
