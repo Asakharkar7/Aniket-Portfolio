@@ -1,20 +1,25 @@
-import { GraduationCap, TrendingUp } from 'lucide-react';
+import { GraduationCap } from 'lucide-react';
 
 export default function About() {
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
+    <section
+      id="about"
+      className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100"
+    >
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl font-bold text-slate-900 mb-12 text-center animate-fade-in">
           About Me
         </h2>
 
         <div className="grid md:grid-cols-2 gap-12">
-          
           {/* Education */}
           <div className="space-y-6">
             <div className="group flex items-start gap-4 p-6 rounded-lg hover:bg-green-50 transition-colors shadow-md">
               <div className="p-3 bg-green-100 rounded-lg group-hover:bg-green-200 group-hover:scale-110 transition-all">
-                <GraduationCap className="text-green-600 group-hover:rotate-12 transition-transform" size={28} />
+                <GraduationCap
+                  className="text-green-600 group-hover:rotate-12 transition-transform"
+                  size={28}
+                />
               </div>
               <div className="w-full">
                 <h3 className="text-xl font-semibold text-slate-900 mb-2 group-hover:text-green-700 transition-colors">
@@ -33,6 +38,9 @@ export default function About() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
