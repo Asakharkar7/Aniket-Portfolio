@@ -54,7 +54,13 @@ export default function Landing({ onEnter }) {
         <span className="ml-2 w-1 h-8 bg-blue-400 animate-pulse inline-block"></span>
       </h2>
 
-      {/* Summary */}
+      {/* Summary Paragraph (added here) */}
+      <p className="text-lg sm:text-xl text-slate-300 max-w-2xl text-center mb-6 animate-slide-up leading-relaxed">
+        Turning complex data into strategic insights. Specializing in building scalable pipelines,
+        crafting interactive dashboards, and deploying ML solutions that drive real business impact.
+      </p>
+
+      {/* Existing Welcome line */}
       <p className="text-lg sm:text-xl text-slate-300 max-w-xl text-center mb-10 animate-slide-up">
         Welcome to my portfolio — explore projects in data engineering, machine learning, and analytics.
       </p>
