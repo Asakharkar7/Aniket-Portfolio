@@ -72,18 +72,19 @@ export default function About() {
             and I make sure it’s heard clearly, beautifully, and intelligently.
           </p>
         </div>
-
+        
         {/* Fun Fact */}
         <div className="mt-8 flex items-start gap-4">
-          <div className="p-3 bg-yellow-100 rounded-lg">
+
+          <div className="p-3 bg-yellow-100 rounded-lg"> 
             <Sparkles className="text-yellow-600" size={24} />
           </div>
           <p className="text-slate-700 leading-relaxed">
-            Away from pipelines and dashboards, I focus on creating experiences that connect with people — interfaces that are intuitive, engaging, and a little bit magical.
-            Beyond tech, I find joy in 🏏 cricket, experimenting with games, and diving into hobbies that challenge both mind and body. These pursuits remind me that creativity isn’t just about design — it’s about play, connection, and energy.
+            When I’m not working with data, I’m building experimental UI concepts that feel like they belong in the future — sleek, animated, and designed to spark curiosity.
+            <br /><br />
+            Outside the screen, I recharge by playing 🏏 cricket, exploring new activities, and chasing experiences that keep me sharp and creative. Whether it’s the strategy of a match or the thrill of trying something new, these hobbies fuel the same curiosity I bring to my work. 
           </p>
         </div>
       </div>
     </section>
-  );
-}
+
