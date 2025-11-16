@@ -1,7 +1,7 @@
 import { Github, Linkedin, Mail, ExternalLink, Award, ArrowDown, Phone } from "lucide-react";
 import { useMemo, useEffect } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
-import DataDragGame from "/datadraggame"; // 👈 fixed import
+import DataDragGame from "/home/project/src/components/DataDragGame.tsx"; // 👈 fixed import
 
 export default function Hero() {
   const roles = useMemo(() => ["Data Analyst", "Data Engineer", "Data Scientist"], []);
