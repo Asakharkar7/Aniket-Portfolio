@@ -30,7 +30,7 @@ const toolSets = [
     ],
     correct: {
       Excel: "Visualization",
-      Power BI: "Visualization",
+      PowerBI: "Visualization",
       R: "Analysis",
       MongoDB: "Storage",
       Airflow: "Storage",
