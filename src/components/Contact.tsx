@@ -87,7 +87,7 @@ export default function Contact() {
             <div className="flex gap-4 mt-6">
               {/* View Resume */}
               <a
-                href="/Aniket_Sakharkar_resume.pdf"
+                href={`${import.meta.env.BASE_URL}Aniket_Sakharkar_resume.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all"
@@ -98,7 +98,7 @@ export default function Contact() {
 
               {/* Download Resume */}
               <a
-                href="/Aniket_Sakharkar_resume.pdf"
+                href={`${import.meta.env.BASE_URL}Aniket_Sakharkar_resume.pdf`}
                 download="Aniket_Sakharkar_resume.pdf"
                 className="flex items-center gap-2 px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-all"
               >
