@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+
 export default function Projects() {
   const projectList = [
     {
@@ -7,11 +8,11 @@ export default function Projects() {
         'Built a model-time ML inference system using AWS Lambda and API Gateway to predict demand for a supply chain dataset.',
       link: 'https://github.com/Asakharkar7/supply-chain-disruption-radar',
       icons: [
-        { src: '/icons/snowflake.png', alt: 'Snowflake', size: 'w-12 h-12' },
-        { src: '/icons/databricks.png', alt: 'Databricks', size: 'w-12 h-12' },
-        { src: '/icons/docker.svg', alt: 'Docker', size: 'w-10 h-10' },
-        { src: '/icons/lambda.svg', alt: 'AWS Lambda', size: 'w-10 h-10' },
-        { src: '/icons/API.svg', alt: 'API Gateway', size: 'w-10 h-10' },
+        { src: 'icons/snowflake.png', alt: 'Snowflake', size: 'w-12 h-12' },
+        { src: 'icons/databricks.png', alt: 'Databricks', size: 'w-12 h-12' },
+        { src: 'icons/docker.svg', alt: 'Docker', size: 'w-10 h-10' },
+        { src: 'icons/lambda.svg', alt: 'AWS Lambda', size: 'w-10 h-10' },
+        { src: 'icons/API.svg', alt: 'API Gateway', size: 'w-10 h-10' },
       ],
     },
     {
@@ -20,8 +21,8 @@ export default function Projects() {
         'Developed an end-to-end serverless ETL pipeline using AWS Lambda, Python, and DynamoDB.',
       link: 'https://github.com/Asakharkar7/aws-serverless-etl-s3-lambda-dynamodb',
       icons: [
-        { src: '/icons/lambda.svg', alt: 'AWS Lambda', size: 'w-10 h-10' },
-        { src: '/icons/dynamo.svg', alt: 'DynamoDB', size: 'w-10 h-10' },
+        { src: 'icons/lambda.svg', alt: 'AWS Lambda', size: 'w-10 h-10' },
+        { src: 'icons/dynamo.svg', alt: 'DynamoDB', size: 'w-10 h-10' },
       ],
     },
     {
@@ -30,9 +31,9 @@ export default function Projects() {
         'Developed a model-time inference API using AWS Lambda and API Gateway to predict customer churn for low-latency prediction serving.',
       link: 'https://github.com/Asakharkar7/aws-serverless-ml-api-lambda-api',
       icons: [
-        { src: '/icons/lambda.svg', alt: 'AWS Lambda', size: 'w-10 h-10' },
-        { src: '/icons/API.svg', alt: 'API Gateway', size: 'w-10 h-10' },
-        { src: '/icons/scikit.png', alt: 'Scikit-learn', size: 'w-10 h-10' },
+        { src: 'icons/lambda.svg', alt: 'AWS Lambda', size: 'w-10 h-10' },
+        { src: 'icons/API.svg', alt: 'API Gateway', size: 'w-10 h-10' },
+        { src: 'icons/scikit.png', alt: 'Scikit-learn', size: 'w-10 h-10' },
       ],
     },
     {
@@ -41,8 +42,8 @@ export default function Projects() {
         'Designed and implemented an end-to-end Spark ETL pipeline on Databricks to process and analyze retail data for business insights.',
       link: 'https://github.com/Asakharkar7/databricks-retail-elt-pipeline',
       icons: [
-        { src: '/icons/databricks.png', alt: 'Databricks', size: 'w-12 h-12' },
-        { src: '/icons/deltalake.png', alt: 'Delta Lake', size: 'w-10 h-10' },
+        { src: 'icons/databricks.png', alt: 'Databricks', size: 'w-12 h-12' },
+        { src: 'icons/deltalake.png', alt: 'Delta Lake', size: 'w-10 h-10' },
       ],
     },
   ];
@@ -72,7 +73,7 @@ export default function Projects() {
                 {project.icons.map((icon, i) => (
                   <img
                     key={i}
-                    src={icon.src}
+                    src={`${import.meta.env.BASE_URL}${icon.src}`}
                     alt={icon.alt}
                     className={`${icon.size} object-contain`}
                   />
