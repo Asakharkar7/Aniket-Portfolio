@@ -80,8 +80,7 @@ export default function About() {
           </div>
           <p className="text-slate-700 leading-relaxed">
             Away from pipelines and dashboards, I focus on creating experiences that connect with people — interfaces that are intuitive, engaging, and a little bit magical.
-
-Beyond tech, I find joy in 🏏 cricket, experimenting with games, and diving into hobbies that challenge both mind and body. These pursuits remind me that creativity isn’t just about design — it’s about play, connection, and energy.
+            Beyond tech, I find joy in 🏏 cricket, experimenting with games, and diving into hobbies that challenge both mind and body. These pursuits remind me that creativity isn’t just about design — it’s about play, connection, and energy.
           </p>
         </div>
       </div>
