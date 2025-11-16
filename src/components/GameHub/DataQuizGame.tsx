@@ -20,32 +20,52 @@ const quizSets: Question[][] = [
   ],
 ];
 
+// Utility to shuffle array
+function shuffle<T>(array: T[]): T[] {
+  const copy = [...array];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
 export default function DataQuizGame() {
-  const [quizData, setQuizData] = useState<Question[]>(quizSets[0]);
+  const [setIndex, setSetIndex] = useState(0);
+  const [quizData, setQuizData] = useState<Question[]>(shuffle(quizSets[0]));
   const [current, setCurrent] = useState(0);
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
 
   const handleAnswer = (index: number) => {
     if (index === quizData[current].answer) setScore(score + 1);
+
     if (current + 1 < quizData.length) {
       setCurrent(current + 1);
     } else {
-      if (score + (index === quizData[current].answer ? 1 : 0) === quizData.length) {
-        const nextSet = quizSets[Math.floor(Math.random() * quizSets.length)];
-        setQuizData(nextSet);
-        setCurrent(0);
-        setScore(0);
-        setShowResult(false);
-      } else {
-        setShowResult(true);
-      }
+      setShowResult(true);
     }
+  };
+
+  const resetGame = () => {
+    if (score === quizData.length) {
+      // If perfect, move to next set (or loop back to first)
+      const nextIndex = (setIndex + 1) % quizSets.length;
+      setSetIndex(nextIndex);
+      setQuizData(shuffle(quizSets[nextIndex]));
+    } else {
+      // If not perfect, reload same set shuffled
+      setQuizData(shuffle(quizSets[setIndex]));
+    }
+    setCurrent(0);
+    setScore(0);
+    setShowResult(false);
   };
 
   return (
     <div className="p-6 bg-white rounded-lg shadow-lg">
       <h2 className="text-xl font-bold mb-4 text-center">🧠 Data Quiz</h2>
+
       {!showResult ? (
         <>
           <p className="mb-4">{quizData[current].question}</p>
@@ -60,7 +80,15 @@ export default function DataQuizGame() {
           ))}
         </>
       ) : (
-        <p className="text-center">🎉 You scored {score}/{quizData.length}</p>
+        <div className="text-center">
+          <p className="mb-4">🎉 You scored {score}/{quizData.length}</p>
+          <button
+            onClick={resetGame}
+            className="px-6 py-3 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition"
+          >
+            Play Again
+          </button>
+        </div>
       )}
     </div>
   );
