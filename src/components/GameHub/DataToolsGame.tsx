@@ -20,8 +20,8 @@ const correctCategories: Record<string, string> = {
 const categories = ["Storage", "Analysis", "Visualization"];
 
 export default function DataToolsDropGame() {
-  const [tools, setTools] = useState(initialTools);
   const [zones, setZones] = useState<Record<string, typeof initialTools>>({
+    toolbank: initialTools,
     Storage: [],
     Analysis: [],
     Visualization: [],
@@ -31,28 +31,16 @@ export default function DataToolsDropGame() {
     const { source, destination } = result;
     if (!destination) return;
 
-    // Dragging from tool list
-    if (source.droppableId === "toolbank") {
-      const dragged = tools[source.index];
-      const newTools = Array.from(tools);
-      newTools.splice(source.index, 1);
-      const newZone = Array.from(zones[destination.droppableId]);
-      newZone.splice(destination.index, 0, dragged);
-      setTools(newTools);
-      setZones({ ...zones, [destination.droppableId]: newZone });
-    }
-    // Dragging between zones
-    else {
-      const sourceZone = Array.from(zones[source.droppableId]);
-      const [moved] = sourceZone.splice(source.index, 1);
-      const destZone = Array.from(zones[destination.droppableId]);
-      destZone.splice(destination.index, 0, moved);
-      setZones({
-        ...zones,
-        [source.droppableId]: sourceZone,
-        [destination.droppableId]: destZone,
-      });
-    }
+    const sourceList = Array.from(zones[source.droppableId]);
+    const destList = Array.from(zones[destination.droppableId]);
+    const [moved] = sourceList.splice(source.index, 1);
+    destList.splice(destination.index, 0, moved);
+
+    setZones({
+      ...zones,
+      [source.droppableId]: sourceList,
+      [destination.droppableId]: destList,
+    });
   };
 
   const checkAnswers = () => {
@@ -75,9 +63,9 @@ export default function DataToolsDropGame() {
             <div
               ref={provided.innerRef}
               {...provided.droppableProps}
-              className="flex gap-4 mb-6 flex-wrap justify-center"
+              className="flex gap-4 mb-6 flex-wrap justify-center min-h-[80px] bg-slate-50 p-4 rounded-lg"
             >
-              {tools.map((tool, index) => (
+              {zones.toolbank.map((tool, index) => (
                 <Draggable key={tool.id} draggableId={tool.id} index={index}>
                   {(provided) => (
                     <div
