@@ -2,7 +2,6 @@ import { Github, Linkedin, Mail, ExternalLink, Award, ArrowDown, Phone } from 'l
 import { useMemo, useEffect } from 'react';
 import { useTypewriter } from '../hooks/useTypewriter';
 import DataVizGame from "./DataVizGame"; // adjust path if needed
-import DataVizGame from "./DataVizGame"; // adjust path if needed
 
 
 export default function Hero() {
