@@ -1,14 +1,21 @@
 import { useState } from "react";
 import { DragDropContext, Droppable, Draggable, DropResult } from "@hello-pangea/dnd";
 
-const initialItems = [
-  { id: "1", name: "India", population: 1393 },
-  { id: "2", name: "USA", population: 331 },
-  { id: "3", name: "Brazil", population: 213 },
+const sortSets = [
+  [
+    { id: "1", name: "India", population: 1393 },
+    { id: "2", name: "USA", population: 331 },
+    { id: "3", name: "Brazil", population: 213 },
+  ],
+  [
+    { id: "1", name: "China", population: 1440 },
+    { id: "2", name: "Indonesia", population: 276 },
+    { id: "3", name: "Pakistan", population: 225 },
+  ],
 ];
 
 export default function DataSortGame() {
-  const [items, setItems] = useState(initialItems);
+  const [items, setItems] = useState(sortSets[0]);
   const [score, setScore] = useState<number | null>(null);
 
   const handleDragEnd = (result: DropResult) => {
@@ -20,16 +27,22 @@ export default function DataSortGame() {
   };
 
   const checkOrder = () => {
-    const correct = [...initialItems].sort((a, b) => b.population - a.population);
+    const correct = [...items].sort((a, b) => b.population - a.population);
     let points = 0;
     items.forEach((item, i) => {
       if (item.id === correct[i].id) points++;
     });
     setScore(points);
+
+    if (points === items.length) {
+      const nextSet = sortSets[Math.floor(Math.random() * sortSets.length)];
+      setItems(nextSet);
+      setScore(null);
+    }
   };
 
   const resetGame = () => {
-    setItems(initialItems);
+    setItems(sortSets[0]);
     setScore(null);
   };
 
