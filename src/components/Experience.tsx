@@ -7,7 +7,7 @@ export default function ExperienceTimeline() {
       title: 'Data Analyst',
       company: 'KGS Technology, USA',
       period: 'Feb 2025 - Aug 2025',
-      logo: '/logos/kgs.png',
+      logo: 'logos/kgs.png',
       achievements: [
         'Built Power BI dashboards to track service quality, regional performance, AOV, and delivery efficiency across 4 regions and 17 product categories',
         'Analyzed 500K+ operational transactions using SQL, improving data accuracy by 30% and reducing reporting discrepancies',
@@ -20,7 +20,7 @@ export default function ExperienceTimeline() {
       title: 'Data Analyst',
       company: 'Rebecca Everlene Trust Company, USA',
       period: 'Feb 2024 - Jan 2025',
-      logo: '/logos/retc.png',
+      logo: 'logos/retc.png',
       achievements: [
         'Built operational dashboards in Power BI to monitor program engagement, completion rates, and satisfaction metrics for 1,083 students',
         'Consolidated CRM + attendance data (10K+ rows/month) using SQL, improving data consistency by 35% and reducing manual cleanup',
@@ -33,7 +33,7 @@ export default function ExperienceTimeline() {
       title: 'Data Analyst Intern',
       company: 'State Farm Insurance, USA',
       period: 'May 2023 - Aug 2023',
-      logo: '/logos/sf.png',
+      logo: 'logos/sf.png',
       achievements: [
         "Enhanced health policy analysis efficiency by 15% through advanced data extraction and analysis of prior year's health data using DBeaver",
         'Automated SQL query execution and report generation, increasing accuracy by 64% and reducing manual intervention',
@@ -61,7 +61,11 @@ export default function ExperienceTimeline() {
             >
               <div className="flex items-start gap-4 mb-4">
                 <div className="w-16 h-16 p-2 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <img src={exp.logo} alt="company-logo" className="w-full h-full object-contain" />
+                  <img
+                    src={`${import.meta.env.BASE_URL}${exp.logo}`}
+                    alt="company-logo"
+                    className="w-full h-full object-contain"
+                  />
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-slate-900">{exp.title}</h3>
