@@ -1,6 +1,7 @@
 import { Github, Linkedin, Mail, ExternalLink, Award, ArrowDown, Phone } from "lucide-react";
 import { useMemo, useEffect } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
+import DataQuizGame from "./DataQuizGame"; // 👈 import quiz
 
 export default function Hero() {
   const roles = useMemo(() => ["Data Analyst", "Data Engineer", "Data Scientist"], []);
@@ -11,7 +12,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-animated-gradient">
+    <section className="relative min-h-screen flex flex-col items-center overflow-hidden bg-animated-gradient">
       {/* Semi-transparent overlay */}
       <div className="absolute inset-0 bg-white/70 -z-0" />
 
@@ -109,6 +110,11 @@ export default function Hero() {
             >
               <ArrowDown size={32} />
             </a>
+          </div>
+
+          {/* Embedded Quiz */}
+          <div className="mt-12">
+            <DataQuizGame />
           </div>
         </div>
       </div>
