@@ -3,7 +3,7 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Suspense } from "react";
 
 function AvatarModel() {
-  const { scene } = useGLTF("/models/desk-avatar.glb");
+  const { scene } = useGLTF("./models/desk-avatar.glb");
   return <primitive object={scene} scale={1.5} />;
 }
 
