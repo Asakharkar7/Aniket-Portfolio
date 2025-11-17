@@ -9,14 +9,14 @@ import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
-import MouseTrail from "./components/MouseTrail"; // 👈 NEW import
+import MouseTrail from "./components/MouseTrail"; // ✅ portal-based trail
 
 function App() {
   const [entered, setEntered] = useState(false);
 
   return (
-    <div className="min-h-screen bg-slate-50 scroll-smooth relative">
-      {/* Global interactive mouse trail */}
+    <div className="min-h-screen bg-slate-50 scroll-smooth">
+      {/* Global mouse trail overlay (covers entire site) */}
       <MouseTrail />
 
       {!entered ? (
@@ -24,7 +24,7 @@ function App() {
       ) : (
         <>
           <Navigation />
-          <Hero /> {/* 👈 Hero includes your interactive game */}
+          <Hero />
           <StatsSection />
           <Highlights />
           <About />
