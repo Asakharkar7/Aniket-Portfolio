@@ -2,24 +2,24 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Suspense, useEffect } from "react";
 
-function TestGLB() {
-  const { scene } = useGLTF("/models/Duck.glb"); // or Avocado.glb
+function DuckModel() {
+  const { scene } = useGLTF("/models/Duck.glb");
 
   useEffect(() => {
-    console.log("✅ Test GLB loaded:", scene);
+    console.log("✅ Duck model loaded:", scene);
   }, [scene]);
 
   return <primitive object={scene} scale={2} />;
 }
 
-export default function TestModel() {
+export default function DuckScene() {
   return (
-    <div style={{ width: "100%", height: "500px", background: "#f8fafc" }}>
+    <div style={{ width: "100%", height: "400px", background: "#f8fafc" }}>
       <Canvas camera={{ position: [0, 2, 5], fov: 45 }}>
         <ambientLight intensity={0.6} />
         <directionalLight position={[5, 5, 5]} intensity={1} />
         <Suspense fallback={<mesh><boxGeometry /><meshStandardMaterial color="gray" /></mesh>}>
-          <TestGLB />
+          <DuckModel />
         </Suspense>
         <OrbitControls />
       </Canvas>
