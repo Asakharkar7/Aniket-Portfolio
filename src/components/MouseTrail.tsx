@@ -14,7 +14,6 @@ export default function MouseTrail() {
       dot.style.top = `${y}px`;
       trail.appendChild(dot);
 
-      // remove after 600ms
       setTimeout(() => {
         dot.remove();
       }, 600);
@@ -31,7 +30,7 @@ export default function MouseTrail() {
   return (
     <div
       ref={trailRef}
-      className="fixed inset-0 pointer-events-none z-50"
+      className="fixed inset-0 pointer-events-none z-[9999]" // 👈 covers full screen
     />
   );
 }
