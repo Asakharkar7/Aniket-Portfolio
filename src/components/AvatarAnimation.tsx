@@ -1,6 +1,6 @@
 import Lottie from "react-lottie-player";
 import { motion } from "framer-motion";
-import deskAnimation from "../assets/desk.json"; // 👈 your downloaded file
+import deskAnimation from "../assests/desk.json"; // 👈 your downloaded file
 
 export default function AvatarAnimation() {
   return (
