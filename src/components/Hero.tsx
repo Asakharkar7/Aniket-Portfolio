@@ -2,7 +2,7 @@ import { Github, Linkedin, Mail, ExternalLink, Award, ArrowDown, Phone } from "l
 import { useMemo, useEffect } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
 import GameHubMenu from "./GameHub/GameHubMenu.tsx";
-import DataWorkScene from "./DataWorkScene";
+import DeskScene from "./DeskScene";
 
 export default function Hero() {
   const roles = useMemo(() => ["Data Analyst", "Data Engineer", "Data Scientist"], []);
@@ -76,11 +76,6 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* 3D Data Work Scene */}
-          <div className="my-12 max-w-3xl mx-auto">
-            <DataWorkScene />
-          </div>
-
           {/* CTA Button */}
           <a href="#contact" className="inline-flex items-center gap-2 px-8 py-4 bg-slate-900 text-white rounded-lg hover:bg-slate-800 hover:shadow-xl hover:animate-glow transition-all duration-300 text-lg font-medium animate-slide-up">
             Get In Touch <ExternalLink size={20} />
@@ -91,6 +86,11 @@ export default function Hero() {
             <a href="#about" className="inline-block text-slate-400 hover:text-blue-600 transition-colors">
               <ArrowDown size={32} />
             </a>
+          </div>
+
+          {/* 🎨 3D Desk Scene */}
+          <div className="mt-20 flex justify-center">
+            <DeskScene />
           </div>
 
           {/* 🎮 GameHub Menu */}
