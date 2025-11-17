@@ -2,7 +2,7 @@ import { Github, Linkedin, Mail, ExternalLink, Award, ArrowDown, Phone } from "l
 import { useMemo, useEffect } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
 import GameHubMenu from "./GameHub/GameHubMenu.tsx";
-import AvatarAnimation from "./AvatarAnimation"; // 👈 new avatar animation component
+import Avatar3D from "./Avatar3D"; // 👈 new 3D avatar
 
 export default function Hero() {
   const roles = useMemo(() => ["Data Analyst", "Data Engineer", "Data Scientist"], []);
@@ -88,9 +88,9 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* 🎨 Avatar Animation with Floating Charts */}
+          {/* 🎨 3D Avatar with Floating Charts */}
           <div className="mt-20 flex justify-center">
-            <AvatarAnimation />
+            <Avatar3D />
           </div>
 
           {/* 🎮 GameHub Menu */}
