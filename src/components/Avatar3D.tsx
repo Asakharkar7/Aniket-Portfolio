@@ -1,13 +1,12 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
+import { Suspense } from "react";
 
 function AvatarModel() {
-  // Load your GLB model
   const { scene } = useGLTF("/models/desk-avatar.glb");
   return <primitive object={scene} scale={1.5} />;
 }
 
-// Simple floating chart blocks
 function FloatingChart({ position, color }: { position: [number, number, number], color: string }) {
   return (
     <mesh position={position}>
@@ -24,13 +23,12 @@ export default function Avatar3D() {
         <ambientLight intensity={0.8} />
         <directionalLight position={[5, 5, 5]} intensity={1} />
 
-        {/* Avatar at desk */}
-        <AvatarModel />
-
-        {/* Floating charts */}
-        <FloatingChart position={[2, 1, 0]} color="blue" />
-        <FloatingChart position={[-2, 1.5, -1]} color="green" />
-        <FloatingChart position={[0, 2, 2]} color="purple" />
+        <Suspense fallback={null}>
+          <AvatarModel />
+          <FloatingChart position={[2, 1, 0]} color="blue" />
+          <FloatingChart position={[-2, 1.5, -1]} color="green" />
+          <FloatingChart position={[0, 2, 2]} color="purple" />
+        </Suspense>
 
         <OrbitControls enableZoom={false} />
       </Canvas>
