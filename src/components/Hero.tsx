@@ -2,6 +2,7 @@ import { Github, Linkedin, Mail, ExternalLink, Award, ArrowDown, Phone } from "l
 import { useMemo, useEffect } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
 import GameHubMenu from "./GameHub/GameHubMenu.tsx";
+import DataWorkScene from "./DataWorkScene";
 
 export default function Hero() {
   const roles = useMemo(() => ["Data Analyst", "Data Engineer", "Data Scientist"], []);
@@ -73,6 +74,11 @@ export default function Hero() {
               className="inline-flex items-center gap-2 px-6 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
               <Award size={20} /> Kaggle
             </a>
+          </div>
+
+          {/* 3D Data Work Scene */}
+          <div className="my-12 max-w-3xl mx-auto">
+            <DataWorkScene />
           </div>
 
           {/* CTA Button */}
