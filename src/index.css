@@ -42,6 +42,15 @@
   100% { background-position: 0% 50%; }
 }
 
+/* NEW: Color cycle for mouse dot */
+@keyframes colorCycle {
+  0%   { background: #3b82f6; }   /* blue */
+  25%  { background: #9333ea; }   /* purple */
+  50%  { background: #f59e0b; }   /* amber */
+  75%  { background: #10b981; }   /* emerald */
+  100% { background: #ef4444; }   /* red */
+}
+
 /* ---------------- Backgrounds ---------------- */
 
 .bg-animated-gradient {
@@ -89,21 +98,15 @@
 
 /* ---------------- Mouse Trail Dot ---------------- */
 
-/* Default single dot */
 #mouse-trail-dot {
   position: fixed;
-  width: 12px;
-  height: 12px;
-  background: #3b82f6; /* Tailwind blue-500 */
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   pointer-events: none;
   z-index: 99999;
-  box-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+  transform: translate(-50%, -50%);
   transition: transform 0.08s ease-out;
-}
-
-/* Optional rainbow dot */
-#mouse-trail-dot.rainbow {
-  background: linear-gradient(45deg, #f87171, #fbbf24, #34d399, #60a5fa, #a78bfa, #f472b6);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+  animation: colorCycle 4s linear infinite; /* 👈 cycles colors */
 }
