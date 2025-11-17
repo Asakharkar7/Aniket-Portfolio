@@ -104,7 +104,7 @@
   position: absolute;
   width: 12px;
   height: 12px;
-  background: #3b82f6; /* Tailwind blue-500 */
+  background: #3b82f6;
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
