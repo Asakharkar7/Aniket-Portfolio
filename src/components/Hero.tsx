@@ -2,7 +2,7 @@ import { Github, Linkedin, Mail, ExternalLink, Award, ArrowDown, Phone } from "l
 import { useMemo, useEffect } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
 import GameHubMenu from "./GameHub/GameHubMenu.tsx";
-import Avatar3D from "./Avatar3D.tsx"; // 👈 new 3D avatar
+import Avatar3D from "./Avatar3D"; // 👈 debug version with cube + logging
 
 export default function Hero() {
   const roles = useMemo(() => ["Data Analyst", "Data Engineer", "Data Scientist"], []);
@@ -87,12 +87,11 @@ export default function Hero() {
               <ArrowDown size={32} />
             </a>
           </div>
-          
-          {/* 🎨 Avatar3D */}
-          <div className="mt-20 flex justify-center"> 
+
+          {/* 🎨 Debug 3D Avatar */}
+          <div className="mt-20 flex justify-center">
             <Avatar3D />
           </div>
-
 
           {/* 🎮 GameHub Menu */}
           <div className="mt-20">
