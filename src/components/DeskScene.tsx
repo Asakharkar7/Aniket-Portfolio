@@ -18,7 +18,7 @@ export default function DeskScene() {
       <Canvas camera={{ position: [0, 2, 5], fov: 45 }}>
         <ambientLight intensity={0.6} />
         <directionalLight position={[5, 5, 5]} intensity={1} />
-        <Suspense fallback={null}>
+        <Suspense fallback={<mesh><boxGeometry /><meshStandardMaterial color="gray" /></mesh>}>
           <DeskModel />
         </Suspense>
         <OrbitControls enableZoom={false} />
