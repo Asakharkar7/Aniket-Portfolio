@@ -9,14 +9,15 @@ import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
-import MouseTrail from "./components/MouseTrail"; // ✅ portal-based trail
+import MouseTrail from "./components/MouseTrail";
 
 function App() {
   const [entered, setEntered] = useState(false);
 
   return (
     <div className="min-h-screen bg-slate-50 scroll-smooth">
-      <MouseTrail /> {/* ✅ now works across entire site */}
+      {/* Global, portal-based mouse trail */}
+      <MouseTrail />
 
       {!entered ? (
         <Landing onEnter={() => setEntered(true)} />
