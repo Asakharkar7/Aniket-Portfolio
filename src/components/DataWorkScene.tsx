@@ -10,7 +10,7 @@ export default function DataWorkScene() {
     // Scene setup
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0xf8fafc);
-    scene.fog = new THREE.Fog(0xf8fafc, 50, 100);
+    scene.fog = new THREE.Fog(0xf8fafc, 100, 200);
 
     const camera = new THREE.PerspectiveCamera(
       75,
@@ -18,7 +18,7 @@ export default function DataWorkScene() {
       0.1,
       1000
     );
-    camera.position.set(0, 2, 5);
+    camera.position.set(0, 1, 3.5);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(containerRef.current.clientWidth, containerRef.current.clientHeight);
@@ -27,225 +27,264 @@ export default function DataWorkScene() {
     containerRef.current.appendChild(renderer.domElement);
 
     // Lighting
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
     scene.add(ambientLight);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-    directionalLight.position.set(5, 10, 7);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.9);
+    directionalLight.position.set(8, 12, 8);
     directionalLight.castShadow = true;
     directionalLight.shadow.mapSize.width = 2048;
     directionalLight.shadow.mapSize.height = 2048;
+    directionalLight.shadow.camera.left = -10;
+    directionalLight.shadow.camera.right = 10;
+    directionalLight.shadow.camera.top = 10;
+    directionalLight.shadow.camera.bottom = -10;
     scene.add(directionalLight);
 
-    // Desk
-    const deskGeometry = new THREE.BoxGeometry(4, 0.1, 2);
-    const deskMaterial = new THREE.MeshStandardMaterial({ color: 0x8b7355, metalness: 0.3, roughness: 0.8 });
-    const desk = new THREE.Mesh(deskGeometry, deskMaterial);
-    desk.position.y = 1;
-    desk.castShadow = true;
-    desk.receiveShadow = true;
-    scene.add(desk);
+    // Ground
+    const groundGeometry = new THREE.PlaneGeometry(30, 30);
+    const groundMaterial = new THREE.MeshStandardMaterial({ color: 0xf1f5f9, metalness: 0, roughness: 1 });
+    const ground = new THREE.Mesh(groundGeometry, groundMaterial);
+    ground.rotation.x = -Math.PI / 2;
+    ground.receiveShadow = true;
+    scene.add(ground);
 
-    // Desk legs
-    const legGeometry = new THREE.BoxGeometry(0.1, 1, 0.1);
-    const legMaterial = new THREE.MeshStandardMaterial({ color: 0x5c4033, metalness: 0.4, roughness: 0.8 });
-    const positions = [
-      [-1.8, 0.5, -0.8],
-      [1.8, 0.5, -0.8],
-      [-1.8, 0.5, 0.8],
-      [1.8, 0.5, 0.8],
-    ];
-    positions.forEach((pos) => {
-      const leg = new THREE.Mesh(legGeometry, legMaterial);
-      leg.position.set(...(pos as [number, number, number]));
-      leg.castShadow = true;
-      leg.receiveShadow = true;
-      scene.add(leg);
-    });
+    // Chair base
+    const chairBaseGeometry = new THREE.CylinderGeometry(0.35, 0.35, 0.1, 32);
+    const chairMaterial = new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.6, roughness: 0.4 });
+    const chairBase = new THREE.Mesh(chairBaseGeometry, chairMaterial);
+    chairBase.position.y = 0.05;
+    chairBase.castShadow = true;
+    chairBase.receiveShadow = true;
+    scene.add(chairBase);
 
-    // Monitor
-    const monitorScreenGeometry = new THREE.BoxGeometry(1.6, 1, 0.05);
-    const monitorMaterial = new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.8, roughness: 0.2 });
-    const monitor = new THREE.Mesh(monitorScreenGeometry, monitorMaterial);
-    monitor.position.set(0.8, 2.2, 0.5);
-    monitor.rotation.z = -0.2;
-    monitor.castShadow = true;
-    monitor.receiveShadow = true;
-    scene.add(monitor);
-
-    // Monitor stand
-    const standGeometry = new THREE.BoxGeometry(0.15, 0.4, 0.15);
-    const stand = new THREE.Mesh(standGeometry, legMaterial);
-    stand.position.set(0.8, 1.6, 0.5);
-    stand.castShadow = true;
-    scene.add(stand);
-
-    // Monitor bezel
-    const bezelGeometry = new THREE.BoxGeometry(1.8, 1.2, 0.02);
-    const bezelMaterial = new THREE.MeshStandardMaterial({ color: 0x0f172a, metalness: 0.7, roughness: 0.3 });
-    const bezel = new THREE.Mesh(bezelGeometry, bezelMaterial);
-    bezel.position.set(0.8, 2.2, 0.48);
-    bezel.castShadow = true;
-    scene.add(bezel);
-
-    // Canvas texture for monitor display (animated)
-    const canvas = document.createElement('canvas');
-    canvas.width = 800;
-    canvas.height = 500;
-    const ctx = canvas.getContext('2d');
-    if (ctx) {
-      ctx.fillStyle = '#e0e7ff';
-      ctx.fillRect(0, 0, 800, 500);
-
-      // Draw animated chart
-      ctx.strokeStyle = '#3b82f6';
-      ctx.lineWidth = 3;
-      ctx.beginPath();
-      for (let i = 0; i < 100; i++) {
-        const x = (i / 100) * 750 + 25;
-        const y = 450 - Math.sin(i / 20 + Date.now() / 2000) * 100 - 50;
-        if (i === 0) ctx.moveTo(x, y);
-        else ctx.lineTo(x, y);
-      }
-      ctx.stroke();
-
-      // Draw bars
-      ctx.fillStyle = '#06b6d4';
-      for (let i = 0; i < 8; i++) {
-        const height = Math.sin(i + Date.now() / 3000) * 80 + 100;
-        ctx.fillRect(100 + i * 80, 350 - height, 60, height);
-      }
+    // Chair wheels/legs (5 points)
+    for (let i = 0; i < 5; i++) {
+      const angle = (i / 5) * Math.PI * 2;
+      const wheelGeometry = new THREE.SphereGeometry(0.08, 16, 16);
+      const wheel = new THREE.Mesh(wheelGeometry, chairMaterial);
+      wheel.position.set(Math.cos(angle) * 0.3, 0.08, Math.sin(angle) * 0.3);
+      wheel.castShadow = true;
+      scene.add(wheel);
     }
 
-    const texture = new THREE.CanvasTexture(canvas);
-    texture.magFilter = THREE.LinearFilter;
-    texture.minFilter = THREE.LinearFilter;
+    // Chair seat
+    const seatGeometry = new THREE.BoxGeometry(0.5, 0.08, 0.5);
+    const seatMaterial = new THREE.MeshStandardMaterial({ color: 0x0f172a, metalness: 0.3, roughness: 0.7 });
+    const seat = new THREE.Mesh(seatGeometry, seatMaterial);
+    seat.position.y = 0.45;
+    seat.castShadow = true;
+    seat.receiveShadow = true;
+    scene.add(seat);
 
-    const screenGeometry = new THREE.BoxGeometry(1.5, 0.95, 0.03);
-    const screenMaterial = new THREE.MeshStandardMaterial({ map: texture, metalness: 0, roughness: 0 });
-    const screen = new THREE.Mesh(screenGeometry, screenMaterial);
-    screen.position.set(0.8, 2.2, 0.52);
-    screen.castShadow = true;
-    scene.add(screen);
+    // Chair backrest
+    const backrestGeometry = new THREE.BoxGeometry(0.5, 0.6, 0.1);
+    const backrest = new THREE.Mesh(backrestGeometry, seatMaterial);
+    backrest.position.set(0, 1, -0.15);
+    backrest.castShadow = true;
+    backrest.receiveShadow = true;
+    scene.add(backrest);
 
-    // Keyboard
-    const keyboardGeometry = new THREE.BoxGeometry(1.5, 0.05, 0.4);
-    const keyboardMaterial = new THREE.MeshStandardMaterial({ color: 0x374151, metalness: 0.5, roughness: 0.7 });
-    const keyboard = new THREE.Mesh(keyboardGeometry, keyboardMaterial);
-    keyboard.position.set(-0.3, 1.05, 0.3);
-    keyboard.castShadow = true;
-    keyboard.receiveShadow = true;
-    scene.add(keyboard);
+    // Chair armrests
+    for (let i = -1; i <= 1; i += 2) {
+      const armrestGeometry = new THREE.BoxGeometry(0.1, 0.3, 0.3);
+      const armrest = new THREE.Mesh(armrestGeometry, seatMaterial);
+      armrest.position.set(i * 0.3, 0.65, 0);
+      armrest.castShadow = true;
+      armrest.receiveShadow = true;
+      scene.add(armrest);
+    }
 
-    // Mouse
-    const mouseGeometry = new THREE.BoxGeometry(0.25, 0.15, 0.35);
-    const mouseMaterial = new THREE.MeshStandardMaterial({ color: 0x4b5563, metalness: 0.6, roughness: 0.6 });
-    const mouse = new THREE.Mesh(mouseGeometry, mouseMaterial);
-    mouse.position.set(1.2, 1.05, -0.1);
-    mouse.rotation.z = 0.3;
-    mouse.castShadow = true;
-    mouse.receiveShadow = true;
-    scene.add(mouse);
+    // Create person sitting on chair
+    // Torso
+    const torsoGeometry = new THREE.BoxGeometry(0.3, 0.5, 0.25);
+    const clothesMaterial = new THREE.MeshStandardMaterial({ color: 0x3b82f6, metalness: 0.1, roughness: 0.9 });
+    const torso = new THREE.Mesh(torsoGeometry, clothesMaterial);
+    torso.position.set(0, 1.1, 0.05);
+    torso.castShadow = true;
+    torso.receiveShadow = true;
+    scene.add(torso);
 
-    // Notebook
-    const notebookGeometry = new THREE.BoxGeometry(0.4, 0.01, 0.5);
-    const notebookMaterial = new THREE.MeshStandardMaterial({ color: 0xdc2626, metalness: 0.2, roughness: 0.8 });
-    const notebook = new THREE.Mesh(notebookGeometry, notebookMaterial);
-    notebook.position.set(-1.4, 1.15, 0.4);
-    notebook.rotation.z = 0.2;
-    notebook.castShadow = true;
-    notebook.receiveShadow = true;
-    scene.add(notebook);
-
-    // Coffee cup
-    const cupGeometry = new THREE.CylinderGeometry(0.12, 0.15, 0.25, 32);
-    const cupMaterial = new THREE.MeshStandardMaterial({ color: 0xf59e0b, metalness: 0.3, roughness: 0.6 });
-    const cup = new THREE.Mesh(cupGeometry, cupMaterial);
-    cup.position.set(1.6, 1.15, 0.8);
-    cup.castShadow = true;
-    cup.receiveShadow = true;
-    scene.add(cup);
-
-    // Cup handle
-    const handleGeometry = new THREE.TorusGeometry(0.12, 0.03, 16, 100);
-    const handle = new THREE.Mesh(handleGeometry, cupMaterial);
-    handle.position.set(1.75, 1.2, 0.8);
-    handle.rotation.y = Math.PI / 2;
-    scene.add(handle);
-
-    // Simple person (head + body)
-    const headGeometry = new THREE.SphereGeometry(0.3, 32, 32);
+    // Neck
+    const neckGeometry = new THREE.CylinderGeometry(0.08, 0.08, 0.1, 16);
     const skinMaterial = new THREE.MeshStandardMaterial({ color: 0xf4a460, metalness: 0.2, roughness: 0.8 });
+    const neck = new THREE.Mesh(neckGeometry, skinMaterial);
+    neck.position.set(0, 1.4, 0.05);
+    neck.castShadow = true;
+    scene.add(neck);
+
+    // Head
+    const headGeometry = new THREE.SphereGeometry(0.2, 32, 32);
     const head = new THREE.Mesh(headGeometry, skinMaterial);
-    head.position.set(-0.5, 2.8, 0);
+    head.position.set(0, 1.65, 0.05);
     head.castShadow = true;
     scene.add(head);
 
-    // Body
-    const bodyGeometry = new THREE.BoxGeometry(0.4, 0.8, 0.25);
-    const bodyMaterial = new THREE.MeshStandardMaterial({ color: 0x1e40af, metalness: 0.1, roughness: 0.9 });
-    const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
-    body.position.set(-0.5, 1.9, 0);
-    body.castShadow = true;
-    scene.add(body);
+    // Hair
+    const hairGeometry = new THREE.SphereGeometry(0.22, 32, 32);
+    const hairMaterial = new THREE.MeshStandardMaterial({ color: 0x3d2817, metalness: 0.1, roughness: 0.9 });
+    const hair = new THREE.Mesh(hairGeometry, hairMaterial);
+    hair.position.set(0, 1.65, 0.05);
+    hair.scale.y = 1.1;
+    hair.castShadow = true;
+    scene.add(hair);
 
-    // Arms
-    const armGeometry = new THREE.BoxGeometry(0.1, 0.6, 0.1);
-    const armMaterial = new THREE.MeshStandardMaterial({ color: 0xf4a460, metalness: 0.2, roughness: 0.8 });
-
+    // Left arm
+    const armGeometry = new THREE.BoxGeometry(0.12, 0.45, 0.1);
+    const armMaterial = new THREE.MeshStandardMaterial({ color: 0x1f2937, metalness: 0.2, roughness: 0.8 });
     const leftArm = new THREE.Mesh(armGeometry, armMaterial);
-    leftArm.position.set(-0.75, 1.8, -0.2);
-    leftArm.rotation.z = 0.5;
+    leftArm.position.set(-0.25, 1, 0.05);
+    leftArm.rotation.z = 0.4;
     leftArm.castShadow = true;
     scene.add(leftArm);
 
+    // Right arm
     const rightArm = new THREE.Mesh(armGeometry, armMaterial);
-    rightArm.position.set(-0.25, 1.8, 0.2);
-    rightArm.rotation.z = -0.8;
+    rightArm.position.set(0.25, 1, 0.05);
+    rightArm.rotation.z = -0.6;
     rightArm.castShadow = true;
     scene.add(rightArm);
+
+    // Left hand
+    const handGeometry = new THREE.SphereGeometry(0.06, 16, 16);
+    const leftHand = new THREE.Mesh(handGeometry, skinMaterial);
+    leftHand.position.set(-0.35, 0.7, 0.05);
+    leftHand.castShadow = true;
+    scene.add(leftHand);
+
+    // Right hand
+    const rightHand = new THREE.Mesh(handGeometry, skinMaterial);
+    rightHand.position.set(0.35, 0.65, 0.05);
+    rightHand.castShadow = true;
+    scene.add(rightHand);
+
+    // Left leg
+    const legGeometry = new THREE.BoxGeometry(0.15, 0.5, 0.15);
+    const legMaterial = new THREE.MeshStandardMaterial({ color: 0x111827, metalness: 0.1, roughness: 0.9 });
+    const leftLeg = new THREE.Mesh(legGeometry, legMaterial);
+    leftLeg.position.set(-0.12, 0.4, 0.15);
+    leftLeg.castShadow = true;
+    scene.add(leftLeg);
+
+    // Right leg
+    const rightLeg = new THREE.Mesh(legGeometry, legMaterial);
+    rightLeg.position.set(0.12, 0.4, 0.15);
+    rightLeg.castShadow = true;
+    scene.add(rightLeg);
+
+    // Laptop on lap
+    const laptopBaseGeometry = new THREE.BoxGeometry(0.6, 0.02, 0.4);
+    const laptopMaterial = new THREE.MeshStandardMaterial({ color: 0x1a1a1a, metalness: 0.5, roughness: 0.5 });
+    const laptopBase = new THREE.Mesh(laptopBaseGeometry, laptopMaterial);
+    laptopBase.position.set(0, 0.75, 0.2);
+    laptopBase.rotation.x = -0.4;
+    laptopBase.castShadow = true;
+    scene.add(laptopBase);
+
+    // Laptop screen
+    const screenGeometry = new THREE.BoxGeometry(0.55, 0.35, 0.02);
+    const screenMaterial = new THREE.MeshStandardMaterial({ color: 0x0d0d0d, metalness: 0.7, roughness: 0.3 });
+    const screen = new THREE.Mesh(screenGeometry, screenMaterial);
+    screen.position.set(0, 1, 0.15);
+    screen.rotation.x = -0.45;
+    screen.castShadow = true;
+    scene.add(screen);
+
+    // Screen glow
+    const glowGeometry = new THREE.BoxGeometry(0.52, 0.32, 0.01);
+    const glowCanvas = document.createElement('canvas');
+    glowCanvas.width = 400;
+    glowCanvas.height = 300;
+    const glowCtx = glowCanvas.getContext('2d');
+
+    if (glowCtx) {
+      glowCtx.fillStyle = '#0a2e4a';
+      glowCtx.fillRect(0, 0, 400, 300);
+
+      // Draw animated graphs on screen
+      glowCtx.strokeStyle = '#3b82f6';
+      glowCtx.lineWidth = 2;
+      glowCtx.beginPath();
+      for (let i = 0; i < 100; i++) {
+        const x = (i / 100) * 380 + 10;
+        const y = 250 - Math.sin(i / 15 + Date.now() / 2000) * 80 - 40;
+        if (i === 0) glowCtx.moveTo(x, y);
+        else glowCtx.lineTo(x, y);
+      }
+      glowCtx.stroke();
+
+      // Draw bars
+      glowCtx.fillStyle = '#06b6d4';
+      for (let i = 0; i < 6; i++) {
+        const height = Math.sin(i + Date.now() / 3000) * 50 + 70;
+        glowCtx.fillRect(50 + i * 55, 200 - height, 40, height);
+      }
+
+      // Draw some dots
+      glowCtx.fillStyle = '#f59e0b';
+      for (let i = 0; i < 8; i++) {
+        const x = 50 + (i % 4) * 80;
+        const y = 80 + Math.floor(i / 4) * 70;
+        glowCtx.fillRect(x, y, 8, 8);
+      }
+    }
+
+    const glowTexture = new THREE.CanvasTexture(glowCanvas);
+    glowTexture.magFilter = THREE.LinearFilter;
+    glowTexture.minFilter = THREE.LinearFilter;
+
+    const glowMaterial = new THREE.MeshStandardMaterial({ map: glowTexture, metalness: 0, roughness: 0 });
+    const glowScreen = new THREE.Mesh(glowGeometry, glowMaterial);
+    glowScreen.position.set(0, 1, 0.17);
+    glowScreen.rotation.x = -0.45;
+    scene.add(glowScreen);
 
     // Animation loop
     let animationFrameId: number;
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
 
-      // Rotate scene slightly
-      scene.rotation.y += 0.0005;
+      // Gentle camera orbit
+      const time = Date.now() * 0.0003;
+      camera.position.x = Math.sin(time) * 1.5;
+      camera.position.z = 3.5 + Math.cos(time) * 0.8;
 
-      // Update monitor display
-      if (ctx) {
-        ctx.fillStyle = '#e0e7ff';
-        ctx.fillRect(0, 0, 800, 500);
+      // Arm animation (working)
+      leftArm.rotation.z = 0.4 + Math.sin(Date.now() / 800) * 0.25;
+      rightArm.rotation.z = -0.6 - Math.sin(Date.now() / 700) * 0.3;
 
-        // Animated line chart
-        ctx.strokeStyle = '#3b82f6';
-        ctx.lineWidth = 3;
-        ctx.beginPath();
+      // Hand animation
+      leftHand.position.y = 0.7 + Math.sin(Date.now() / 800) * 0.1;
+      rightHand.position.y = 0.65 + Math.sin(Date.now() / 900 + 0.5) * 0.12;
+
+      // Head slight bobbing/thinking
+      head.rotation.y = Math.sin(Date.now() / 3000) * 0.15;
+      head.position.y = 1.65 + Math.sin(Date.now() / 2500) * 0.05;
+
+      // Update screen content
+      if (glowCtx) {
+        glowCtx.fillStyle = '#0a2e4a';
+        glowCtx.fillRect(0, 0, 400, 300);
+
+        glowCtx.strokeStyle = '#3b82f6';
+        glowCtx.lineWidth = 2;
+        glowCtx.beginPath();
         for (let i = 0; i < 100; i++) {
-          const x = (i / 100) * 750 + 25;
-          const y = 450 - Math.sin(i / 20 + Date.now() / 2000) * 100 - 50;
-          if (i === 0) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
+          const x = (i / 100) * 380 + 10;
+          const y = 250 - Math.sin(i / 15 + Date.now() / 2000) * 80 - 40;
+          if (i === 0) glowCtx.moveTo(x, y);
+          else glowCtx.lineTo(x, y);
         }
-        ctx.stroke();
+        glowCtx.stroke();
 
-        // Animated bars
-        ctx.fillStyle = '#06b6d4';
-        for (let i = 0; i < 8; i++) {
-          const height = Math.sin(i + Date.now() / 3000) * 80 + 100;
-          ctx.fillRect(100 + i * 80, 350 - height, 60, height);
+        glowCtx.fillStyle = '#06b6d4';
+        for (let i = 0; i < 6; i++) {
+          const height = Math.sin(i + Date.now() / 3000) * 50 + 70;
+          glowCtx.fillRect(50 + i * 55, 200 - height, 40, height);
         }
 
-        texture.needsUpdate = true;
+        glowTexture.needsUpdate = true;
       }
-
-      // Arm animation (typing)
-      leftArm.rotation.z = 0.5 + Math.sin(Date.now() / 600) * 0.3;
-      rightArm.rotation.z = -0.8 - Math.sin(Date.now() / 600) * 0.3;
-
-      // Head rotation
-      head.rotation.y = Math.sin(Date.now() / 3000) * 0.3;
 
       renderer.render(scene, camera);
     };
