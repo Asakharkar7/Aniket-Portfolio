@@ -4,6 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---------------- Global Font ---------------- */
 * {
   font-family: 'Poppins', system-ui, -apple-system, sans-serif;
 }
@@ -42,8 +43,14 @@
 }
 
 @keyframes fadeOut {
-  from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  to { opacity: 0; transform: translate(-50%, -50%) scale(0.4); }
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.4);
+  }
 }
 
 /* ---------------- Backgrounds ---------------- */
