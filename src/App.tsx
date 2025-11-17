@@ -16,7 +16,6 @@ function App() {
 
   return (
     <div className="min-h-screen bg-slate-50 scroll-smooth">
-      {/* Global, portal-based mouse trail */}
       <MouseTrail />
 
       {!entered ? (
