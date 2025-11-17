@@ -22,47 +22,38 @@
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
 
 @keyframes glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0);
-  }
-  50% {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-  }
+  0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0); }
+  50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
 }
 
 @keyframes shimmer {
-  0% {
-    background-position: -1000px 0;
-  }
-  100% {
-    background-position: 1000px 0;
-  }
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
 }
 
-/* NEW: Animated Gradient Background */
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
+/* NEW: Particle fade-out for mouse trail */
+@keyframes fadeOut {
+  from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  to { opacity: 0; transform: translate(-50%, -50%) scale(0.4); }
+}
+
+/* ---------------- Backgrounds ---------------- */
 
 .bg-animated-gradient {
   background: linear-gradient(-45deg, #1e3a8a, #9333ea, #2563eb, #06b6d4);
@@ -72,23 +63,11 @@
 
 /* ---------------- Utility Classes ---------------- */
 
-.animate-slide-up {
-  animation: slideInUp 0.6s ease-out;
-}
+.animate-slide-up { animation: slideInUp 0.6s ease-out; }
+.animate-fade-in { animation: fadeIn 0.8s ease-out; }
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-glow { animation: glow 2s ease-in-out infinite; }
 
-.animate-fade-in {
-  animation: fadeIn 0.8s ease-out;
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-.animate-glow {
-  animation: glow 2s ease-in-out infinite;
-}
-
-/* NEW: Shimmer effect for buttons or text */
 .animate-shimmer {
   background: linear-gradient(
     to right,
@@ -106,9 +85,7 @@
   animation: shimmer 2s linear infinite;
 }
 
-.scroll-smooth {
-  scroll-behavior: smooth;
-}
+.scroll-smooth { scroll-behavior: smooth; }
 
 .text-gradient {
   background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
@@ -119,4 +96,30 @@
 
 .card-hover {
   @apply transition-all duration-300 hover:scale-105 hover:shadow-xl;
+}
+
+/* ---------------- Mouse Trail Dots ---------------- */
+
+.mouse-dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #3b82f6; /* Tailwind blue-500 */
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: fadeOut 0.6s forwards;
+}
+
+/* Optional rainbow trail variation */
+.mouse-dot-rainbow {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: fadeOut 0.8s forwards;
+  background: linear-gradient(45deg, #f87171, #fbbf24, #34d399, #60a5fa, #a78bfa, #f472b6);
+  background-size: 200% 200%;
 }
