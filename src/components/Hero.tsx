@@ -1,7 +1,8 @@
 import { Github, Linkedin, Mail, ExternalLink, Award, ArrowDown, Phone } from "lucide-react";
 import { useMemo, useEffect } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
-import GameHubMenu from "./GameHub/GameHubMenu.tsx"; // 👈 import GameHubMenu
+import GameHubMenu from "./GameHub/GameHubMenu.tsx";
+import AvatarAnimation from "./AvatarAnimation"; // 👈 new avatar animation component
 
 export default function Hero() {
   const roles = useMemo(() => ["Data Analyst", "Data Engineer", "Data Scientist"], []);
@@ -85,6 +86,11 @@ export default function Hero() {
             <a href="#about" className="inline-block text-slate-400 hover:text-blue-600 transition-colors">
               <ArrowDown size={32} />
             </a>
+          </div>
+
+          {/* 🎨 Avatar Animation with Floating Charts */}
+          <div className="mt-20 flex justify-center">
+            <AvatarAnimation />
           </div>
 
           {/* 🎮 GameHub Menu */}
