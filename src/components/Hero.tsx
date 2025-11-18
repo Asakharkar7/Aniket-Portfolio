@@ -10,7 +10,6 @@ import {
 import { useMemo, useEffect } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
 import GameHubMenu from "./GameHub/GameHubMenu";
-import DeskScene from "./DeskScene"
 
   
 export default function Hero() {
@@ -126,11 +125,6 @@ export default function Hero() {
             >
               <ArrowDown size={32} />
             </a>
-          </div>
-
-          {/* 🎮 GameHub Menu */}
-          <div className="mt-20">
-            <DeskScene />
           </div>
           
           {/* 🎮 GameHub Menu */}
