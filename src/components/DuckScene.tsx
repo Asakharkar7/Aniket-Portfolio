@@ -11,36 +11,29 @@ function DeskModel() {
     console.log("✅ Desk model loaded:", scene);
   }, [scene]);
 
-  // Rotate the desk slowly
   useFrame(() => {
     if (groupRef.current) {
-      groupRef.current.rotation.y += 0.002; // slower rotation
+      groupRef.current.rotation.y += 0.002;
     }
   });
 
   return (
     <group ref={groupRef}>
-      {/* scale reduced so full desk fits */}
-      <primitive object={scene} scale={0.8} />
+      <primitive object={scene} scale={0.7} />
     </group>
   );
 }
 
 export default function DeskScene() {
   return (
-    <div className="w-full h-[500px] rounded-lg overflow-hidden shadow-2xl border border-slate-700">
-      <Canvas camera={{ position: [0, 3, 12], fov: 45 }}>
-        {/* Lighting */}
+    <div className="w-full h-[600px] flex items-center justify-center rounded-lg overflow-hidden shadow-2xl border border-slate-700">
+      <Canvas camera={{ position: [0, 3, 14], fov: 45 }}>
         <ambientLight intensity={0.7} />
         <directionalLight position={[5, 5, 5]} intensity={1.2} />
         <pointLight position={[-5, 5, 5]} intensity={0.5} color="#88ccff" />
-
-        {/* Load the desk model */}
         <Suspense fallback={<mesh><boxGeometry /><meshStandardMaterial color="gray" /></mesh>}>
           <DeskModel />
         </Suspense>
-
-        {/* Controls: disable zoom & pan, keep rotation locked */}
         <OrbitControls enableZoom={false} enablePan={false} autoRotate={false} />
       </Canvas>
     </div>
