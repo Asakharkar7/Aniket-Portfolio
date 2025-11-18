@@ -94,55 +94,63 @@ export default function Contact() {
               );
             })}
 
-            {/* Resume Cards */}
-            <div className="mt-8">
-              <p className="text-slate-700 leading-relaxed mb-4">
-                View and download my resume to explore my experience and skills
-                in detail.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {/* View Resume */}
-                <a
-                  href={`${import.meta.env.BASE_URL}Aniket_Sakharkar_resume.pdf`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group block p-6 rounded-xl border border-blue-600 bg-blue-50 hover:bg-blue-100 transition-all shadow-md hover:shadow-lg"
-                >
-                  <div className="flex items-center gap-4">
-                    <Eye
-                      size={28}
-                      className="text-blue-600 group-hover:scale-110 transition-transform"
-                    />
-                    <div>
-                      <h4 className="text-lg font-semibold text-blue-700">
-                        View Resume
-                      </h4>
-                      <p className="text-sm text-blue-600">
-                        Open in browser to preview
-                      </p>
-                    </div>
-                  </div>
-                </a>
+            {/* Resume Block */}
+            <div className="mt-12">
+              <div className="bg-slate-50 border border-slate-200 rounded-xl p-6 shadow-md hover:shadow-lg transition-all">
+                <h3 className="text-2xl font-bold text-slate-900 mb-4">
+                  Resume
+                </h3>
+                <p className="text-slate-700 mb-6">
+                  View and download my resume to explore my experience and
+                  skills in detail.
+                </p>
 
-                {/* Download Resume */}
-                <a
-                  href={`${import.meta.env.BASE_URL}Aniket_Sakharkar_resume.pdf`}
-                  download="Aniket_Sakharkar_resume.pdf"
-                  className="group block p-6 rounded-xl border border-slate-800 bg-slate-100 hover:bg-slate-200 transition-all shadow-md hover:shadow-lg"
-                >
-                  <div className="flex items-center gap-4">
-                    <FileText
-                      size={28}
-                      className="text-slate-800 group-hover:scale-110 transition-transform"
-                    />
-                    <div>
-                      <h4 className="text-lg font-semibold text-slate-900">
-                        Download Resume
-                      </h4>
-                      <p className="text-sm text-slate-700">Save as PDF file</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  {/* View Resume */}
+                  <a
+                    href={`${import.meta.env.BASE_URL}Aniket_Sakharkar_resume.pdf`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group block p-6 rounded-xl border border-blue-600 bg-blue-50 hover:bg-blue-100 transition-all shadow-sm hover:shadow-md"
+                  >
+                    <div className="flex items-center gap-4">
+                      <Eye
+                        size={28}
+                        className="text-blue-600 group-hover:scale-110 transition-transform"
+                      />
+                      <div>
+                        <h4 className="text-lg font-semibold text-blue-700">
+                          View Resume
+                        </h4>
+                        <p className="text-sm text-blue-600">
+                          Open in browser to preview
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </a>
+                  </a>
+
+                  {/* Download Resume */}
+                  <a
+                    href={`${import.meta.env.BASE_URL}Aniket_Sakharkar_resume.pdf`}
+                    download="Aniket_Sakharkar_resume.pdf"
+                    className="group block p-6 rounded-xl border border-slate-800 bg-slate-100 hover:bg-slate-200 transition-all shadow-sm hover:shadow-md"
+                  >
+                    <div className="flex items-center gap-4">
+                      <FileText
+                        size={28}
+                        className="text-slate-800 group-hover:scale-110 transition-transform"
+                      />
+                      <div>
+                        <h4 className="text-lg font-semibold text-slate-900">
+                          Download Resume
+                        </h4>
+                        <p className="text-sm text-slate-700">
+                          Save as PDF file
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
