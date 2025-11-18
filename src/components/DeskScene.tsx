@@ -18,7 +18,7 @@ function DeskModel() {
   });
 
   return (
-    <group ref={groupRef} position={[0, -1.0, 0]}>
+    <group ref={groupRef} position={[0, -1.2, 0]}>
       {/* Moved down slightly */}
       <primitive object={scene} scale={0.7} />
     </group>
