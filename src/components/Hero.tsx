@@ -10,7 +10,7 @@ import {
 import { useMemo, useEffect } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
 import GameHubMenu from "./GameHub/GameHubMenu";
-import DuckModel from "./DuckModel"
+import DuckModel from "./DeskScene"
 
   
 export default function Hero() {
@@ -130,7 +130,7 @@ export default function Hero() {
 
           {/* 🎮 GameHub Menu */}
           <div className="mt-20">
-            <DuckModel />
+            <DeskScene />
           </div>
           
           {/* 🎮 GameHub Menu */}
