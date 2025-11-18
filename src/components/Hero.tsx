@@ -10,7 +10,6 @@ import {
 import { useMemo, useEffect } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
 import GameHubMenu from "./GameHub/GameHubMenu";
-import DeskScene from "./DeskScene";
 
 export default function Hero() {
   const roles = useMemo(
