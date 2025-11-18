@@ -7,11 +7,11 @@ import {
   ArrowDown,
   Phone,
 } from "lucide-react";
-import { useMemo, useEffect } from "react";
+import { useMemo, useEffect, Suspense } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
 import GameHubMenu from "./GameHub/GameHubMenu";
-import DeskScene from "./DeskScene"
-  
+import DeskScene from "./DeskScene";
+
 export default function Hero() {
   const roles = useMemo(
     () => ["Data Analyst", "Data Engineer", "Data Scientist"],
@@ -126,12 +126,14 @@ export default function Hero() {
               <ArrowDown size={32} />
             </a>
           </div>
-          
-          {/* Desk */}
-          <div className="mt-20">
-            <DeskScene />
+
+          {/* DeskScene Showcase with safe fallback */}
+          <div className="mt-20 max-w-4xl mx-auto">
+            <Suspense fallback={<div className="text-slate-600">Loading 3D desk scene...</div>}>
+              <DeskScene />
+            </Suspense>
           </div>
-          
+
           {/* 🎮 GameHub Menu */}
           <div className="mt-20">
             <GameHubMenu />
