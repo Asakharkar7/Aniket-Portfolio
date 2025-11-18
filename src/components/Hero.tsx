@@ -10,7 +10,7 @@ import {
 import { useMemo, useEffect } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
 import GameHubMenu from "./GameHub/GameHubMenu";
-import DuckModel from "./DeskScene"
+import DeskScene from "./DeskScene"
 
   
 export default function Hero() {
