@@ -14,21 +14,22 @@ function DeskModel() {
   // Rotate the desk slowly
   useFrame(() => {
     if (groupRef.current) {
-      groupRef.current.rotation.y += 0.003;
+      groupRef.current.rotation.y += 0.002; // slower rotation
     }
   });
 
   return (
     <group ref={groupRef}>
-      <primitive object={scene} scale={1.5} />
+      {/* scale reduced so full desk fits */}
+      <primitive object={scene} scale={0.8} />
     </group>
   );
 }
 
 export default function DeskScene() {
   return (
-    <div className="w-full h-96 rounded-lg overflow-hidden shadow-2xl border border-slate-700">
-      <Canvas camera={{ position: [0, 2, 6], fov: 45 }}>
+    <div className="w-full h-[500px] rounded-lg overflow-hidden shadow-2xl border border-slate-700">
+      <Canvas camera={{ position: [0, 3, 12], fov: 45 }}>
         {/* Lighting */}
         <ambientLight intensity={0.7} />
         <directionalLight position={[5, 5, 5]} intensity={1.2} />
@@ -39,7 +40,7 @@ export default function DeskScene() {
           <DeskModel />
         </Suspense>
 
-        {/* Controls: disable zoom & pan */}
+        {/* Controls: disable zoom & pan, keep rotation locked */}
         <OrbitControls enableZoom={false} enablePan={false} autoRotate={false} />
       </Canvas>
     </div>
