@@ -4,7 +4,6 @@ import { Suspense, useEffect, useRef } from "react";
 import { Group } from "three";
 
 function DeskModel() {
-  // 🔗 Make sure your file is at public/models/desk-scene.glb
   const { scene } = useGLTF("/models/desk-scene.glb");
   const groupRef = useRef<Group>(null);
 
@@ -12,7 +11,7 @@ function DeskModel() {
     console.log("✅ Desk model loaded:", scene);
   }, [scene]);
 
-  // Rotate the whole desk scene slowly
+  // Rotate the desk slowly
   useFrame(() => {
     if (groupRef.current) {
       groupRef.current.rotation.y += 0.003;
@@ -40,8 +39,8 @@ export default function DeskScene() {
           <DeskModel />
         </Suspense>
 
-        {/* Controls */}
-        <OrbitControls autoRotate={false} enableZoom={true} />
+        {/* Controls: disable zoom & pan */}
+        <OrbitControls enableZoom={false} enablePan={false} autoRotate={false} />
       </Canvas>
     </div>
   );
