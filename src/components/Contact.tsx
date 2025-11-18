@@ -84,27 +84,32 @@ export default function Contact() {
             })}
 
             {/* Resume Actions */}
-            <div className="flex gap-4 mt-6">
-              {/* View Resume */}
-              <a
-                href={`${import.meta.env.BASE_URL}Aniket_Sakharkar_resume.pdf`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all"
-              >
-                <Eye size={20} />
-                <span>View Resume</span>
-              </a>
+            <div className="mt-8 p-6 bg-slate-50 rounded-lg border border-slate-200">
+              <p className="text-slate-700 leading-relaxed mb-4">
+                View and download my resume to explore my experience and skills in detail.
+              </p>
+              <div className="flex gap-4">
+                {/* View Resume */}
+                <a
+                  href={`${import.meta.env.BASE_URL}Aniket_Sakharkar_resume.pdf`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all"
+                >
+                  <Eye size={20} />
+                  <span>View Resume</span>
+                </a>
 
-              {/* Download Resume */}
-              <a
-                href={`${import.meta.env.BASE_URL}Aniket_Sakharkar_resume.pdf`}
-                download="Aniket_Sakharkar_resume.pdf"
-                className="flex items-center gap-2 px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-all"
-              >
-                <FileText size={20} />
-                <span>Download Resume</span>
-              </a>
+                {/* Download Resume */}
+                <a
+                  href={`${import.meta.env.BASE_URL}Aniket_Sakharkar_resume.pdf`}
+                  download="Aniket_Sakharkar_resume.pdf"
+                  className="flex items-center gap-2 px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-all"
+                >
+                  <FileText size={20} />
+                  <span>Download Resume</span>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -128,13 +133,6 @@ export default function Contact() {
                   </a>
                 );
               })}
-            </div>
-
-            <div className="mt-8 p-6 bg-slate-50 rounded-lg border border-slate-200">
-              <p className="text-slate-700 leading-relaxed">
-                Available for full-time positions and contract work.
-                Open to remote, hybrid, and on-site opportunities.
-              </p>
             </div>
           </div>
         </div>
