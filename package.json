@@ -6,7 +6,7 @@
   "homepage": "https://Asakharkar7.github.io/Aniket-Portfolio",
   "scripts": {
     "dev": "vite --config vite.config.local.ts",
-    "build": "vite build --config vite.config.prod.ts",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview --config vite.config.local.ts",
     "typecheck": "tsc --noEmit -p tsconfig.app.json",
