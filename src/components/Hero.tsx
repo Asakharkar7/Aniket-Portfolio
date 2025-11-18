@@ -10,7 +10,7 @@ import {
 import { useMemo, useEffect } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
 import GameHubMenu from "./GameHub/GameHubMenu.tsx";
-import DuckScene from "./DuckScene"; // 🦆 Test GLB model
+import DeskScene from "./DeskScene"; // 🦆 Test GLB model
 
 export default function Hero() {
   const roles = useMemo(
@@ -129,7 +129,7 @@ export default function Hero() {
 
           {/* 🦆 Duck Test Model */}
           <div className="mt-20 flex justify-center">
-            <DuckScene />
+            <DeskScene />
           </div>
 
           {/* 🎮 GameHub Menu */}
