@@ -18,8 +18,7 @@ function DeskModel() {
   });
 
   return (
-    <group ref={groupRef} position={[0, -2.2, 0]}>
-      {/* Moved down slightly */}
+    <group ref={groupRef}>
       <primitive object={scene} scale={0.7} />
     </group>
   );
@@ -27,18 +26,22 @@ function DeskModel() {
 
 export default function DeskScene() {
   return (
-    <div className="w-full max-w-6xl mx-auto aspect-[16/8] rounded-xl overflow-hidden">
-      {/* Cropped bottom with aspect ratio */}
+    <div className="w-full max-w-6xl mx-auto aspect-[16/9] rounded-xl overflow-hidden">
       <Canvas
         camera={{ position: [0, 2.5, 13], fov: 45 }}
         gl={{ alpha: true }}
       >
+        {/* Lighting */}
         <ambientLight intensity={0.8} />
         <directionalLight position={[5, 5, 5]} intensity={1.2} />
         <pointLight position={[-5, 5, 5]} intensity={0.6} color="#88ccff" />
+
+        {/* Desk Model */}
         <Suspense fallback={<mesh><boxGeometry /><meshStandardMaterial color="gray" /></mesh>}>
           <DeskModel />
         </Suspense>
+
+        {/* Controls: only horizontal rotation */}
         <OrbitControls
           enableZoom={false}
           enablePan={false}
