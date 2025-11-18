@@ -10,7 +10,9 @@ import {
 import { useMemo, useEffect } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
 import GameHubMenu from "./GameHub/GameHubMenu";
+import DuckModel from "./DuckModel"
 
+  
 export default function Hero() {
   const roles = useMemo(
     () => ["Data Analyst", "Data Engineer", "Data Scientist"],
@@ -124,6 +126,11 @@ export default function Hero() {
             >
               <ArrowDown size={32} />
             </a>
+          </div>
+
+          {/* 🎮 GameHub Menu */}
+          <div className="mt-20">
+            <DuckModel />
           </div>
           
           {/* 🎮 GameHub Menu */}
