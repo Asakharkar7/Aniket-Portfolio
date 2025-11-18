@@ -1,5 +1,5 @@
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, useGLTF, ContactShadows } from "@react-three/drei";
+import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Suspense, useEffect, useRef } from "react";
 import { Group } from "three";
 
@@ -26,8 +26,11 @@ function DeskModel() {
 
 export default function DeskScene() {
   return (
-    <div className="w-full max-w-6xl mx-auto aspect-[16/9] rounded-xl overflow-hidden shadow-2xl border border-slate-700 bg-slate-100">
-      <Canvas camera={{ position: [0, 2.5, 13], fov: 45 }}>
+    <div className="w-full max-w-6xl mx-auto aspect-[16/9] rounded-xl overflow-hidden">
+      <Canvas
+        camera={{ position: [0, 2.5, 13], fov: 45 }}
+        gl={{ alpha: true }}
+      >
         {/* Lighting */}
         <ambientLight intensity={0.8} />
         <directionalLight position={[5, 5, 5]} intensity={1.2} />
@@ -36,19 +39,15 @@ export default function DeskScene() {
         {/* Desk Model */}
         <Suspense fallback={<mesh><boxGeometry /><meshStandardMaterial color="gray" /></mesh>}>
           <DeskModel />
-          {/* Optional: soft shadow under desk */}
-          <ContactShadows
-            position={[0, -1.2, 0]}
-            opacity={0.4}
-            width={10}
-            height={10}
-            blur={2.5}
-            far={10}
-          />
         </Suspense>
 
-        {/* Controls: locked zoom/pan */}
-        <OrbitControls enableZoom={false} enablePan={false} autoRotate={false} />
+        {/* Controls: only horizontal rotation */}
+        <OrbitControls
+          enableZoom={false}
+          enablePan={false}
+          minPolarAngle={Math.PI / 2}
+          maxPolarAngle={Math.PI / 2}
+        />
       </Canvas>
     </div>
   );
