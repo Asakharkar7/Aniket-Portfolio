@@ -10,6 +10,7 @@ import {
 import { useMemo, useEffect, Suspense } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
 import GameHubMenu from "./GameHub/GameHubMenu";
+import DeskScene from "./DeskScene";
 
 export default function Hero() {
   const roles = useMemo(
@@ -126,6 +127,12 @@ export default function Hero() {
             </a>
           </div>
 
+          {/* DeskScene Showcase with safe fallback */}
+          <div className="mt-20 max-w-4xl mx-auto">
+            <Suspense fallback={<div className="text-slate-600">Loading 3D desk scene...</div>}>
+              <DeskScene />
+            </Suspense>
+          </div>
 
           {/* 🎮 GameHub Menu */}
           <div className="mt-20">
