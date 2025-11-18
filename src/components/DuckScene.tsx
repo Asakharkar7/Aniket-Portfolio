@@ -19,18 +19,18 @@ function DeskModel() {
 
   return (
     <group ref={groupRef}>
-      <primitive object={scene} scale={0.7} />
+      <primitive object={scene} scale={0.75} />
     </group>
   );
 }
 
 export default function DeskScene() {
   return (
-    <div className="w-full h-[600px] flex items-center justify-center rounded-lg overflow-hidden shadow-2xl border border-slate-700">
-      <Canvas camera={{ position: [0, 3, 14], fov: 45 }}>
-        <ambientLight intensity={0.7} />
+    <div className="w-full max-w-5xl mx-auto aspect-[16/9] rounded-xl overflow-hidden shadow-2xl border border-slate-700">
+      <Canvas camera={{ position: [0, 2.5, 13], fov: 45 }}>
+        <ambientLight intensity={0.8} />
         <directionalLight position={[5, 5, 5]} intensity={1.2} />
-        <pointLight position={[-5, 5, 5]} intensity={0.5} color="#88ccff" />
+        <pointLight position={[-5, 5, 5]} intensity={0.6} color="#88ccff" />
         <Suspense fallback={<mesh><boxGeometry /><meshStandardMaterial color="gray" /></mesh>}>
           <DeskModel />
         </Suspense>
