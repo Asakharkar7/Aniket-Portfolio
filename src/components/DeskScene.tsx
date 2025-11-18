@@ -4,7 +4,8 @@ import { Suspense, useEffect, useRef } from "react";
 import { Group } from "three";
 
 function DeskModel() {
-  const { scene } = useGLTF("/models/desk-scene.glb");
+  // ✅ Use BASE_URL so it works on GitHub Pages
+  const { scene } = useGLTF(`${import.meta.env.BASE_URL}models/desk-scene.glb`);
   const groupRef = useRef<Group>(null);
 
   useEffect(() => {
@@ -19,7 +20,6 @@ function DeskModel() {
 
   return (
     <group ref={groupRef} position={[0, -1.7, 0]}>
-      {/* Moved down slightly */}
       <primitive object={scene} scale={0.7} />
     </group>
   );
@@ -28,7 +28,6 @@ function DeskModel() {
 export default function DeskScene() {
   return (
     <div className="w-full max-w-6xl mx-auto aspect-[16/8] rounded-xl overflow-hidden">
-      {/* Cropped bottom with aspect ratio */}
       <Canvas
         camera={{ position: [0, 2.5, 13], fov: 45 }}
         gl={{ alpha: true }}
@@ -36,9 +35,19 @@ export default function DeskScene() {
         <ambientLight intensity={0.8} />
         <directionalLight position={[5, 5, 5]} intensity={1.2} />
         <pointLight position={[-5, 5, 5]} intensity={0.6} color="#88ccff" />
-        <Suspense fallback={<mesh><boxGeometry /><meshStandardMaterial color="gray" /></mesh>}>
+
+        {/* ✅ Safe fallback so page never crashes */}
+        <Suspense
+          fallback={
+            <mesh>
+              <boxGeometry />
+              <meshStandardMaterial color="gray" />
+            </mesh>
+          }
+        >
           <DeskModel />
         </Suspense>
+
         <OrbitControls
           enableZoom={false}
           enablePan={false}
