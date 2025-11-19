@@ -54,7 +54,7 @@ export default function Projects() {
       icons: [
         { src: 'icons/python.png', alt: 'Python', size: 'w-10 h-10' },
         { src: 'icons/scikit.png', alt: 'Scikit-learn', size: 'w-10 h-10' },
-        { src: 'icons/git.svg', alt: 'Git', size: 'w-10 h-10' },
+        { src: 'icons/excel.png', alt: 'Microsoft Excel', size: 'w-10 h-10' },
       ],
     },
     {
@@ -65,7 +65,7 @@ export default function Projects() {
       icons: [
         { src: 'icons/python.png', alt: 'Python', size: 'w-10 h-10' },
         { src: 'icons/excel.png', alt: 'Microsoft Excel', size: 'w-10 h-10' },
-        { src: 'icons/ml.png', alt: 'Machine Learning', size: 'w-10 h-10' },
+        { src: 'icons/scikit.png', alt: 'Scikit-learn', size: 'w-10 h-10' },
       ],
     },
     {
