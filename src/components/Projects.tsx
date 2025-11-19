@@ -177,5 +177,5 @@ export default function Projects() {
                 >
                 View on Streamlit
               </a>
-              }
+              )}
              </div>
