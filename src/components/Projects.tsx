@@ -49,7 +49,7 @@ export default function Projects() {
     {
       title: 'Predictive Maintenance Analysis',
       description:
-        'Built machine failures predictive model using Scikit-learn; applied SMOTE to balance classes and improve recall to 0.89. Analyzed 10K+ records with 14 features, evaluating precision, recall, and F1-score to select the most effective failure prediction model.',
+        'Built a machine failure prediction model using Scikit-learn and SMOTE, improving recall to 0.89 across 10K+ records.',
       link: 'https://github.com/Asakharkar7/Predictive-Maintenance-Analysis',
       icons: [
         { src: 'icons/python.png', alt: 'Python', size: 'w-10 h-10' },
@@ -60,7 +60,7 @@ export default function Projects() {
     {
       title: 'Crime Rate NYPD Predictions',
       description:
-        'Cleaned and transformed a 150K-row dataset, applying PCA to reduce dimensionality and improve model efficiency by 10%. Compared 5 classifiers, optimizing Random Forest through hyperparameter tuning to enhance crime rate prediction accuracy.',
+        'Cleaned and transformed a 150K-row dataset, applied PCA for efficiency gains, and optimized Random Forest for higher crime rate prediction accuracy.',
       link: 'https://github.com/Asakharkar7/NYPD-CRIME-ARREST',
       icons: [
         { src: 'icons/python.png', alt: 'Python', size: 'w-10 h-10' },
