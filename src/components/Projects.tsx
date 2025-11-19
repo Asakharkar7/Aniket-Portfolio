@@ -159,9 +159,23 @@ export default function Projects() {
                   />
                 ))}
               </div>
-              <div className="mt-4 space-x-4">
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text
+             <div className="mt-4 space-x-4">
+
+               <a
+                 href={project.link}
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="text-blue-600 hover:underline inline-block"
+                 >
+                 View on GitHub
+               </a>
+               {project.streamlit && (
+              <a
+                href={project.streamlit}
+                target="_blank"
+                className="text-green-600 hover:underline inline-block"
+                >
+                View on Streamlit
+              </a>
+              }
+             </div>
