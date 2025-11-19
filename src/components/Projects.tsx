@@ -88,6 +88,7 @@ export default function Projects() {
       description:
         "Built an interactive dashboard to analyze Walmart sales trends, leveraging Streamlit and Python for data cleaning, visualization, and insights into regional performance and product categories.",
       link: "https://github.com/Asakharkar7/walmart_sales_dashboard",
+      link: "https://walmartsalesdashboard-hpswqrhdgrszpjrzym9xz7.streamlit.app/",
       icons: [
         { src: "icons/streamlit.png", alt: "Streamlit", size: "w-10 h-10" },
         { src: "icons/python.png", alt: "Python", size: "w-10 h-10" },
