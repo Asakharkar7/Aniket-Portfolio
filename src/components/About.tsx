@@ -34,7 +34,7 @@ export default function About() {
                     <p className="text-slate-700">
                       Northeastern University, Boston, USA
                     </p>
-                    <p className="text-slate-500 text-sm">Aug 2022 – May 2024</p>
+                    <p className="text-slate-500 text-sm">Jan 2022 – Dec 2023</p>
                     <p className="text-green-600 font-semibold mt-1 group-hover:text-green-700 transition-colors">
                       GPA: 3.9
                     </p>
