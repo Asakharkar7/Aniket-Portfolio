@@ -54,7 +54,7 @@ export default function Projects() {
       icons: [
         { src: 'icons/python.png', alt: 'Python', size: 'w-10 h-10' },
         { src: 'icons/scikit.png', alt: 'Scikit-learn', size: 'w-10 h-10' },
-        { src: 'icons/excel.png', alt: 'Microsoft Excel', size: 'w-10 h-10' },
+        { src: 'icons/git.svg', alt: 'Git', size: 'w-10 h-10' },
       ],
     },
     {
@@ -65,7 +65,29 @@ export default function Projects() {
       icons: [
         { src: 'icons/python.png', alt: 'Python', size: 'w-10 h-10' },
         { src: 'icons/excel.png', alt: 'Microsoft Excel', size: 'w-10 h-10' },
-        { src: 'icons/scikit.png', alt: 'Scikit-learn', size: 'w-10 h-10' },
+        { src: 'icons/ml.png', alt: 'Machine Learning', size: 'w-10 h-10' },
+      ],
+    },
+    {
+      title: 'Healthcare Cost Predictor',
+      description:
+        'Developed a regression-based model to estimate healthcare costs using patient demographics and medical features, improving prediction accuracy through feature engineering and model evaluation.',
+      link: 'https://github.com/Asakharkar7/Healthcare-Cost-Predictor',
+      icons: [
+        { src: 'icons/streamlit.png', alt: 'Streamlit', size: 'w-10 h-10' },
+        { src: 'icons/python.png', alt: 'Python', size: 'w-10 h-10' },
+        { src: 'icons/ollama.png', alt: 'Ollama', size: 'w-10 h-10' },
+      ],
+    },
+    {
+      title: 'Walmart Sales Dashboard',
+      description:
+        'Built an interactive dashboard to analyze Walmart sales trends, leveraging Streamlit and Python for data cleaning, visualization, and insights into regional performance and product categories.',
+      link: 'https://github.com/Asakharkar7/walmart_sales_dashboard',
+      icons: [
+        { src: 'icons/streamlit.png', alt: 'Streamlit', size: 'w-10 h-10' },
+        { src: 'icons/python.png', alt: 'Python', size: 'w-10 h-10' },
+        { src: 'icons/ollama.png', alt: 'Ollama', size: 'w-10 h-10' },
       ],
     },
   ];
