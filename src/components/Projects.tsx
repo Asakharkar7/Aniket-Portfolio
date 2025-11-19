@@ -77,6 +77,7 @@ export default function Projects() {
       description:
         "Developed a regression-based model to estimate healthcare costs using patient demographics and medical features, improving prediction accuracy through feature engineering and model evaluation.",
       link: "https://github.com/Asakharkar7/Healthcare-Cost-Predictor",
+      streamlit: "https://healthcare-cost-predictor-ezmjefxzhqftu6azvzjt5q.streamlit.app/",
       icons: [
         { src: "icons/streamlit.png", alt: "Streamlit", size: "w-10 h-10" },
         { src: "icons/python.png", alt: "Python", size: "w-10 h-10" },
@@ -88,7 +89,7 @@ export default function Projects() {
       description:
         "Built an interactive dashboard to analyze Walmart sales trends, leveraging Streamlit and Python for data cleaning, visualization, and insights into regional performance and product categories.",
       link: "https://github.com/Asakharkar7/walmart_sales_dashboard",
-      link: "https://walmartsalesdashboard-hpswqrhdgrszpjrzym9xz7.streamlit.app/",
+      streamlit: "https://walmartsalesdashboard-hpswqrhdgrszpjrzym9xz7.streamlit.app/",
       icons: [
         { src: "icons/streamlit.png", alt: "Streamlit", size: "w-10 h-10" },
         { src: "icons/python.png", alt: "Python", size: "w-10 h-10" },
@@ -97,7 +98,8 @@ export default function Projects() {
     },
   ];
 
-  const scroll = (direction: "left" | "right") => {
+
+    const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
       const { scrollLeft, clientWidth } = scrollRef.current;
       const scrollAmount = direction === "left" ? -clientWidth : clientWidth;
@@ -157,18 +159,9 @@ export default function Projects() {
                   />
                 ))}
               </div>
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:underline mt-4 inline-block"
-              >
-                View on GitHub
-              </a>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+              <div className="mt-4 space-x-4">
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text
