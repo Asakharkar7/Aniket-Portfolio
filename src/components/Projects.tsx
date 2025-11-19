@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function Projects() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const projectList = [
     {
@@ -136,10 +137,13 @@ export default function Projects() {
           {projectList.map((project, index) => (
             <motion.div
               key={index}
-              className="min-w-[300px] max-w-sm bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 flex-shrink-0"
+              onClick={() => setSelectedIndex(index)}
+              className="min-w-[300px] max-w-sm bg-white p-6 rounded-lg shadow-md transition-all duration-300 flex-shrink-0 cursor-pointer"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
+              whileHover={{ scale: 1.05 }} // zoom on hover
+              animate={{ scale: selectedIndex === index ? 1.1 : 1 }} // zoom more if clicked
+              transition={{ duration: 0.3 }}
               viewport={{ once: true }}
             >
               <h3 className="text-xl font-semibold text-slate-800">
@@ -156,18 +160,3 @@ export default function Projects() {
                   />
                 ))}
               </div>
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:underline mt-4 inline-block"
-              >
-                View on GitHub
-              </a>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
