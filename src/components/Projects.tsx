@@ -10,9 +10,7 @@ export default function Projects() {
       title: "Supply Chain ML Inference Application",
       description:
         "Built a model-time ML inference system using AWS Lambda and API Gateway to predict demand for a supply chain dataset.",
-      links: [
-        { label: "GitHub", url: "https://github.com/Asakharkar7/supply-chain-disruption-radar" },
-      ],
+      link: "https://github.com/Asakharkar7/supply-chain-disruption-radar",
       icons: [
         { src: "icons/snowflake.png", alt: "Snowflake", size: "w-12 h-12" },
         { src: "icons/databricks.png", alt: "Databricks", size: "w-12 h-12" },
@@ -25,9 +23,7 @@ export default function Projects() {
       title: "AWS Serverless ETL Pipeline",
       description:
         "Developed an end-to-end serverless ETL pipeline using AWS Lambda, Python, and DynamoDB.",
-      links: [
-        { label: "GitHub", url: "https://github.com/Asakharkar7/aws-serverless-etl-s3-lambda-dynamodb" },
-      ],
+      link: "https://github.com/Asakharkar7/aws-serverless-etl-s3-lambda-dynamodb",
       icons: [
         { src: "icons/lambda.svg", alt: "AWS Lambda", size: "w-10 h-10" },
         { src: "icons/dynamo.svg", alt: "DynamoDB", size: "w-10 h-10" },
@@ -37,9 +33,7 @@ export default function Projects() {
       title: "Serverless ML Prediction API",
       description:
         "Developed a model-time inference API using AWS Lambda and API Gateway to predict customer churn for low-latency prediction serving.",
-      links: [
-        { label: "GitHub", url: "https://github.com/Asakharkar7/aws-serverless-ml-api-lambda-api" },
-      ],
+      link: "https://github.com/Asakharkar7/aws-serverless-ml-api-lambda-api",
       icons: [
         { src: "icons/lambda.svg", alt: "AWS Lambda", size: "w-10 h-10" },
         { src: "icons/API.svg", alt: "API Gateway", size: "w-10 h-10" },
@@ -50,9 +44,7 @@ export default function Projects() {
       title: "Databricks Retail ELT Pipeline",
       description:
         "Designed and implemented an end-to-end Spark ETL pipeline on Databricks to process and analyze retail data for business insights.",
-      links: [
-        { label: "GitHub", url: "https://github.com/Asakharkar7/databricks-retail-elt-pipeline" },
-      ],
+      link: "https://github.com/Asakharkar7/databricks-retail-elt-pipeline",
       icons: [
         { src: "icons/databricks.png", alt: "Databricks", size: "w-12 h-12" },
         { src: "icons/deltalake.png", alt: "Delta Lake", size: "w-10 h-10" },
@@ -62,9 +54,7 @@ export default function Projects() {
       title: "Predictive Maintenance Analysis",
       description:
         "Built a machine failure prediction model using Scikit-learn and SMOTE, improving recall to 0.89 across 10K+ records.",
-      links: [
-        { label: "GitHub", url: "https://github.com/Asakharkar7/Predictive-Maintenance-Analysis" },
-      ],
+      link: "https://github.com/Asakharkar7/Predictive-Maintenance-Analysis",
       icons: [
         { src: "icons/python.png", alt: "Python", size: "w-10 h-10" },
         { src: "icons/scikit.png", alt: "Scikit-learn", size: "w-10 h-10" },
@@ -75,9 +65,7 @@ export default function Projects() {
       title: "Crime Rate NYPD Predictions",
       description:
         "Cleaned and transformed a 150K-row dataset, applied PCA for efficiency gains, and optimized Random Forest for higher crime rate prediction accuracy.",
-      links: [
-        { label: "GitHub", url: "https://github.com/Asakharkar7/NYPD-CRIME-ARREST" },
-      ],
+      link: "https://github.com/Asakharkar7/NYPD-CRIME-ARREST",
       icons: [
         { src: "icons/python.png", alt: "Python", size: "w-10 h-10" },
         { src: "icons/excel.png", alt: "Microsoft Excel", size: "w-10 h-10" },
@@ -88,10 +76,7 @@ export default function Projects() {
       title: "Healthcare Cost Predictor",
       description:
         "Developed a regression-based model to estimate healthcare costs using patient demographics and medical features, improving prediction accuracy through feature engineering and model evaluation.",
-      links: [
-        { label: "GitHub", url: "https://github.com/Asakharkar7/Healthcare-Cost-Predictor" },
-        { label: "Live Demo", url: "https://healthcare-cost-predictor-ezmjefxzhqftu6azvzjt5q.streamlit.app/" },
-      ],
+      link: "https://github.com/Asakharkar7/Healthcare-Cost-Predictor",
       icons: [
         { src: "icons/streamlit.png", alt: "Streamlit", size: "w-10 h-10" },
         { src: "icons/python.png", alt: "Python", size: "w-10 h-10" },
@@ -102,10 +87,7 @@ export default function Projects() {
       title: "Walmart Sales Dashboard",
       description:
         "Built an interactive dashboard to analyze Walmart sales trends, leveraging Streamlit and Python for data cleaning, visualization, and insights into regional performance and product categories.",
-      links: [
-        { label: "GitHub", url: "https://github.com/Asakharkar7/walmart_sales_dashboard" },
-        { label: "Live Demo", url: "https://walmartsalesdashboard-hpswqrhdgrszpjrzym9xz7.streamlit.app/" },
-      ],
+      link: "https://github.com/Asakharkar7/walmart_sales_dashboard",
       icons: [
         { src: "icons/streamlit.png", alt: "Streamlit", size: "w-10 h-10" },
         { src: "icons/python.png", alt: "Python", size: "w-10 h-10" },
@@ -163,4 +145,29 @@ export default function Projects() {
               <h3 className="text-xl font-semibold text-slate-800">
                 {project.title}
               </h3>
-              <p className="text-slate-600 mt-2">{project.description}</p
+              <p className="text-slate-600 mt-2">{project.description}</p>
+              <div className="flex flex-wrap gap-4 mt-4">
+                {project.icons.map((icon, i) => (
+                  <img
+                    key={i}
+                    src={`${import.meta.env.BASE_URL}${icon.src}`}
+                    alt={icon.alt}
+                    className={`${icon.size} object-contain`}
+                  />
+                ))}
+              </div>
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline mt-4 inline-block"
+              >
+                View on GitHub
+              </a>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
